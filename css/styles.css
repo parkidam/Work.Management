@@ -1,0 +1,126 @@
+/* 전체 레이아웃 스타일 */
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background-color: #f8f9fc;
+}
+
+.wrapper {
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+}
+
+/* 사이드바 스타일 */
+#sidebar {
+    min-width: 250px;
+    max-width: 250px;
+    background: #5382a1;
+    color: #fff;
+    height: 100vh;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+}
+
+#sidebar .sidebar-header {
+    text-align: center;
+    padding: 20px;
+    background: #5382a1;
+}
+
+#sidebar ul.components {
+    padding: 20px 0;
+    border-bottom: 1px solid #5681aa;
+}
+
+#sidebar ul li a {
+    padding: 10px 20px;
+    font-size: 1.1em;
+    display: block;
+    color: #fff;
+    text-decoration: none;
+}
+
+#sidebar ul li a:hover {
+    color: #fff;
+    background: #277391;
+}
+
+#sidebar ul li.active > a {
+    color: #fff;
+    background: #277391;
+}
+
+#sidebar .menu-item i {
+    margin-right: 10px;
+    width: 20px;
+    text-align: center;
+}
+
+/* 메인 컨텐츠 스타일 */
+#content {
+    width: calc(100% - 250px);
+    padding: 0;
+    min-height: 100vh;
+    margin-left: 250px;
+}
+
+/* 상단바 스타일 */
+.navbar {
+    padding: 15px 10px;
+    background: #fff;
+    border: none;
+    border-radius: 0;
+    margin-bottom: 20px;
+    box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+}
+
+/* 사이드바 토글 버튼 숨기기 */
+#sidebarCollapse {
+    display: none;
+}
+
+/* 서브메뉴 스타일 */
+#sidebar ul.collapse {
+    padding-left: 0;
+}
+
+#sidebar ul.collapse li a {
+    padding: 8px 10px 8px 40px;
+    font-size: 0.9em;
+    display: block;
+    color: #f8f9fc;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+#sidebar ul.collapse li a:hover {
+    background: #277391;
+}
+
+#sidebar ul.collapse li.active > a {
+    background: #277391;
+}
+
+#sidebar .submenu-item i {
+    margin-right: 8px;
+    width: 16px;
+    text-align: center;
+    font-size: 0.8em;
+}
+
+/* 드롭다운 토글 스타일 - 화살표 없음 */
+#sidebar .collapse-toggle::after {
+    display: none;
+}
+
+/* 서브메뉴 구분선 추가 */
+#sidebar ul.collapse li:not(:last-child) {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* 서브메뉴 컨테이너 스타일 */
+#sidebar ul.collapse {
+    background-color: #0d4d66; /* 서브메뉴 배경색 */
+    border-left: 4px solid #fff;
+}
