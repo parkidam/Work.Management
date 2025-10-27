@@ -55,11 +55,9 @@ function setupModalEvents() {
     // 저장 버튼 클릭
     document.getElementById('saveBtn').addEventListener('click', saveEmployeeInfo);
     
-    // 삭제 버튼 클릭
-    document.getElementById('deleteBtn').addEventListener('click', deleteEmployee);
-    
-    // 경력증명서 출력 버튼 클릭
-    document.getElementById('exportBtn').addEventListener('click', exportCareerCertificate);
+    // 삭제 버튼과 경력증명서 출력 버튼은 이미 다른 곳에서 설정되어 있으므로 여기서는 제거
+    // document.getElementById('deleteBtn').addEventListener('click', deleteEmployee);
+    // document.getElementById('exportBtn').addEventListener('click', exportCareerCertificate);
 }
 
 // 테스트 데이터 로드 (실제 구현 시 API 호출로 대체)
@@ -68,7 +66,14 @@ function loadTestData() {
     const employees = [
         { id: 'E001', name: '홍길동', department: '개발팀', position: '과장' },
         { id: 'E002', name: '김철수', department: '영업팀', position: '대리' },
-        { id: 'E003', name: '이영희', department: '인사팀', position: '부장' }
+        { id: 'E003', name: '이영희', department: '인사팀', position: '부장' },
+        { id: 'E004', name: '박지원', department: '개발팀', position: '사원' },
+        { id: 'E005', name: '최민준', department: '경영지원팀', position: '차장' },
+        { id: 'E006', name: '정수진', department: '영업팀', position: '이사' },
+        { id: 'E007', name: '강다은', department: '개발팀', position: '대리' },
+        { id: 'E008', name: '윤서연', department: '인사팀', position: '사원' },
+        { id: 'E009', name: '임재현', department: '경영지원팀', position: '과장' },
+        { id: 'E010', name: '오민석', department: '개발팀', position: '부장' }
     ];
     
     const employeeList = document.getElementById('employeeList');
@@ -98,53 +103,333 @@ function loadTestData() {
 // 사원 상세 정보 로드 (실제 구현 시 API 호출로 대체)
 function loadEmployeeDetails(employeeId) {
     // 테스트 데이터 (실제 구현 시 API 호출로 대체)
-    const employeeData = {
-        id: employeeId,
-        name: employeeId === 'E001' ? '홍길동' : (employeeId === 'E002' ? '김철수' : '이영희'),
-        rrn: '800101-1234567',
-        phone: '010-1234-5678',
-        email: 'employee@example.com',
-        department: employeeId === 'E001' ? '개발팀' : (employeeId === 'E002' ? '영업팀' : '인사팀'),
-        position: employeeId === 'E001' ? '과장' : (employeeId === 'E002' ? '대리' : '부장'),
-        hireDate: '2020-01-01',
-        status: '재직',
-        address: '서울시 강남구 테헤란로 123',
-        bankInfo: {
-            bankName: '국민은행',
-            accountNumber: '123-456-789'
+    const employeeDataMap = {
+        'E001': {
+            id: 'E001',
+            name: '홍길동',
+            rrn: '800101-1234567',
+            phone: '010-1234-5678',
+            email: 'hong@example.com',
+            department: '개발팀',
+            position: '과장',
+            hireDate: '2018-03-01',
+            status: '재직',
+            address: '서울시 강남구 테헤란로 123',
+            bankInfo: {
+                bankName: '국민은행',
+                accountNumber: '123-456-789'
+            },
+            family: [
+                { relation: '배우자', name: '김미영', rrn: '810203-2345678' },
+                { relation: '자', name: '홍준호', rrn: '100304-3456789' }
+            ],
+            education: [
+                { 
+                    school: '서울대학교', 
+                    admissionDate: '2010-03-02', 
+                    graduationDate: '2014-02-28', 
+                    degree: '학사',
+                    diploma: '졸업장.pdf'
+                },
+                { 
+                    school: '한국대학교', 
+                    admissionDate: '2014-09-01', 
+                    graduationDate: '2016-08-31', 
+                    degree: '석사',
+                    diploma: '석사학위.pdf'
+                }
+            ],
+            certification: [
+                {
+                    name: '정보처리기사',
+                    issuer: '한국산업인력공단',
+                    issueDate: '2015-06-15',
+                    expiryDate: '',
+                    file: '자격증.pdf'
+                },
+                {
+                    name: 'SQLD',
+                    issuer: '한국데이터산업진흥원',
+                    issueDate: '2016-12-10',
+                    expiryDate: '',
+                    file: 'SQLD.pdf'
+                }
+            ],
+            career: [
+                {
+                    company: '(주)이전회사',
+                    contract: '시스템 개발',
+                    startDate: '2016-03-01',
+                    endDate: '2018-02-28',
+                    md: 120,
+                    role: '개발자'
+                }
+            ]
         },
-        family: [
-            { relation: '배우자', name: '김미영', rrn: '810203-2345678' },
-            { relation: '자', name: '홍준호', rrn: '100304-3456789' }
-        ],
-        education: [
-            { 
-                school: '서울대학교', 
-                admissionDate: '2010-03-02', 
-                graduationDate: '2014-02-28', 
-                degree: '학사',
-                diploma: '졸업장.pdf'
-            }
-        ],
-        certification: [
-            {
-                name: '정보처리기사',
-                issuer: '한국산업인력공단',
-                issueDate: '2015-06-15',
-                expiryDate: '',
-                file: '자격증.pdf'
-            }
-        ],
-        career: [
-            {
-                company: '(주)이전회사',
-                contract: '시스템 개발',
-                startDate: '2015-01-01',
-                endDate: '2019-12-31',
-                md: 120,
-                role: '개발자'
-            }
-        ]
+        'E002': {
+            id: 'E002',
+            name: '김철수',
+            rrn: '850415-1876543',
+            phone: '010-2345-6789',
+            email: 'kim@example.com',
+            department: '영업팀',
+            position: '대리',
+            hireDate: '2019-06-01',
+            status: '재직',
+            address: '서울시 서초구 서초대로 456',
+            bankInfo: {
+                bankName: '신한은행',
+                accountNumber: '987-654-321'
+            },
+            family: [
+                { relation: '배우자', name: '이지연', rrn: '860523-2987654' }
+            ],
+            education: [
+                { 
+                    school: '고려대학교', 
+                    admissionDate: '2011-03-02', 
+                    graduationDate: '2015-02-28', 
+                    degree: '학사',
+                    diploma: '졸업장.pdf'
+                }
+            ],
+            certification: [
+                {
+                    name: '경영지도사',
+                    issuer: '한국산업인력공단',
+                    issueDate: '2018-08-20',
+                    expiryDate: '',
+                    file: '자격증.pdf'
+                }
+            ],
+            career: [
+                {
+                    company: '(주)ABC기업',
+                    contract: '영업관리',
+                    startDate: '2015-03-01',
+                    endDate: '2019-05-31',
+                    md: 150,
+                    role: '영업담당자'
+                }
+            ]
+        },
+        'E003': {
+            id: 'E003',
+            name: '이영희',
+            rrn: '780920-2345678',
+            phone: '010-3456-7890',
+            email: 'lee@example.com',
+            department: '인사팀',
+            position: '부장',
+            hireDate: '2015-01-01',
+            status: '재직',
+            address: '서울시 송파구 올림픽로 789',
+            bankInfo: {
+                bankName: '우리은행',
+                accountNumber: '456-789-123'
+            },
+            family: [
+                { relation: '배우자', name: '박상현', rrn: '760812-1234567' },
+                { relation: '자', name: '이민수', rrn: '050630-3456789' },
+                { relation: '녀', name: '이서연', rrn: '080215-4567890' }
+            ],
+            education: [
+                { 
+                    school: '연세대학교', 
+                    admissionDate: '2000-03-02', 
+                    graduationDate: '2004-02-28', 
+                    degree: '학사',
+                    diploma: '졸업장.pdf'
+                },
+                { 
+                    school: '연세대학교', 
+                    admissionDate: '2004-09-01', 
+                    graduationDate: '2006-08-31', 
+                    degree: '석사',
+                    diploma: '석사학위.pdf'
+                }
+            ],
+            certification: [
+                {
+                    name: '공인노무사',
+                    issuer: '고용노동부',
+                    issueDate: '2010-11-05',
+                    expiryDate: '',
+                    file: '자격증.pdf'
+                }
+            ],
+            career: [
+                {
+                    company: '(주)대형기업',
+                    contract: '인사관리',
+                    startDate: '2006-09-01',
+                    endDate: '2014-12-31',
+                    md: 200,
+                    role: '인사담당자'
+                }
+            ]
+        },
+        'E004': {
+            id: 'E004',
+            name: '박지원',
+            rrn: '950712-1234567',
+            phone: '010-4567-8901',
+            email: 'park@example.com',
+            department: '개발팀',
+            position: '사원',
+            hireDate: '2022-02-01',
+            status: '재직',
+            address: '서울시 마포구 월드컵로 101',
+            bankInfo: {
+                bankName: '카카오뱅크',
+                accountNumber: '123-456-7890'
+            },
+            family: [],
+            education: [
+                { 
+                    school: '한양대학교', 
+                    admissionDate: '2014-03-02', 
+                    graduationDate: '2018-02-28', 
+                    degree: '학사',
+                    diploma: '졸업장.pdf'
+                }
+            ],
+            certification: [
+                {
+                    name: '정보보안기사',
+                    issuer: '한국인터넷진흥원',
+                    issueDate: '2021-06-15',
+                    expiryDate: '',
+                    file: '자격증.pdf'
+                }
+            ],
+            career: [
+                {
+                    company: '(주)스타트업',
+                    contract: '웹 개발',
+                    startDate: '2018-03-01',
+                    endDate: '2022-01-31',
+                    md: 80,
+                    role: '주니어 개발자'
+                }
+            ]
+        },
+        'E005': {
+            id: 'E005',
+            name: '최민준',
+            rrn: '830305-1234567',
+            phone: '010-5678-9012',
+            email: 'choi@example.com',
+            department: '경영지원팀',
+            position: '차장',
+            hireDate: '2016-07-01',
+            status: '재직',
+            address: '서울시 영등포구 여의도로 202',
+            bankInfo: {
+                bankName: '하나은행',
+                accountNumber: '987-654-3210'
+            },
+            family: [
+                { relation: '배우자', name: '김지영', rrn: '840410-2345678' },
+                { relation: '자', name: '최우진', rrn: '120525-3456789' }
+            ],
+            education: [
+                { 
+                    school: '중앙대학교', 
+                    admissionDate: '2002-03-02', 
+                    graduationDate: '2006-02-28', 
+                    degree: '학사',
+                    diploma: '졸업장.pdf'
+                },
+                { 
+                    school: 'USC', 
+                    admissionDate: '2006-09-01', 
+                    graduationDate: '2008-08-31', 
+                    degree: '석사',
+                    diploma: 'MBA.pdf'
+                }
+            ],
+            certification: [
+                {
+                    name: 'AICPA',
+                    issuer: 'American Institute of CPAs',
+                    issueDate: '2010-03-15',
+                    expiryDate: '',
+                    file: 'AICPA.pdf'
+                }
+            ],
+            career: [
+                {
+                    company: '(주)글로벌기업',
+                    contract: '재무관리',
+                    startDate: '2008-09-01',
+                    endDate: '2016-06-30',
+                    md: 180,
+                    role: '재무담당자'
+                }
+            ]
+        }
+    };
+    
+    // 나머지 사원 데이터 생성
+    for (let i = 6; i <= 10; i++) {
+        const id = `E00${i}`;
+        if (!employeeDataMap[id]) {
+            const names = ['강다은', '윤서연', '임재현', '오민석', '장수빈'];
+            const departments = ['개발팀', '영업팀', '인사팀', '경영지원팀'];
+            const positions = ['사원', '대리', '과장', '차장', '부장', '이사'];
+            
+            employeeDataMap[id] = {
+                id: id,
+                name: names[i-6],
+                rrn: `9${i}0${i}0${i}-${i}234567`,
+                phone: `010-${i}${i}${i}${i}-${i}${i}${i}${i}`,
+                email: `user${i}@example.com`,
+                department: departments[Math.floor(Math.random() * departments.length)],
+                position: positions[Math.floor(Math.random() * positions.length)],
+                hireDate: `202${i % 3}-0${i % 9 + 1}-01`,
+                status: '재직',
+                address: `서울시 강남구 테헤란로 ${i}${i}${i}`,
+                bankInfo: {
+                    bankName: '국민은행',
+                    accountNumber: `${i}${i}${i}-${i}${i}${i}-${i}${i}${i}`
+                },
+                family: [],
+                education: [
+                    { 
+                        school: `대학교${i}`, 
+                        admissionDate: `201${i % 5}-03-02`, 
+                        graduationDate: `201${i % 5 + 4}-02-28`, 
+                        degree: '학사',
+                        diploma: '졸업장.pdf'
+                    }
+                ],
+                certification: [],
+                career: []
+            };
+        }
+    }
+    
+    // 선택한 사원 ID에 해당하는 데이터 가져오기
+    const employeeData = employeeDataMap[employeeId] || {
+        id: employeeId,
+        name: '신규 사원',
+        rrn: '',
+        phone: '',
+        email: '',
+        department: '',
+        position: '',
+        hireDate: '',
+        status: '재직',
+        address: '',
+        bankInfo: {
+            bankName: '',
+            accountNumber: ''
+        },
+        family: [],
+        education: [],
+        certification: [],
+        career: []
     };
     
     // 기본 정보 채우기
