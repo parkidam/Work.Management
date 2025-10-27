@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>사업계획 진행 관리 - 업무관리시스템</title>
+    <title>사업계획 - 업무관리시스템</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -23,13 +23,13 @@
 
             <ul class="list-unstyled components">
                 <!-- 대시보드 메뉴 -->
-                <li class="active">
-                    <a href="#dashboardSubmenu" data-bs-toggle="collapse" aria-expanded="true" class="dropdown-toggle">
+                <li>
+                    <a href="#dashboardSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                         <i class="fas fa-tachometer-alt"></i>
                         <span>대시보드</span>
                     </a>
-                    <ul class="collapse show list-unstyled" id="dashboardSubmenu">
-                        <li class="active">
+                    <ul class="collapse list-unstyled" id="dashboardSubmenu">
+                        <li>
                             <a href="dashboard-summary.html" class="submenu-item">
                                 <i class="fas fa-chart-pie fa-sm"></i>
                                 <span>사업계획 진행 관리</span>
@@ -185,13 +185,13 @@
                 </li>
                 
                 <!-- 사업계획관리 메뉴 -->
-                <li>
-                    <a href="#businessPlanSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                <li class="active">
+                    <a href="#businessPlanSubmenu" data-bs-toggle="collapse" aria-expanded="true" class="dropdown-toggle">
                         <i class="fas fa-project-diagram"></i>
                         <span>사업계획관리</span>
                     </a>
-                    <ul class="collapse list-unstyled" id="businessPlanSubmenu">
-                        <li>
+                    <ul class="collapse show list-unstyled" id="businessPlanSubmenu">
+                        <li class="active">
                             <a href="business-plan.html" class="submenu-item">
                                 <i class="fas fa-tasks fa-sm"></i>
                                 <span>사업계획</span>
@@ -269,12 +269,12 @@
                 </div>
             </nav>
 
-            <!-- 사업계획 진행 관리 컨텐츠 -->
+            <!-- 사업계획 컨텐츠 -->
             <div class="container-fluid">
                 <div class="d-flex justify-content-between align-items-center mb-4">
                     <div>
-                        <h1 class="mt-4">사업계획 진행 관리</h1>
-                        <p class="text-muted">비전아이티 사업계획 진행 현황</p>
+                        <h1 class="mt-4">사업계획</h1>
+                        <p class="text-muted">비전아이티 사업계획 관리</p>
                     </div>
                     <div class="current-date">
                         <p>2025년 10월 27일 월요일</p>
@@ -291,19 +291,18 @@
                             <div class="col-md-3">
                                 <label for="year" class="form-label">연도</label>
                                 <select class="form-select" id="year">
+                                    <option value="2026">2026년</option>
                                     <option value="2025" selected>2025년</option>
                                     <option value="2024">2024년</option>
-                                    <option value="2023">2023년</option>
                                 </select>
                             </div>
                             <div class="col-md-3">
-                                <label for="quarter" class="form-label">분기</label>
-                                <select class="form-select" id="quarter">
+                                <label for="planType" class="form-label">계획 유형</label>
+                                <select class="form-select" id="planType">
                                     <option value="all" selected>전체</option>
-                                    <option value="1">1분기</option>
-                                    <option value="2">2분기</option>
-                                    <option value="3">3분기</option>
-                                    <option value="4">4분기</option>
+                                    <option value="annual">연간 계획</option>
+                                    <option value="quarterly">분기별 계획</option>
+                                    <option value="monthly">월별 계획</option>
                                 </select>
                             </div>
                             <div class="col-md-3">
@@ -316,13 +315,13 @@
                                 </select>
                             </div>
                             <div class="col-md-3">
-                                <label for="status" class="form-label">진행 상태</label>
+                                <label for="status" class="form-label">상태</label>
                                 <select class="form-select" id="status">
                                     <option value="all" selected>전체</option>
-                                    <option value="planning">계획 중</option>
-                                    <option value="progress">진행 중</option>
-                                    <option value="completed">완료</option>
-                                    <option value="delayed">지연</option>
+                                    <option value="draft">초안</option>
+                                    <option value="submitted">제출</option>
+                                    <option value="approved">승인</option>
+                                    <option value="rejected">반려</option>
                                 </select>
                             </div>
                             <div class="col-md-6">
@@ -341,88 +340,20 @@
                     </div>
                 </div>
 
-                <!-- 진행 현황 요약 -->
-                <div class="row mb-4">
-                    <div class="col-xl-3 col-md-6 mb-4">
-                        <div class="card border-left-primary shadow h-100 py-2">
-                            <div class="card-body">
-                                <div class="row no-gutters align-items-center">
-                                    <div class="col mr-2">
-                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                            총 사업 계획</div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800">35건</div>
-                                        <div class="small text-muted">목표 예산: ₩2,500,000,000</div>
-                                    </div>
-                                    <div class="col-auto">
-                                        <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-xl-3 col-md-6 mb-4">
-                        <div class="card border-left-success shadow h-100 py-2">
-                            <div class="card-body">
-                                <div class="row no-gutters align-items-center">
-                                    <div class="col mr-2">
-                                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                            완료된 사업</div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800">12건</div>
-                                        <div class="small text-muted">달성률: 34%</div>
-                                    </div>
-                                    <div class="col-auto">
-                                        <i class="fas fa-check-circle fa-2x text-gray-300"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-xl-3 col-md-6 mb-4">
-                        <div class="card border-left-info shadow h-100 py-2">
-                            <div class="card-body">
-                                <div class="row no-gutters align-items-center">
-                                    <div class="col mr-2">
-                                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                                            진행 중인 사업</div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800">18건</div>
-                                        <div class="small text-muted">평균 진행률: 65%</div>
-                                    </div>
-                                    <div class="col-auto">
-                                        <i class="fas fa-spinner fa-2x text-gray-300"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-xl-3 col-md-6 mb-4">
-                        <div class="card border-left-warning shadow h-100 py-2">
-                            <div class="card-body">
-                                <div class="row no-gutters align-items-center">
-                                    <div class="col mr-2">
-                                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                            지연된 사업</div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800">5건</div>
-                                        <div class="small text-danger">지연율: 14%</div>
-                                    </div>
-                                    <div class="col-auto">
-                                        <i class="fas fa-exclamation-triangle fa-2x text-gray-300"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <!-- 버튼 영역 -->
+                <div class="d-flex justify-content-end mb-3">
+                    <button type="button" id="exportExcelBtn" class="btn btn-success me-2">
+                        <i class="fas fa-file-excel"></i> Excel 내보내기
+                    </button>
+                    <button type="button" id="createPlanBtn" class="btn btn-primary">
+                        <i class="fas fa-plus"></i> 신규 사업계획
+                    </button>
                 </div>
 
                 <!-- 사업계획 목록 -->
                 <div class="card mb-4">
-                    <div class="card-header d-flex justify-content-between align-items-center">
+                    <div class="card-header">
                         <h5 class="mb-0">사업계획 목록</h5>
-                        <button type="button" id="addPlanBtn" class="btn btn-sm btn-primary">
-                            <i class="fas fa-plus"></i> 신규 사업계획
-                        </button>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -430,32 +361,28 @@
                                 <thead class="table-light">
                                     <tr>
                                         <th>No.</th>
+                                        <th>계획 유형</th>
                                         <th>사업명</th>
                                         <th>담당 부서</th>
                                         <th>담당자</th>
-                                        <th>시작일</th>
-                                        <th>종료일</th>
-                                        <th>예산(원)</th>
-                                        <th>진행률</th>
+                                        <th>기간</th>
+                                        <th>목표 예산(원)</th>
                                         <th>상태</th>
+                                        <th>최종 수정일</th>
                                         <th>관리</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
                                         <td>1</td>
-                                        <td>A사 ERP 시스템 구축</td>
+                                        <td>연간 계획</td>
+                                        <td>2025년 신규 클라우드 서비스 개발</td>
                                         <td>개발부</td>
                                         <td>김개발</td>
-                                        <td>2025-01-15</td>
-                                        <td>2025-06-30</td>
-                                        <td>320,000,000</td>
-                                        <td>
-                                            <div class="progress" style="height: 10px;">
-                                                <div class="progress-bar bg-success" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
-                                            </div>
-                                        </td>
-                                        <td><span class="badge bg-success">진행 중</span></td>
+                                        <td>2025.01.01 - 2025.12.31</td>
+                                        <td>500,000,000</td>
+                                        <td><span class="badge bg-success">승인</span></td>
+                                        <td>2024-11-15</td>
                                         <td>
                                             <button class="btn btn-sm btn-info view-btn" data-id="1">
                                                 <i class="fas fa-eye"></i>
@@ -467,18 +394,14 @@
                                     </tr>
                                     <tr>
                                         <td>2</td>
-                                        <td>B사 웹사이트 리뉴얼</td>
-                                        <td>개발부</td>
-                                        <td>박웹개발</td>
-                                        <td>2025-02-01</td>
-                                        <td>2025-04-30</td>
-                                        <td>85,000,000</td>
-                                        <td>
-                                            <div class="progress" style="height: 10px;">
-                                                <div class="progress-bar bg-success" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
-                                            </div>
-                                        </td>
-                                        <td><span class="badge bg-primary">완료</span></td>
+                                        <td>분기별 계획</td>
+                                        <td>2025년 1분기 영업 전략</td>
+                                        <td>영업부</td>
+                                        <td>박영업</td>
+                                        <td>2025.01.01 - 2025.03.31</td>
+                                        <td>120,000,000</td>
+                                        <td><span class="badge bg-success">승인</span></td>
+                                        <td>2024-12-10</td>
                                         <td>
                                             <button class="btn btn-sm btn-info view-btn" data-id="2">
                                                 <i class="fas fa-eye"></i>
@@ -490,18 +413,14 @@
                                     </tr>
                                     <tr>
                                         <td>3</td>
-                                        <td>C그룹 그룹웨어 고도화</td>
-                                        <td>개발부</td>
-                                        <td>이시스템</td>
-                                        <td>2025-03-10</td>
-                                        <td>2025-07-15</td>
-                                        <td>210,000,000</td>
-                                        <td>
-                                            <div class="progress" style="height: 10px;">
-                                                <div class="progress-bar bg-warning" role="progressbar" style="width: 40%;" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">40%</div>
-                                            </div>
-                                        </td>
-                                        <td><span class="badge bg-danger">지연</span></td>
+                                        <td>분기별 계획</td>
+                                        <td>2025년 2분기 시스템 유지보수 계획</td>
+                                        <td>기술지원부</td>
+                                        <td>이기술</td>
+                                        <td>2025.04.01 - 2025.06.30</td>
+                                        <td>80,000,000</td>
+                                        <td><span class="badge bg-warning">제출</span></td>
+                                        <td>2025-02-28</td>
                                         <td>
                                             <button class="btn btn-sm btn-info view-btn" data-id="3">
                                                 <i class="fas fa-eye"></i>
@@ -513,18 +432,14 @@
                                     </tr>
                                     <tr>
                                         <td>4</td>
-                                        <td>D기업 클라우드 전환 컨설팅</td>
-                                        <td>기술지원부</td>
-                                        <td>최클라우드</td>
-                                        <td>2025-04-01</td>
-                                        <td>2025-05-31</td>
-                                        <td>95,000,000</td>
-                                        <td>
-                                            <div class="progress" style="height: 10px;">
-                                                <div class="progress-bar bg-success" role="progressbar" style="width: 60%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">60%</div>
-                                            </div>
-                                        </td>
-                                        <td><span class="badge bg-success">진행 중</span></td>
+                                        <td>월별 계획</td>
+                                        <td>2025년 1월 신규 고객 발굴</td>
+                                        <td>영업부</td>
+                                        <td>최영업</td>
+                                        <td>2025.01.01 - 2025.01.31</td>
+                                        <td>30,000,000</td>
+                                        <td><span class="badge bg-success">승인</span></td>
+                                        <td>2024-12-20</td>
                                         <td>
                                             <button class="btn btn-sm btn-info view-btn" data-id="4">
                                                 <i class="fas fa-eye"></i>
@@ -536,18 +451,14 @@
                                     </tr>
                                     <tr>
                                         <td>5</td>
-                                        <td>E사 모바일 앱 개발</td>
-                                        <td>개발부</td>
-                                        <td>정모바일</td>
-                                        <td>2025-02-15</td>
-                                        <td>2025-05-15</td>
-                                        <td>120,000,000</td>
-                                        <td>
-                                            <div class="progress" style="height: 10px;">
-                                                <div class="progress-bar bg-success" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
-                                            </div>
-                                        </td>
-                                        <td><span class="badge bg-primary">완료</span></td>
+                                        <td>연간 계획</td>
+                                        <td>2025년 인력 충원 및 교육 계획</td>
+                                        <td>인사부</td>
+                                        <td>정인사</td>
+                                        <td>2025.01.01 - 2025.12.31</td>
+                                        <td>150,000,000</td>
+                                        <td><span class="badge bg-secondary">초안</span></td>
+                                        <td>2025-01-05</td>
                                         <td>
                                             <button class="btn btn-sm btn-info view-btn" data-id="5">
                                                 <i class="fas fa-eye"></i>
@@ -576,17 +487,17 @@
                     </div>
                 </div>
 
-                <!-- 차트 영역 -->
+                <!-- 사업계획 요약 통계 -->
                 <div class="row">
                     <div class="col-xl-6 col-lg-6">
                         <div class="card shadow mb-4">
                             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                <h6 class="m-0 font-weight-bold text-primary">부서별 사업 현황</h6>
+                                <h6 class="m-0 font-weight-bold text-primary">계획 유형별 현황</h6>
                             </div>
                             <div class="card-body">
                                 <div class="chart-area">
                                     <div class="chart-placeholder" style="height: 300px; display: flex; align-items: center; justify-content: center;">
-                                        <p class="text-center text-muted">부서별 사업 현황 차트가 여기에 표시됩니다.</p>
+                                        <p class="text-center text-muted">계획 유형별 현황 차트가 여기에 표시됩니다.</p>
                                     </div>
                                 </div>
                             </div>
@@ -596,12 +507,12 @@
                     <div class="col-xl-6 col-lg-6">
                         <div class="card shadow mb-4">
                             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                <h6 class="m-0 font-weight-bold text-primary">분기별 사업 진행 현황</h6>
+                                <h6 class="m-0 font-weight-bold text-primary">부서별 사업계획 현황</h6>
                             </div>
                             <div class="card-body">
                                 <div class="chart-area">
                                     <div class="chart-placeholder" style="height: 300px; display: flex; align-items: center; justify-content: center;">
-                                        <p class="text-center text-muted">분기별 사업 진행 현황 차트가 여기에 표시됩니다.</p>
+                                        <p class="text-center text-muted">부서별 사업계획 현황 차트가 여기에 표시됩니다.</p>
                                     </div>
                                 </div>
                             </div>
@@ -624,55 +535,97 @@
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <p><strong>사업명:</strong> <span id="modal-project-name"></span></p>
+                            <p><strong>계획 유형:</strong> <span id="modal-plan-type"></span></p>
                             <p><strong>담당 부서:</strong> <span id="modal-department"></span></p>
                             <p><strong>담당자:</strong> <span id="modal-manager"></span></p>
                             <p><strong>기간:</strong> <span id="modal-period"></span></p>
                         </div>
                         <div class="col-md-6">
-                            <p><strong>예산:</strong> <span id="modal-budget"></span></p>
-                            <p><strong>진행률:</strong> <span id="modal-progress"></span></p>
+                            <p><strong>목표 예산:</strong> <span id="modal-budget"></span></p>
                             <p><strong>상태:</strong> <span id="modal-status"></span></p>
                             <p><strong>최종 수정일:</strong> <span id="modal-last-update"></span></p>
+                            <p><strong>승인자:</strong> <span id="modal-approver"></span></p>
+                            <p><strong>승인일:</strong> <span id="modal-approval-date"></span></p>
                         </div>
                     </div>
                     <hr>
                     <h6>사업 개요</h6>
                     <p id="modal-description"></p>
                     <hr>
-                    <h6>주요 마일스톤</h6>
+                    <h6>목표 및 성과지표</h6>
                     <div class="table-responsive">
                         <table class="table table-sm table-bordered">
                             <thead>
                                 <tr>
-                                    <th>단계</th>
-                                    <th>시작일</th>
-                                    <th>종료일</th>
-                                    <th>진행률</th>
-                                    <th>상태</th>
+                                    <th>목표</th>
+                                    <th>성과지표</th>
+                                    <th>목표값</th>
                                 </tr>
                             </thead>
-                            <tbody id="modal-milestones">
-                                <!-- 마일스톤 데이터가 여기에 동적으로 추가됨 -->
+                            <tbody id="modal-kpis">
+                                <!-- KPI 데이터가 여기에 동적으로 추가됨 -->
                             </tbody>
                         </table>
                     </div>
                     <hr>
-                    <h6>이슈 및 리스크</h6>
-                    <ul id="modal-issues">
-                        <!-- 이슈 데이터가 여기에 동적으로 추가됨 -->
+                    <h6>주요 활동 계획</h6>
+                    <div class="table-responsive">
+                        <table class="table table-sm table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>활동</th>
+                                    <th>시작일</th>
+                                    <th>종료일</th>
+                                    <th>담당자</th>
+                                </tr>
+                            </thead>
+                            <tbody id="modal-activities">
+                                <!-- 활동 데이터가 여기에 동적으로 추가됨 -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <hr>
+                    <h6>예산 계획</h6>
+                    <div class="table-responsive">
+                        <table class="table table-sm table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>항목</th>
+                                    <th>금액(원)</th>
+                                    <th>비고</th>
+                                </tr>
+                            </thead>
+                            <tbody id="modal-budget-items">
+                                <!-- 예산 항목 데이터가 여기에 동적으로 추가됨 -->
+                            </tbody>
+                            <tfoot>
+                                <tr class="table-secondary">
+                                    <th>합계</th>
+                                    <th id="modal-budget-total"></th>
+                                    <th></th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                    <hr>
+                    <h6>첨부 파일</h6>
+                    <ul id="modal-attachments">
+                        <!-- 첨부 파일 데이터가 여기에 동적으로 추가됨 -->
                     </ul>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
                     <button type="button" class="btn btn-primary" id="modal-edit-btn">수정</button>
+                    <button type="button" class="btn btn-success" id="modal-approve-btn">승인</button>
+                    <button type="button" class="btn btn-danger" id="modal-reject-btn">반려</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- 사업계획 추가/수정 모달 -->
+    <!-- 사업계획 등록/수정 모달 -->
     <div class="modal fade" id="planFormModal" tabindex="-1" aria-labelledby="planFormModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="planFormModalLabel">사업계획 등록/수정</h5>
@@ -681,120 +634,210 @@
                 <div class="modal-body">
                     <form id="planForm">
                         <input type="hidden" id="plan-id">
-                        <div class="row mb-3">
-                            <div class="col-md-12">
-                                <label for="plan-name" class="form-label">사업명</label>
-                                <input type="text" class="form-control" id="plan-name" required>
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col-md-6">
-                                <label for="plan-department" class="form-label">담당 부서</label>
-                                <select class="form-select" id="plan-department" required>
-                                    <option value="">선택하세요</option>
-                                    <option value="sales">영업부</option>
-                                    <option value="development">개발부</option>
-                                    <option value="support">기술지원부</option>
-                                </select>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="plan-manager" class="form-label">담당자</label>
-                                <input type="text" class="form-control" id="plan-manager" required>
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col-md-6">
-                                <label for="plan-start-date" class="form-label">시작일</label>
-                                <input type="date" class="form-control" id="plan-start-date" required>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="plan-end-date" class="form-label">종료일</label>
-                                <input type="date" class="form-control" id="plan-end-date" required>
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col-md-6">
-                                <label for="plan-budget" class="form-label">예산(원)</label>
-                                <input type="number" class="form-control" id="plan-budget" required>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="plan-status" class="form-label">상태</label>
-                                <select class="form-select" id="plan-status" required>
-                                    <option value="planning">계획 중</option>
-                                    <option value="progress">진행 중</option>
-                                    <option value="completed">완료</option>
-                                    <option value="delayed">지연</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col-md-12">
-                                <label for="plan-progress" class="form-label">진행률 (%)</label>
-                                <input type="range" class="form-range" id="plan-progress" min="0" max="100" step="5">
-                                <div class="text-center" id="progress-value">50%</div>
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col-md-12">
-                                <label for="plan-description" class="form-label">사업 개요</label>
-                                <textarea class="form-control" id="plan-description" rows="4" required></textarea>
-                            </div>
-                        </div>
-                        <hr>
-                        <h6>마일스톤</h6>
-                        <div id="milestones-container">
-                            <!-- 마일스톤 입력 필드가 여기에 동적으로 추가됨 -->
-                            <div class="milestone-item row mb-3">
-                                <div class="col-md-3">
-                                    <input type="text" class="form-control milestone-name" placeholder="단계명">
+                        
+                        <!-- 탭 메뉴 -->
+                        <ul class="nav nav-tabs mb-3" id="planFormTab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="basic-tab" data-bs-toggle="tab" data-bs-target="#basic-info" type="button" role="tab" aria-controls="basic-info" aria-selected="true">기본 정보</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="goals-tab" data-bs-toggle="tab" data-bs-target="#goals-kpi" type="button" role="tab" aria-controls="goals-kpi" aria-selected="false">목표/성과지표</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="activities-tab" data-bs-toggle="tab" data-bs-target="#activities-plan" type="button" role="tab" aria-controls="activities-plan" aria-selected="false">활동 계획</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="budget-tab" data-bs-toggle="tab" data-bs-target="#budget-plan" type="button" role="tab" aria-controls="budget-plan" aria-selected="false">예산 계획</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="attachments-tab" data-bs-toggle="tab" data-bs-target="#attachments-info" type="button" role="tab" aria-controls="attachments-info" aria-selected="false">첨부 파일</button>
+                            </li>
+                        </ul>
+                        
+                        <!-- 탭 내용 -->
+                        <div class="tab-content" id="planFormTabContent">
+                            <!-- 기본 정보 탭 -->
+                            <div class="tab-pane fade show active" id="basic-info" role="tabpanel" aria-labelledby="basic-tab">
+                                <div class="row mb-3">
+                                    <div class="col-md-12">
+                                        <label for="plan-name" class="form-label">사업명</label>
+                                        <input type="text" class="form-control" id="plan-name" required>
+                                    </div>
                                 </div>
-                                <div class="col-md-3">
-                                    <input type="date" class="form-control milestone-start">
+                                <div class="row mb-3">
+                                    <div class="col-md-4">
+                                        <label for="plan-type" class="form-label">계획 유형</label>
+                                        <select class="form-select" id="plan-type" required>
+                                            <option value="">선택하세요</option>
+                                            <option value="annual">연간 계획</option>
+                                            <option value="quarterly">분기별 계획</option>
+                                            <option value="monthly">월별 계획</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="plan-department" class="form-label">담당 부서</label>
+                                        <select class="form-select" id="plan-department" required>
+                                            <option value="">선택하세요</option>
+                                            <option value="sales">영업부</option>
+                                            <option value="development">개발부</option>
+                                            <option value="support">기술지원부</option>
+                                            <option value="hr">인사부</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="plan-manager" class="form-label">담당자</label>
+                                        <input type="text" class="form-control" id="plan-manager" required>
+                                    </div>
                                 </div>
-                                <div class="col-md-3">
-                                    <input type="date" class="form-control milestone-end">
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <label for="plan-start-date" class="form-label">시작일</label>
+                                        <input type="date" class="form-control" id="plan-start-date" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="plan-end-date" class="form-label">종료일</label>
+                                        <input type="date" class="form-control" id="plan-end-date" required>
+                                    </div>
                                 </div>
-                                <div class="col-md-2">
-                                    <select class="form-select milestone-status">
-                                        <option value="planning">계획</option>
-                                        <option value="progress">진행 중</option>
-                                        <option value="completed">완료</option>
-                                        <option value="delayed">지연</option>
-                                    </select>
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <label for="plan-budget" class="form-label">목표 예산(원)</label>
+                                        <input type="number" class="form-control" id="plan-budget" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="plan-status" class="form-label">상태</label>
+                                        <select class="form-select" id="plan-status" required>
+                                            <option value="draft">초안</option>
+                                            <option value="submitted">제출</option>
+                                            <option value="approved">승인</option>
+                                            <option value="rejected">반려</option>
+                                        </select>
+                                    </div>
                                 </div>
-                                <div class="col-md-1">
-                                    <button type="button" class="btn btn-danger btn-sm remove-milestone">
-                                        <i class="fas fa-times"></i>
+                                <div class="row mb-3">
+                                    <div class="col-md-12">
+                                        <label for="plan-description" class="form-label">사업 개요</label>
+                                        <textarea class="form-control" id="plan-description" rows="5" required></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- 목표/성과지표 탭 -->
+                            <div class="tab-pane fade" id="goals-kpi" role="tabpanel" aria-labelledby="goals-tab">
+                                <div class="d-flex justify-content-end mb-3">
+                                    <button type="button" id="add-kpi-btn" class="btn btn-sm btn-secondary">
+                                        <i class="fas fa-plus"></i> 목표/지표 추가
                                     </button>
                                 </div>
-                            </div>
-                        </div>
-                        <button type="button" id="add-milestone-btn" class="btn btn-sm btn-secondary mb-3">
-                            <i class="fas fa-plus"></i> 마일스톤 추가
-                        </button>
-                        <hr>
-                        <h6>이슈 및 리스크</h6>
-                        <div id="issues-container">
-                            <!-- 이슈 입력 필드가 여기에 동적으로 추가됨 -->
-                            <div class="issue-item row mb-2">
-                                <div class="col-md-11">
-                                    <input type="text" class="form-control issue-text" placeholder="이슈 또는 리스크 사항">
+                                <div id="kpis-container">
+                                    <div class="kpi-item row mb-3">
+                                        <div class="col-md-5">
+                                            <input type="text" class="form-control kpi-goal" placeholder="목표">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control kpi-metric" placeholder="성과지표">
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input type="text" class="form-control kpi-target" placeholder="목표값">
+                                        </div>
+                                        <div class="col-md-1">
+                                            <button type="button" class="btn btn-danger btn-sm remove-kpi">
+                                                <i class="fas fa-times"></i>
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-md-1">
-                                    <button type="button" class="btn btn-danger btn-sm remove-issue">
-                                        <i class="fas fa-times"></i>
+                            </div>
+                            
+                            <!-- 활동 계획 탭 -->
+                            <div class="tab-pane fade" id="activities-plan" role="tabpanel" aria-labelledby="activities-tab">
+                                <div class="d-flex justify-content-end mb-3">
+                                    <button type="button" id="add-activity-btn" class="btn btn-sm btn-secondary">
+                                        <i class="fas fa-plus"></i> 활동 추가
                                     </button>
                                 </div>
+                                <div id="activities-container">
+                                    <div class="activity-item row mb-3">
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control activity-name" placeholder="활동명">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input type="date" class="form-control activity-start">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input type="date" class="form-control activity-end">
+                                        </div>
+                                        <div class="col-md-1">
+                                            <input type="text" class="form-control activity-manager" placeholder="담당자">
+                                        </div>
+                                        <div class="col-md-1">
+                                            <button type="button" class="btn btn-danger btn-sm remove-activity">
+                                                <i class="fas fa-times"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- 예산 계획 탭 -->
+                            <div class="tab-pane fade" id="budget-plan" role="tabpanel" aria-labelledby="budget-tab">
+                                <div class="d-flex justify-content-between mb-3">
+                                    <div>
+                                        <h6>총 예산: <span id="total-budget">0</span>원</h6>
+                                    </div>
+                                    <button type="button" id="add-budget-btn" class="btn btn-sm btn-secondary">
+                                        <i class="fas fa-plus"></i> 예산 항목 추가
+                                    </button>
+                                </div>
+                                <div id="budget-container">
+                                    <div class="budget-item row mb-3">
+                                        <div class="col-md-5">
+                                            <input type="text" class="form-control budget-category" placeholder="항목명">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input type="number" class="form-control budget-amount" placeholder="금액(원)">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input type="text" class="form-control budget-note" placeholder="비고">
+                                        </div>
+                                        <div class="col-md-1">
+                                            <button type="button" class="btn btn-danger btn-sm remove-budget">
+                                                <i class="fas fa-times"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- 첨부 파일 탭 -->
+                            <div class="tab-pane fade" id="attachments-info" role="tabpanel" aria-labelledby="attachments-tab">
+                                <div class="mb-3">
+                                    <label for="file-upload" class="form-label">파일 첨부</label>
+                                    <input class="form-control" type="file" id="file-upload" multiple>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th>파일명</th>
+                                                <th>크기</th>
+                                                <th>업로드 일시</th>
+                                                <th>삭제</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="attachment-list">
+                                            <!-- 첨부 파일 목록이 여기에 동적으로 추가됨 -->
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
-                        <button type="button" id="add-issue-btn" class="btn btn-sm btn-secondary">
-                            <i class="fas fa-plus"></i> 이슈 추가
-                        </button>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-                    <button type="button" class="btn btn-primary" id="save-plan-btn">저장</button>
+                    <button type="button" class="btn btn-info" id="save-draft-btn">임시저장</button>
+                    <button type="button" class="btn btn-primary" id="save-submit-btn">저장 및 제출</button>
                 </div>
             </div>
         </div>
@@ -804,6 +847,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Custom JS -->
     <script src="../js/script.js"></script>
-    <script src="../js/dashboard-summary.js"></script>
+    <script src="../js/business-plan.js"></script>
 </body>
 </html>
