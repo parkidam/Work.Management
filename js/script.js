@@ -142,10 +142,49 @@ function updateUserInfo() {
     // localStorage 또는 sessionStorage에서 사용자명 가져오기
     const username = localStorage.getItem('username') || sessionStorage.getItem('username') || '관리자';
     
-    // 사용자명 표시 요소 찾기
-    const userNameElement = document.querySelector('.user-profile .d-none.d-md-inline');
+    // 사용자명 표시 요소 찾기 (새로운 클래스 사용)
+    const userNameElement = document.querySelector('.user-profile .user-name');
     if (userNameElement) {
         userNameElement.textContent = username;
+    }
+    
+    // 사용자 프로필 이미지 업데이트
+    const userImageElement = document.querySelector('.user-profile img');
+    if (userImageElement) {
+        // 현재 경로에 따라 이미지 경로 결정
+        const currentPath = window.location.pathname;
+        let imagePath;
+        
+        if (currentPath.includes('/html/')) {
+            // html 폴더 내에 있는 경우
+            imagePath = '../images/default-user.svg';
+        } else {
+            // 루트 디렉토리에 있는 경우
+            imagePath = 'images/default-user.svg';
+        }
+        
+        // 기본 이미지 경로 설정
+        userImageElement.src = imagePath;
+        
+        // 이미지 로드 오류 처리
+        userImageElement.onerror = function() {
+            console.warn('프로필 이미지 로드 실패:', imagePath);
+            
+            // 이미지 로드 실패 시 Font Awesome 아이콘으로 대체
+            const userImageContainer = this.closest('.user-image-container');
+            if (userImageContainer) {
+                // 이미지 요소 제거
+                this.remove();
+                
+                // Font Awesome 아이콘 추가 (이미 추가되지 않았다면)
+                if (!userImageContainer.querySelector('.fa-user-circle')) {
+                    const iconElement = document.createElement('i');
+                    iconElement.className = 'fas fa-user-circle';
+                    iconElement.style.fontSize = '2rem';
+                    userImageContainer.appendChild(iconElement);
+                }
+            }
+        };
     }
     
     // employee-management.html 페이지의 사용자 정보 표시 요소
