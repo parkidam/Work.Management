@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>급여관리 - 업무관리시스템</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        .salary-card {
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .status-number {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+        .status-label {
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+        .chart-container {
+            height: 300px;
+            margin-bottom: 20px;
+        }
+        .table-responsive {
+            margin-top: 20px;
+        }
+        .badge-approved {
+            background-color: #28a745;
+        }
+        .badge-pending {
+            background-color: #ffc107;
+        }
+        .badge-rejected {
+            background-color: #dc3545;
+        }
+        .search-area {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+        }
+        .btn-export {
+            margin-left: 10px;
+        }
+        .salary-filter-btn {
+            margin-right: 5px;
+        }
+        .table th {
+            background-color: #f2f2f2;
+        }
+        .nav-tabs .nav-link.active {
+            font-weight: bold;
+            border-bottom: 2px solid #0d6efd;
+        }
+        .form-section {
+            margin-bottom: 30px;
+        }
+        .form-section-title {
+            border-bottom: 1px solid #dee2e6;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <!-- 사이드바 -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3>업무관리시스템</h3>
+            </div>
+
+            <ul class="list-unstyled components">
+                <!-- 대시보드 메뉴 -->
+                <li>
+                    <a href="#dashboardSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>대시보드</span>
+                    </a>
+                    <ul class="collapse list-unstyled" id="dashboardSubmenu">
+                        <li>
+                            <a href="dashboard-summary.html" class="submenu-item">
+                                <i class="fas fa-chart-pie fa-sm"></i>
+                                <span>사업계획 진행 관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="dashboard-analytics.html" class="submenu-item">
+                                <i class="fas fa-list-alt"></i>
+                                <span>영업 진행관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="dashboard-statistics.html" class="submenu-item">
+                                <i class="fas fa-chart-line fa-sm"></i>
+                                <span>유지보수 관리</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <!-- 인사관리 메뉴 -->
+                <li>
+                    <a href="#hrSubmenu" data-bs-toggle="collapse" aria-expanded="true" class="dropdown-toggle">
+                        <i class="fas fa-users"></i>
+                        <span>인사관리</span>
+                    </a>
+                    <ul class="collapse show list-unstyled" id="hrSubmenu">
+                        <li>
+                            <a href="employee-management.html" class="submenu-item">
+                                <i class="fas fa-user fa-sm"></i>
+                                <span>사원관리</span>
+                            </a>
+                        </li>
+                        <li class="active">
+                            <a href="salary-management.html" class="submenu-item">
+                                <i class="fas fa-money-bill-alt fa-sm"></i>
+                                <span>급여관리</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <!-- 회계관리 메뉴 -->
+                <li>
+                    <a href="#accountingSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-calculator"></i>
+                        <span>회계관리</span>
+                    </a>
+                    <ul class="collapse list-unstyled" id="accountingSubmenu">
+                        <li>
+                            <a href="slip-management.html" class="submenu-item">
+                                <i class="fas fa-file-invoice fa-sm"></i>
+                                <span>전표관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="sales-management.html" class="submenu-item">
+                                <i class="fas fa-chart-line fa-sm"></i>
+                                <span>매출관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="purchase-management.html" class="submenu-item">
+                                <i class="fas fa-shopping-cart fa-sm"></i>
+                                <span>매입관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="expense-management.html" class="submenu-item">
+                                <i class="fas fa-receipt fa-sm"></i>
+                                <span>경비관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="fund-management.html" class="submenu-item">
+                                <i class="fas fa-wallet fa-sm"></i>
+                                <span>자금관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="document-management.html" class="submenu-item">
+                                <i class="fas fa-file-alt fa-sm"></i>
+                                <span>회사 문서관리</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <!-- 영업관리 메뉴 -->
+                <li>
+                    <a href="#salesSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-chart-line"></i>
+                        <span>영업관리</span>
+                    </a>
+                    <ul class="collapse list-unstyled" id="salesSubmenu">
+                        <li>
+                            <a href="sales-opportunity.html" class="submenu-item">
+                                <i class="fas fa-handshake fa-sm"></i>
+                                <span>영업기회</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="quotation.html" class="submenu-item">
+                                <i class="fas fa-file-invoice-dollar fa-sm"></i>
+                                <span>견적서</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="client-management.html" class="submenu-item">
+                                <i class="fas fa-building fa-sm"></i>
+                                <span>거래처관리</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <!-- 계약관리 메뉴 -->
+                <li>
+                    <a href="#contractSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-file-contract"></i>
+                        <span>계약관리</span>
+                    </a>
+                    <ul class="collapse list-unstyled" id="contractSubmenu">
+                        <li>
+                            <a href="contract-management.html" class="submenu-item">
+                                <i class="fas fa-file-signature fa-sm"></i>
+                                <span>계약관리</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <!-- 유지보수관리 메뉴 -->
+                <li>
+                    <a href="#maintenanceSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-tools"></i>
+                        <span>유지보수관리</span>
+                    </a>
+                    <ul class="collapse list-unstyled" id="maintenanceSubmenu">
+                        <li>
+                            <a href="issue-management.html" class="submenu-item">
+                                <i class="fas fa-exclamation-triangle fa-sm"></i>
+                                <span>장애관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="maintenance-system.html" class="submenu-item">
+                                <i class="fas fa-server fa-sm"></i>
+                                <span>유지보수 대상 시스템 관리</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <!-- 사업계획관리 메뉴 -->
+                <li>
+                    <a href="#businessPlanSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-project-diagram"></i>
+                        <span>사업계획관리</span>
+                    </a>
+                    <ul class="collapse list-unstyled" id="businessPlanSubmenu">
+                        <li>
+                            <a href="business-plan.html" class="submenu-item">
+                                <i class="fas fa-tasks fa-sm"></i>
+                                <span>사업계획</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <!-- 시스템관리 메뉴 -->
+                <li>
+                    <a href="#systemSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-cogs"></i>
+                        <span>시스템관리</span>
+                    </a>
+                    <ul class="collapse list-unstyled" id="systemSubmenu">
+                        <li>
+                            <a href="user-management.html" class="submenu-item">
+                                <i class="fas fa-user-cog fa-sm"></i>
+                                <span>사용자관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="department-management.html" class="submenu-item">
+                                <i class="fas fa-sitemap fa-sm"></i>
+                                <span>부서관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="account-category.html" class="submenu-item">
+                                <i class="fas fa-list-ol fa-sm"></i>
+                                <span>계정과목관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="code-management.html" class="submenu-item">
+                                <i class="fas fa-code fa-sm"></i>
+                                <span>코드관리</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- 메인 컨텐츠 -->
+        <div id="content">
+            <!-- 상단바 -->
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+                    <div class="ms-auto d-flex align-items-center">
+                        <div class="notification-icon me-4">
+                            <i class="fas fa-bell"></i>
+                            <span class="badge bg-danger">3</span>
+                        </div>
+                        <div class="user-profile dropdown">
+                            <a href="#" class="dropdown-toggle d-flex align-items-center" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <div class="user-image-container me-2">
+                                    <img src="../images/default-user.svg" alt="" class="rounded-circle" style="width: 40px; height: 40px;">
+                                </div>
+                                <span class="user-name"></span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                                <li><a class="dropdown-item" href="#">프로필</a></li>
+                                <li><a class="dropdown-item" href="#">설정</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#" id="logout-btn">로그아웃</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- 급여관리 컨텐츠 -->
+            <div class="container-fluid py-4">
+                <h1 class="mb-4">급여관리</h1>
+
+                <!-- 탭 메뉴 -->
+                <ul class="nav nav-tabs mb-4" id="salaryTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="salary-statement-tab" data-bs-toggle="tab" data-bs-target="#salary-statement" type="button" role="tab" aria-controls="salary-statement" aria-selected="true">
+                            <i class="fas fa-file-invoice"></i> 급여명세 작성
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="salary-ledger-tab" data-bs-toggle="tab" data-bs-target="#salary-ledger" type="button" role="tab" aria-controls="salary-ledger" aria-selected="false">
+                            <i class="fas fa-book"></i> 급여대장
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="salary-report-tab" data-bs-toggle="tab" data-bs-target="#salary-report" type="button" role="tab" aria-controls="salary-report" aria-selected="false">
+                            <i class="fas fa-file-export"></i> 조회/출력
+                        </button>
+                    </li>
+                </ul>
+
+                <!-- 탭 컨텐츠 -->
+                <div class="tab-content" id="salaryTabContent">
+                    <!-- 급여명세 작성 탭 -->
+                    <div class="tab-pane fade show active" id="salary-statement" role="tabpanel" aria-labelledby="salary-statement-tab">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>급여명세서 작성</h5>
+                            </div>
+                            <div class="card-body">
+                                <form id="salary-form">
+                                    <!-- 기본 정보 섹션 -->
+                                    <div class="form-section">
+                                        <h6 class="form-section-title">기본 정보</h6>
+                                        <div class="row mb-3">
+                                            <div class="col-md-3">
+                                                <label for="salary-year-month" class="form-label">급여 년월</label>
+                                                <input type="month" class="form-control" id="salary-year-month" required>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label for="department" class="form-label">부서명</label>
+                                                <select class="form-select" id="department" required>
+                                                    <option value="">부서 선택</option>
+                                                    <option value="개발팀">개발팀</option>
+                                                    <option value="영업팀">영업팀</option>
+                                                    <option value="경영지원팀">경영지원팀</option>
+                                                    <option value="인사팀">인사팀</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label for="position" class="form-label">직급</label>
+                                                <select class="form-select" id="position" required>
+                                                    <option value="">직급 선택</option>
+                                                    <option value="사원">사원</option>
+                                                    <option value="대리">대리</option>
+                                                    <option value="과장">과장</option>
+                                                    <option value="차장">차장</option>
+                                                    <option value="부장">부장</option>
+                                                    <option value="이사">이사</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label for="employee" class="form-label">사원</label>
+                                                <select class="form-select" id="employee" required>
+                                                    <option value="">사원 선택</option>
+                                                    <!-- 부서와 직급에 따라 동적으로 로드됩니다 -->
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- 급여 정보 섹션 -->
+                                    <div class="form-section">
+                                        <h6 class="form-section-title">급여 정보</h6>
+                                        <div class="row mb-3">
+                                            <div class="col-md-4">
+                                                <label for="base-salary" class="form-label">기본급</label>
+                                                <div class="input-group">
+                                                    <input type="number" class="form-control" id="base-salary" required>
+                                                    <span class="input-group-text">원</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label for="allowance1" class="form-label">수당1 (식대)</label>
+                                                <div class="input-group">
+                                                    <input type="number" class="form-control" id="allowance1">
+                                                    <span class="input-group-text">원</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label for="allowance2" class="form-label">수당2 (교통비)</label>
+                                                <div class="input-group">
+                                                    <input type="number" class="form-control" id="allowance2">
+                                                    <span class="input-group-text">원</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- 공제 정보 섹션 -->
+                                    <div class="form-section">
+                                        <h6 class="form-section-title">공제 정보</h6>
+                                        <div class="row mb-3">
+                                            <div class="col-md-3">
+                                                <label for="health-insurance" class="form-label">건강보험</label>
+                                                <div class="input-group">
+                                                    <input type="number" class="form-control" id="health-insurance" readonly>
+                                                    <span class="input-group-text">원</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label for="national-pension" class="form-label">국민연금</label>
+                                                <div class="input-group">
+                                                    <input type="number" class="form-control" id="national-pension" readonly>
+                                                    <span class="input-group-text">원</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label for="employment-insurance" class="form-label">고용보험</label>
+                                                <div class="input-group">
+                                                    <input type="number" class="form-control" id="employment-insurance" readonly>
+                                                    <span class="input-group-text">원</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label for="industrial-insurance" class="form-label">산재보험</label>
+                                                <div class="input-group">
+                                                    <input type="number" class="form-control" id="industrial-insurance" readonly>
+                                                    <span class="input-group-text">원</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <div class="col-md-4">
+                                                <label for="local-tax" class="form-label">지방소득세</label>
+                                                <div class="input-group">
+                                                    <input type="number" class="form-control" id="local-tax" readonly>
+                                                    <span class="input-group-text">원</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label for="income-tax" class="form-label">근로소득세</label>
+                                                <div class="input-group">
+                                                    <input type="number" class="form-control" id="income-tax" readonly>
+                                                    <span class="input-group-text">원</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label for="total-deduction" class="form-label">공제 합계</label>
+                                                <div class="input-group">
+                                                    <input type="number" class="form-control" id="total-deduction" readonly>
+                                                    <span class="input-group-text">원</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- 실수령액 섹션 -->
+                                    <div class="form-section">
+                                        <h6 class="form-section-title">실수령액</h6>
+                                        <div class="row mb-3">
+                                            <div class="col-md-4">
+                                                <label for="total-salary" class="form-label">지급 합계</label>
+                                                <div class="input-group">
+                                                    <input type="number" class="form-control" id="total-salary" readonly>
+                                                    <span class="input-group-text">원</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label for="net-salary" class="form-label">실수령액</label>
+                                                <div class="input-group">
+                                                    <input type="number" class="form-control" id="net-salary" readonly>
+                                                    <span class="input-group-text">원</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label for="payment-date" class="form-label">지급일</label>
+                                                <input type="date" class="form-control" id="payment-date" required>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex justify-content-between mt-4">
+                                        <button type="button" class="btn btn-secondary" id="calculate-btn">
+                                            <i class="fas fa-calculator"></i> 급여 계산
+                                        </button>
+                                        <div>
+                                            <button type="submit" class="btn btn-primary">
+                                                <i class="fas fa-save"></i> 저장
+                                            </button>
+                                            <button type="button" class="btn btn-success ms-2" id="pdf-btn">
+                                                <i class="fas fa-file-pdf"></i> PDF 출력
+                                            </button>
+                                            <button type="button" class="btn btn-info ms-2" id="email-btn">
+                                                <i class="fas fa-envelope"></i> 이메일 전송
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 급여대장 탭 -->
+                    <div class="tab-pane fade" id="salary-ledger" role="tabpanel" aria-labelledby="salary-ledger-tab">
+                        <div class="card">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h5>급여대장</h5>
+                                <div>
+                                    <button class="btn btn-sm btn-outline-secondary me-2">
+                                        <i class="fas fa-print"></i> 인쇄
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-success">
+                                        <i class="fas fa-file-excel"></i> 엑셀 다운로드
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <!-- 검색 필터 -->
+                                <div class="search-area">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <label for="ledger-year-month" class="form-label">급여 년월</label>
+                                            <input type="month" class="form-control" id="ledger-year-month">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label for="ledger-department" class="form-label">부서</label>
+                                            <select class="form-select" id="ledger-department">
+                                                <option value="">전체</option>
+                                                <option value="개발팀">개발팀</option>
+                                                <option value="영업팀">영업팀</option>
+                                                <option value="경영지원팀">경영지원팀</option>
+                                                <option value="인사팀">인사팀</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label for="ledger-position" class="form-label">직급</label>
+                                            <select class="form-select" id="ledger-position">
+                                                <option value="">전체</option>
+                                                <option value="사원">사원</option>
+                                                <option value="대리">대리</option>
+                                                <option value="과장">과장</option>
+                                                <option value="차장">차장</option>
+                                                <option value="부장">부장</option>
+                                                <option value="이사">이사</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-3 d-flex align-items-end">
+                                            <button class="btn btn-primary w-100" id="search-ledger-btn">
+                                                <i class="fas fa-search"></i> 검색
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- 급여대장 테이블 -->
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-hover">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th>No.</th>
+                                                <th>사원번호</th>
+                                                <th>이름</th>
+                                                <th>부서</th>
+                                                <th>직급</th>
+                                                <th>기본급</th>
+                                                <th>수당</th>
+                                                <th>지급 합계</th>
+                                                <th>공제 합계</th>
+                                                <th>실수령액</th>
+                                                <th>지급일</th>
+                                                <th>상세</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="salary-ledger-table">
+                                            <tr>
+                                                <td>1</td>
+                                                <td>2023001</td>
+                                                <td>홍길동</td>
+                                                <td>개발팀</td>
+                                                <td>과장</td>
+                                                <td>3,500,000</td>
+                                                <td>400,000</td>
+                                                <td>3,900,000</td>
+                                                <td>390,000</td>
+                                                <td>3,510,000</td>
+                                                <td>2023-10-25</td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-outline-primary view-detail-btn">
+                                                        <i class="fas fa-eye"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>2</td>
+                                                <td>2023002</td>
+                                                <td>김철수</td>
+                                                <td>영업팀</td>
+                                                <td>대리</td>
+                                                <td>3,000,000</td>
+                                                <td>350,000</td>
+                                                <td>3,350,000</td>
+                                                <td>335,000</td>
+                                                <td>3,015,000</td>
+                                                <td>2023-10-25</td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-outline-primary view-detail-btn">
+                                                        <i class="fas fa-eye"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>3</td>
+                                                <td>2023003</td>
+                                                <td>이영희</td>
+                                                <td>경영지원팀</td>
+                                                <td>사원</td>
+                                                <td>2,800,000</td>
+                                                <td>300,000</td>
+                                                <td>3,100,000</td>
+                                                <td>310,000</td>
+                                                <td>2,790,000</td>
+                                                <td>2023-10-25</td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-outline-primary view-detail-btn">
+                                                        <i class="fas fa-eye"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                        <tfoot>
+                                            <tr class="table-secondary">
+                                                <td colspan="5" class="text-end fw-bold">합계</td>
+                                                <td>9,300,000</td>
+                                                <td>1,050,000</td>
+                                                <td>10,350,000</td>
+                                                <td>1,035,000</td>
+                                                <td>9,315,000</td>
+                                                <td colspan="2"></td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 조회/출력 탭 -->
+                    <div class="tab-pane fade" id="salary-report" role="tabpanel" aria-labelledby="salary-report-tab">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>급여 조회 및 출력</h5>
+                            </div>
+                            <div class="card-body">
+                                <!-- 검색 필터 -->
+                                <div class="search-area">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <label class="form-label">조회 기간</label>
+                                            <select class="form-select" id="report-period-type">
+                                                <option value="month">월별</option>
+                                                <option value="quarter">분기별</option>
+                                                <option value="year">연간</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-3" id="month-selector">
+                                            <label class="form-label">년월 선택</label>
+                                            <input type="month" class="form-control" id="report-month">
+                                        </div>
+                                        <div class="col-md-3 d-none" id="quarter-selector">
+                                            <label class="form-label">분기 선택</label>
+                                            <div class="d-flex">
+                                                <select class="form-select me-2" id="report-year">
+                                                    <option value="2023">2023</option>
+                                                    <option value="2022">2022</option>
+                                                    <option value="2021">2021</option>
+                                                </select>
+                                                <select class="form-select" id="report-quarter">
+                                                    <option value="1">1분기</option>
+                                                    <option value="2">2분기</option>
+                                                    <option value="3">3분기</option>
+                                                    <option value="4">4분기</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 d-none" id="year-selector">
+                                            <label class="form-label">연도 선택</label>
+                                            <select class="form-select" id="report-year-only">
+                                                <option value="2023">2023</option>
+                                                <option value="2022">2022</option>
+                                                <option value="2021">2021</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label class="form-label">보고서 유형</label>
+                                            <select class="form-select" id="report-type">
+                                                <option value="statement">급여명세서</option>
+                                                <option value="ledger">급여대장</option>
+                                                <option value="summary">급여 합계</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-3 d-flex align-items-end">
+                                            <button class="btn btn-primary w-100" id="search-report-btn">
+                                                <i class="fas fa-search"></i> 검색
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- 보고서 결과 영역 -->
+                                <div class="mt-4">
+                                    <div class="d-flex justify-content-between mb-3">
+                                        <h6>조회 결과</h6>
+                                        <div>
+                                            <button class="btn btn-sm btn-outline-secondary me-2">
+                                                <i class="fas fa-print"></i> 인쇄
+                                            </button>
+                                            <button class="btn btn-sm btn-outline-success me-2">
+                                                <i class="fas fa-file-excel"></i> 엑셀 다운로드
+                                            </button>
+                                            <button class="btn btn-sm btn-outline-danger">
+                                                <i class="fas fa-file-pdf"></i> PDF 다운로드
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered table-hover">
+                                            <thead class="table-light">
+                                                <tr>
+                                                    <th>No.</th>
+                                                    <th>사원번호</th>
+                                                    <th>이름</th>
+                                                    <th>부서</th>
+                                                    <th>직급</th>
+                                                    <th>기본급</th>
+                                                    <th>수당</th>
+                                                    <th>지급 합계</th>
+                                                    <th>공제 합계</th>
+                                                    <th>실수령액</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="report-result-table">
+                                                <tr>
+                                                    <td colspan="10" class="text-center">검색 조건을 설정하고 검색 버튼을 클릭하세요.</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 급여 상세 모달 -->
+    <div class="modal fade" id="salaryDetailModal" tabindex="-1" aria-labelledby="salaryDetailModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="salaryDetailModalLabel">급여 상세 정보</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row mb-3">
+                            <div class="col-12 text-center mb-3">
+                                <h5>급여 명세서</h5>
+                                <p class="text-muted">2023년 10월</p>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-3">
+                                <p><strong>사원번호:</strong> 2023001</p>
+                            </div>
+                            <div class="col-md-3">
+                                <p><strong>이름:</strong> 홍길동</p>
+                            </div>
+                            <div class="col-md-3">
+                                <p><strong>부서:</strong> 개발팀</p>
+                            </div>
+                            <div class="col-md-3">
+                                <p><strong>직급:</strong> 과장</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h6 class="mb-3">지급 내역</h6>
+                                <table class="table table-sm table-bordered">
+                                    <tbody>
+                                        <tr>
+                                            <th>기본급</th>
+                                            <td class="text-end">3,500,000원</td>
+                                        </tr>
+                                        <tr>
+                                            <th>식대</th>
+                                            <td class="text-end">200,000원</td>
+                                        </tr>
+                                        <tr>
+                                            <th>교통비</th>
+                                            <td class="text-end">200,000원</td>
+                                        </tr>
+                                        <tr class="table-secondary">
+                                            <th>지급 합계</th>
+                                            <td class="text-end fw-bold">3,900,000원</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col-md-6">
+                                <h6 class="mb-3">공제 내역</h6>
+                                <table class="table table-sm table-bordered">
+                                    <tbody>
+                                        <tr>
+                                            <th>국민연금</th>
+                                            <td class="text-end">175,500원</td>
+                                        </tr>
+                                        <tr>
+                                            <th>건강보험</th>
+                                            <td class="text-end">117,000원</td>
+                                        </tr>
+                                        <tr>
+                                            <th>고용보험</th>
+                                            <td class="text-end">27,300원</td>
+                                        </tr>
+                                        <tr>
+                                            <th>소득세</th>
+                                            <td class="text-end">58,500원</td>
+                                        </tr>
+                                        <tr>
+                                            <th>지방소득세</th>
+                                            <td class="text-end">11,700원</td>
+                                        </tr>
+                                        <tr class="table-secondary">
+                                            <th>공제 합계</th>
+                                            <td class="text-end fw-bold">390,000원</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-12">
+                                <table class="table table-bordered">
+                                    <tbody>
+                                        <tr class="table-primary">
+                                            <th>실수령액</th>
+                                            <td class="text-end fw-bold">3,510,000원</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    <button type="button" class="btn btn-primary">
+                        <i class="fas fa-file-pdf"></i> PDF 출력
+                    </button>
+                    <button type="button" class="btn btn-info">
+                        <i class="fas fa-envelope"></i> 이메일 전송
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="../js/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 급여 계산 버튼 이벤트
+            document.getElementById('calculate-btn').addEventListener('click', function() {
+                const baseSalary = parseFloat(document.getElementById('base-salary').value) || 0;
+                const allowance1 = parseFloat(document.getElementById('allowance1').value) || 0;
+                const allowance2 = parseFloat(document.getElementById('allowance2').value) || 0;
+                
+                // 총 급여 계산
+                const totalSalary = baseSalary + allowance1 + allowance2;
+                
+                // 4대 보험 계산 (예시 비율)
+                const healthInsurance = Math.round(totalSalary * 0.03); // 건강보험 3%
+                const nationalPension = Math.round(totalSalary * 0.045); // 국민연금 4.5%
+                const employmentInsurance = Math.round(totalSalary * 0.007); // 고용보험 0.7%
+                const industrialInsurance = Math.round(totalSalary * 0.002); // 산재보험 0.2%
+                
+                // 세금 계산 (예시 비율)
+                const incomeTax = Math.round(totalSalary * 0.015); // 소득세 1.5%
+                const localTax = Math.round(incomeTax * 0.1); // 지방소득세 (소득세의 10%)
+                
+                // 총 공제액 계산
+                const totalDeduction = healthInsurance + nationalPension + employmentInsurance + 
+                                      industrialInsurance + incomeTax + localTax;
+                
+                // 실수령액 계산
+                const netSalary = totalSalary - totalDeduction;
+                
+                // 결과 표시
+                document.getElementById('health-insurance').value = healthInsurance;
+                document.getElementById('national-pension').value = nationalPension;
+                document.getElementById('employment-insurance').value = employmentInsurance;
+                document.getElementById('industrial-insurance').value = industrialInsurance;
+                document.getElementById('income-tax').value = incomeTax;
+                document.getElementById('local-tax').value = localTax;
+                document.getElementById('total-deduction').value = totalDeduction;
+                document.getElementById('total-salary').value = totalSalary;
+                document.getElementById('net-salary').value = netSalary;
+            });
+
+            // 부서 선택 시 사원 목록 업데이트 (예시)
+            document.getElementById('department').addEventListener('change', updateEmployeeList);
+            document.getElementById('position').addEventListener('change', updateEmployeeList);
+
+            function updateEmployeeList() {
+                const department = document.getElementById('department').value;
+                const position = document.getElementById('position').value;
+                const employeeSelect = document.getElementById('employee');
+                
+                // 기존 옵션 제거
+                employeeSelect.innerHTML = '<option value="">사원 선택</option>';
+                
+                // 부서와 직급이 모두 선택된 경우에만 사원 목록 로드
+                if (department && position) {
+                    // 실제로는 서버에서 데이터를 가져와야 하지만, 예시 데이터 사용
+                    const employees = [
+                        { id: '1001', name: '홍길동', dept: '개발팀', position: '과장' },
+                        { id: '1002', name: '김철수', dept: '개발팀', position: '대리' },
+                        { id: '1003', name: '이영희', dept: '영업팀', position: '과장' },
+                        { id: '1004', name: '박민수', dept: '영업팀', position: '대리' },
+                        { id: '1005', name: '정지원', dept: '경영지원팀', position: '부장' },
+                        { id: '1006', name: '최영호', dept: '경영지원팀', position: '과장' },
+                        { id: '1007', name: '강수진', dept: '인사팀', position: '대리' },
+                        { id: '1008', name: '윤서연', dept: '인사팀', position: '사원' }
+                    ];
+                    
+                    // 선택된 부서와 직급에 맞는 사원 필터링
+                    const filteredEmployees = employees.filter(emp => 
+                        emp.dept === department && emp.position === position
+                    );
+                    
+                    // 옵션 추가
+                    filteredEmployees.forEach(emp => {
+                        const option = document.createElement('option');
+                        option.value = emp.id;
+                        option.textContent = emp.name;
+                        employeeSelect.appendChild(option);
+                    });
+                }
+            }
+
+            // 급여명세서 저장 이벤트
+            document.getElementById('salary-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('급여명세서가 저장되었습니다.');
+                // 실제로는 서버에 데이터를 전송하는 코드가 필요합니다
+            });
+
+            // PDF 출력 버튼 이벤트
+            document.getElementById('pdf-btn').addEventListener('click', function() {
+                alert('급여명세서 PDF 파일이 생성되었습니다.');
+                // 실제로는 PDF 생성 및 다운로드 코드가 필요합니다
+            });
+
+            // 이메일 전송 버튼 이벤트
+            document.getElementById('email-btn').addEventListener('click', function() {
+                alert('급여명세서가 이메일로 전송되었습니다.');
+                // 실제로는 이메일 전송 코드가 필요합니다
+            });
+
+            // 급여 상세 보기 버튼 이벤트
+            const detailButtons = document.querySelectorAll('.view-detail-btn');
+            detailButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const modal = new bootstrap.Modal(document.getElementById('salaryDetailModal'));
+                    modal.show();
+                });
+            });
+
+            // 조회 기간 타입 변경 이벤트
+            document.getElementById('report-period-type').addEventListener('change', function() {
+                const selectedType = this.value;
+                
+                // 모든 선택기 숨기기
+                document.getElementById('month-selector').classList.add('d-none');
+                document.getElementById('quarter-selector').classList.add('d-none');
+                document.getElementById('year-selector').classList.add('d-none');
+                
+                // 선택된 타입에 맞는 선택기 표시
+                if (selectedType === 'month') {
+                    document.getElementById('month-selector').classList.remove('d-none');
+                } else if (selectedType === 'quarter') {
+                    document.getElementById('quarter-selector').classList.remove('d-none');
+                } else if (selectedType === 'year') {
+                    document.getElementById('year-selector').classList.remove('d-none');
+                }
+            });
+
+            // 검색 버튼 이벤트
+            document.getElementById('search-ledger-btn').addEventListener('click', function() {
+                alert('급여대장 검색 결과가 로드되었습니다.');
+                // 실제로는 서버에서 데이터를 가져와 테이블에 표시하는 코드가 필요합니다
+            });
+
+            document.getElementById('search-report-btn').addEventListener('click', function() {
+                alert('보고서 검색 결과가 로드되었습니다.');
+                // 실제로는 서버에서 데이터를 가져와 테이블에 표시하는 코드가 필요합니다
+                
+                // 예시 데이터로 테이블 채우기
+                const reportType = document.getElementById('report-type').value;
+                const reportResultTable = document.getElementById('report-result-table');
+                
+                if (reportType === 'summary') {
+                    reportResultTable.innerHTML = `
+                        <tr>
+                            <td>1</td>
+                            <td colspan="3">개발팀</td>
+                            <td colspan="2"></td>
+                            <td>15,000,000</td>
+                            <td>1,500,000</td>
+                            <td>13,500,000</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td colspan="3">영업팀</td>
+                            <td colspan="2"></td>
+                            <td>12,000,000</td>
+                            <td>1,200,000</td>
+                            <td>10,800,000</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td colspan="3">경영지원팀</td>
+                            <td colspan="2"></td>
+                            <td>8,000,000</td>
+                            <td>800,000</td>
+                            <td>7,200,000</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td colspan="3">인사팀</td>
+                            <td colspan="2"></td>
+                            <td>7,000,000</td>
+                            <td>700,000</td>
+                            <td>6,300,000</td>
+                        </tr>
+                        <tr class="table-secondary">
+                            <td colspan="6" class="text-end fw-bold">합계</td>
+                            <td>42,000,000</td>
+                            <td>4,200,000</td>
+                            <td>37,800,000</td>
+                        </tr>
+                    `;
+                } else {
+                    reportResultTable.innerHTML = `
+                        <tr>
+                            <td>1</td>
+                            <td>2023001</td>
+                            <td>홍길동</td>
+                            <td>개발팀</td>
+                            <td>과장</td>
+                            <td>3,500,000</td>
+                            <td>400,000</td>
+                            <td>3,900,000</td>
+                            <td>390,000</td>
+                            <td>3,510,000</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>2023002</td>
+                            <td>김철수</td>
+                            <td>영업팀</td>
+                            <td>대리</td>
+                            <td>3,000,000</td>
+                            <td>350,000</td>
+                            <td>3,350,000</td>
+                            <td>335,000</td>
+                            <td>3,015,000</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>2023003</td>
+                            <td>이영희</td>
+                            <td>경영지원팀</td>
+                            <td>사원</td>
+                            <td>2,800,000</td>
+                            <td>300,000</td>
+                            <td>3,100,000</td>
+                            <td>310,000</td>
+                            <td>2,790,000</td>
+                        </tr>
+                        <tr class="table-secondary">
+                            <td colspan="5" class="text-end fw-bold">합계</td>
+                            <td>9,300,000</td>
+                            <td>1,050,000</td>
+                            <td>10,350,000</td>
+                            <td>1,035,000</td>
+                            <td>9,315,000</td>
+                        </tr>
+                    `;
+                }
+            });
+        });
+    </script>
+</body>
+</html>

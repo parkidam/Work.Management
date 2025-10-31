@@ -1,0 +1,1607 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자금관리 - 업무관리시스템</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Flatpickr -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <!-- FullCalendar -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.css">
+    <!-- Chart.js -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <div class="wrapper">
+        <!-- 사이드바 -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <a href="../index.html" style="text-decoration: none; color: inherit;">
+                    <h3>업무관리시스템</h3>
+                </a>
+            </div>
+
+            <ul class="list-unstyled components">
+                <!-- 대시보드 메뉴 -->
+                <li>
+                    <a href="#dashboardSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>대시보드</span>
+                    </a>
+                    <ul class="collapse list-unstyled" id="dashboardSubmenu">
+                        <li>
+                            <a href="dashboard-summary.html" class="submenu-item">
+                                <i class="fas fa-chart-pie fa-sm"></i>
+                                <span>사업계획 진행 관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="dashboard-analytics.html" class="submenu-item">
+                                <i class="fas fa-list-alt"></i>
+                                <span>영업 진행관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="dashboard-statistics.html" class="submenu-item">
+                                <i class="fas fa-chart-line fa-sm"></i>
+                                <span>유지보수 관리</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <!-- 인사관리 메뉴 -->
+                <li>
+                    <a href="#hrSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-users"></i>
+                        <span>인사관리</span>
+                    </a>
+                    <ul class="collapse list-unstyled" id="hrSubmenu">
+                        <li>
+                            <a href="employee-management.html" class="submenu-item">
+                                <i class="fas fa-user fa-sm"></i>
+                                <span>사원관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="salary-management.html" class="submenu-item">
+                                <i class="fas fa-money-bill-alt fa-sm"></i>
+                                <span>급여관리</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <!-- 회계관리 메뉴 -->
+                <li class="active">
+                    <a href="#accountingSubmenu" data-bs-toggle="collapse" aria-expanded="true" class="dropdown-toggle">
+                        <i class="fas fa-calculator"></i>
+                        <span>회계관리</span>
+                    </a>
+                    <ul class="collapse show list-unstyled" id="accountingSubmenu">
+                        <li>
+                            <a href="slip-management.html" class="submenu-item">
+                                <i class="fas fa-file-invoice fa-sm"></i>
+                                <span>전표관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="sales-management.html" class="submenu-item">
+                                <i class="fas fa-chart-line fa-sm"></i>
+                                <span>매출관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="purchase-management.html" class="submenu-item">
+                                <i class="fas fa-shopping-cart fa-sm"></i>
+                                <span>매입관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="expense-management.html" class="submenu-item">
+                                <i class="fas fa-receipt fa-sm"></i>
+                                <span>경비관리</span>
+                            </a>
+                        </li>
+                        <li class="active">
+                            <a href="fund-management.html" class="submenu-item">
+                                <i class="fas fa-wallet fa-sm"></i>
+                                <span>자금관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="document-management.html" class="submenu-item">
+                                <i class="fas fa-file-alt fa-sm"></i>
+                                <span>회사 문서관리</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <!-- 영업관리 메뉴 -->
+                <li>
+                    <a href="#salesSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-chart-line"></i>
+                        <span>영업관리</span>
+                    </a>
+                    <ul class="collapse list-unstyled" id="salesSubmenu">
+                        <li>
+                            <a href="sales-opportunity.html" class="submenu-item">
+                                <i class="fas fa-handshake fa-sm"></i>
+                                <span>영업기회</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="quotation.html" class="submenu-item">
+                                <i class="fas fa-file-invoice-dollar fa-sm"></i>
+                                <span>견적서</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="client-management.html" class="submenu-item">
+                                <i class="fas fa-building fa-sm"></i>
+                                <span>거래처관리</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <!-- 계약관리 메뉴 -->
+                <li>
+                    <a href="#contractSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-file-contract"></i>
+                        <span>계약관리</span>
+                    </a>
+                    <ul class="collapse list-unstyled" id="contractSubmenu">
+                        <li>
+                            <a href="contract-management.html" class="submenu-item">
+                                <i class="fas fa-file-signature fa-sm"></i>
+                                <span>계약관리</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <!-- 유지보수관리 메뉴 -->
+                <li>
+                    <a href="#maintenanceSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-tools"></i>
+                        <span>유지보수관리</span>
+                    </a>
+                    <ul class="collapse list-unstyled" id="maintenanceSubmenu">
+                        <li>
+                            <a href="issue-management.html" class="submenu-item">
+                                <i class="fas fa-exclamation-triangle fa-sm"></i>
+                                <span>장애관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="maintenance-system.html" class="submenu-item">
+                                <i class="fas fa-server fa-sm"></i>
+                                <span>유지보수 대상 시스템 관리</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <!-- 사업계획관리 메뉴 -->
+                <li>
+                    <a href="#businessPlanSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-project-diagram"></i>
+                        <span>사업계획관리</span>
+                    </a>
+                    <ul class="collapse list-unstyled" id="businessPlanSubmenu">
+                        <li>
+                            <a href="business-plan.html" class="submenu-item">
+                                <i class="fas fa-tasks fa-sm"></i>
+                                <span>사업계획</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <!-- 시스템관리 메뉴 -->
+                <li>
+                    <a href="#systemSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-cogs"></i>
+                        <span>시스템관리</span>
+                    </a>
+                    <ul class="collapse list-unstyled" id="systemSubmenu">
+                        <li>
+                            <a href="user-management.html" class="submenu-item">
+                                <i class="fas fa-user-cog fa-sm"></i>
+                                <span>사용자관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="department-management.html" class="submenu-item">
+                                <i class="fas fa-sitemap fa-sm"></i>
+                                <span>부서관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="account-category.html" class="submenu-item">
+                                <i class="fas fa-list-ol fa-sm"></i>
+                                <span>계정과목관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="code-management.html" class="submenu-item">
+                                <i class="fas fa-code fa-sm"></i>
+                                <span>코드관리</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- 메인 컨텐츠 -->
+        <div id="content">
+            <!-- 상단바 -->
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <i class="fas fa-align-left"></i>
+                        <span>메뉴</span>
+                    </button>
+
+                    <div class="ms-auto d-flex align-items-center">
+                        <div class="notification-icon me-4">
+                            <i class="fas fa-bell"></i>
+                            <span class="badge bg-danger">3</span>
+                        </div>
+                        <div class="user-profile dropdown">
+                            <a href="#" class="dropdown-toggle d-flex align-items-center" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <div class="user-image-container me-2">
+                                    <img src="../images/default-user.svg" alt="" class="rounded-circle" style="width: 40px; height: 40px;">
+                                </div>
+                                <span class="user-name"></span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                                <li><a class="dropdown-item" href="#">프로필</a></li>
+                                <li><a class="dropdown-item" href="#">설정</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#" id="logout-btn">로그아웃</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- 자금관리 컨텐츠 -->
+            <div class="container-fluid">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div>
+                        <h1 class="mt-4">자금관리</h1>
+                        <p class="text-muted">회사의 자금 현황 및 흐름을 관리합니다.</p>
+                    </div>
+                    <div class="current-date">
+                        <p id="currentDate">2025년 10월 27일 월요일</p>
+                    </div>
+                </div>
+
+                <!-- 탭 네비게이션 -->
+                <ul class="nav nav-tabs mb-4" id="fundTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="balance-tab" data-bs-toggle="tab" data-bs-target="#balance" type="button" role="tab" aria-controls="balance" aria-selected="true">
+                            <i class="fas fa-balance-scale me-2"></i>통장별 잔액
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="closing-tab" data-bs-toggle="tab" data-bs-target="#closing" type="button" role="tab" aria-controls="closing" aria-selected="false">
+                            <i class="fas fa-calendar-check me-2"></i>월 마감 입력
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="schedule-tab" data-bs-toggle="tab" data-bs-target="#schedule" type="button" role="tab" aria-controls="schedule" aria-selected="false">
+                            <i class="fas fa-calendar-alt me-2"></i>자금 스케줄 관리
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="account-tab" data-bs-toggle="tab" data-bs-target="#account" type="button" role="tab" aria-controls="account" aria-selected="false">
+                            <i class="fas fa-university me-2"></i>통장관리
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="card-tab" data-bs-toggle="tab" data-bs-target="#card" type="button" role="tab" aria-controls="card" aria-selected="false">
+                            <i class="fas fa-credit-card me-2"></i>카드관리
+                        </button>
+                    </li>
+                </ul>
+
+                <!-- 탭 컨텐츠 -->
+                <div class="tab-content" id="fundTabsContent">
+                    <!-- 통장별 잔액 탭 -->
+                    <div class="tab-pane fade show active" id="balance" role="tabpanel" aria-labelledby="balance-tab">
+                        <!-- 잔액 요약 -->
+                        <div class="row mb-4">
+                            <div class="col-xl-4 col-md-6 mb-4">
+                                <div class="card border-left-primary shadow h-100 py-2">
+                                    <div class="card-body">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col mr-2">
+                                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                    총 잔액</div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800" id="totalBalance">325,000,000원</div>
+                                            </div>
+                                            <div class="col-auto">
+                                                <i class="fas fa-wallet fa-2x text-gray-300"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-4 col-md-6 mb-4">
+                                <div class="card border-left-warning shadow h-100 py-2">
+                                    <div class="card-body">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col mr-2">
+                                                <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                                    미지급 금액</div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800" id="unpaidAmount">45,000,000원</div>
+                                            </div>
+                                            <div class="col-auto">
+                                                <i class="fas fa-hand-holding-usd fa-2x text-gray-300"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-4 col-md-6 mb-4">
+                                <div class="card border-left-success shadow h-100 py-2">
+                                    <div class="card-body">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col mr-2">
+                                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                    미수금 금액</div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800" id="receivableAmount">78,000,000원</div>
+                                            </div>
+                                            <div class="col-auto">
+                                                <i class="fas fa-money-bill-wave fa-2x text-gray-300"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 통장별 잔액 테이블 -->
+                        <div class="card mb-4">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h5 class="mb-0"><i class="fas fa-table me-2"></i>통장별 잔액 현황</h5>
+                                <div>
+                                    <button type="button" class="btn btn-success me-2" id="exportBalanceExcelBtn">
+                                        <i class="fas fa-file-excel me-1"></i>엑셀 다운로드
+                                    </button>
+                                    <button type="button" class="btn btn-primary" id="refreshBalanceBtn">
+                                        <i class="fas fa-sync-alt me-1"></i>새로고침
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-hover" id="accountBalanceTable">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th>은행명</th>
+                                                <th>계좌번호</th>
+                                                <th>계좌별칭</th>
+                                                <th>현재잔액</th>
+                                                <th>전월잔액</th>
+                                                <th>증감</th>
+                                                <th>최근 마감일</th>
+                                                <th>주사용내용</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>국민은행</td>
+                                                <td>123-45-67890</td>
+                                                <td>운영자금</td>
+                                                <td class="text-end">120,000,000원</td>
+                                                <td class="text-end">100,000,000원</td>
+                                                <td class="text-end text-success">+20,000,000원</td>
+                                                <td>2025-09-30</td>
+                                                <td>일반 운영자금</td>
+                                            </tr>
+                                            <tr>
+                                                <td>신한은행</td>
+                                                <td>987-65-43210</td>
+                                                <td>급여계좌</td>
+                                                <td class="text-end">85,000,000원</td>
+                                                <td class="text-end">90,000,000원</td>
+                                                <td class="text-end text-danger">-5,000,000원</td>
+                                                <td>2025-09-30</td>
+                                                <td>급여 지급용</td>
+                                            </tr>
+                                            <tr>
+                                                <td>우리은행</td>
+                                                <td>456-78-90123</td>
+                                                <td>프로젝트A</td>
+                                                <td class="text-end">50,000,000원</td>
+                                                <td class="text-end">40,000,000원</td>
+                                                <td class="text-end text-success">+10,000,000원</td>
+                                                <td>2025-09-30</td>
+                                                <td>A프로젝트 전용</td>
+                                            </tr>
+                                            <tr>
+                                                <td>하나은행</td>
+                                                <td>789-01-23456</td>
+                                                <td>세금계좌</td>
+                                                <td class="text-end">35,000,000원</td>
+                                                <td class="text-end">30,000,000원</td>
+                                                <td class="text-end text-success">+5,000,000원</td>
+                                                <td>2025-09-30</td>
+                                                <td>세금 납부용</td>
+                                            </tr>
+                                            <tr>
+                                                <td>기업은행</td>
+                                                <td>234-56-78901</td>
+                                                <td>비상자금</td>
+                                                <td class="text-end">35,000,000원</td>
+                                                <td class="text-end">30,000,000원</td>
+                                                <td class="text-end text-success">+5,000,000원</td>
+                                                <td>2025-09-30</td>
+                                                <td>비상자금</td>
+                                            </tr>
+                                        </tbody>
+                                        <tfoot>
+                                            <tr class="table-secondary fw-bold">
+                                                <td colspan="3" class="text-end">합계</td>
+                                                <td class="text-end">325,000,000원</td>
+                                                <td class="text-end">290,000,000원</td>
+                                                <td class="text-end text-success">+35,000,000원</td>
+                                                <td colspan="2"></td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 잔액 추이 차트 -->
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <h5 class="mb-0"><i class="fas fa-chart-line me-2"></i>월별 잔액 추이</h5>
+                            </div>
+                            <div class="card-body">
+                                <canvas id="balanceTrendChart" style="height: 300px;"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 월 마감 입력 탭 -->
+                    <div class="tab-pane fade" id="closing" role="tabpanel" aria-labelledby="closing-tab">
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <!-- 지출 마감 입력 -->
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        <h5 class="mb-0"><i class="fas fa-minus-circle me-2"></i>지출 마감 입력</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <form id="expenseClosingForm">
+                                            <div class="mb-3">
+                                                <label for="closingMonth" class="form-label">마감 월</label>
+                                                <input type="month" class="form-control" id="expenseClosingMonth" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="salaryExpense" class="form-label">급여</label>
+                                                <div class="input-group">
+                                                    <input type="number" class="form-control expense-input" id="salaryExpense" placeholder="0">
+                                                    <span class="input-group-text">원</span>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="insuranceExpense" class="form-label">4대보험</label>
+                                                <div class="input-group">
+                                                    <input type="number" class="form-control expense-input" id="insuranceExpense" placeholder="0">
+                                                    <span class="input-group-text">원</span>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="pensionExpense" class="form-label">퇴직연금</label>
+                                                <div class="input-group">
+                                                    <input type="number" class="form-control expense-input" id="pensionExpense" placeholder="0">
+                                                    <span class="input-group-text">원</span>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="financialExpense" class="form-label">금융 비용</label>
+                                                <div class="input-group">
+                                                    <input type="number" class="form-control expense-input" id="financialExpense" placeholder="0">
+                                                    <span class="input-group-text">원</span>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="generalExpense" class="form-label">경비</label>
+                                                <div class="input-group">
+                                                    <input type="number" class="form-control expense-input" id="generalExpense" placeholder="0">
+                                                    <span class="input-group-text">원</span>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="assetPurchase" class="form-label">자산구매</label>
+                                                <div class="input-group">
+                                                    <input type="number" class="form-control expense-input" id="assetPurchase" placeholder="0">
+                                                    <span class="input-group-text">원</span>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="otherExpense" class="form-label">기타</label>
+                                                <div class="input-group">
+                                                    <input type="number" class="form-control expense-input" id="otherExpense" placeholder="0">
+                                                    <span class="input-group-text">원</span>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label fw-bold">총 지출</label>
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control bg-light" id="totalExpense" readonly>
+                                                    <span class="input-group-text">원</span>
+                                                </div>
+                                            </div>
+                                            <div class="text-end">
+                                                <button type="button" class="btn btn-primary" id="saveExpenseClosingBtn">저장</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mb-4">
+                                <!-- 수입 마감 입력 -->
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        <h5 class="mb-0"><i class="fas fa-plus-circle me-2"></i>수입 마감 입력</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <form id="incomeClosingForm">
+                                            <div class="mb-3">
+                                                <label for="incomeClosingMonth" class="form-label">마감 월</label>
+                                                <input type="month" class="form-control" id="incomeClosingMonth" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="salesIncome" class="form-label">매출</label>
+                                                <div class="input-group">
+                                                    <input type="number" class="form-control income-input" id="salesIncome" placeholder="0">
+                                                    <span class="input-group-text">원</span>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="purchasePayment" class="form-label">매입</label>
+                                                <div class="input-group">
+                                                    <input type="number" class="form-control income-input" id="purchasePayment" placeholder="0">
+                                                    <span class="input-group-text">원</span>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label">지급/미지급</label>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="input-group mb-2">
+                                                            <span class="input-group-text">지급</span>
+                                                            <input type="number" class="form-control income-input" id="paidAmount" placeholder="0">
+                                                            <span class="input-group-text">원</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="input-group mb-2">
+                                                            <span class="input-group-text">미지급</span>
+                                                            <input type="number" class="form-control" id="unpaidAmountInput" placeholder="0">
+                                                            <span class="input-group-text">원</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label fw-bold">총 수입</label>
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control bg-light" id="totalIncome" readonly>
+                                                    <span class="input-group-text">원</span>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="closingNote" class="form-label">비고</label>
+                                                <textarea class="form-control" id="closingNote" rows="3"></textarea>
+                                            </div>
+                                            <div class="text-end">
+                                                <button type="button" class="btn btn-primary" id="saveIncomeClosingBtn">저장</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 월별 마감 내역 -->
+                        <div class="card mb-4">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h5 class="mb-0"><i class="fas fa-history me-2"></i>월별 마감 내역</h5>
+                                <div>
+                                    <button type="button" class="btn btn-success" id="exportClosingExcelBtn">
+                                        <i class="fas fa-file-excel me-1"></i>엑셀 다운로드
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-hover" id="monthlyClosingTable">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th>마감 월</th>
+                                                <th>총 수입</th>
+                                                <th>총 지출</th>
+                                                <th>순이익</th>
+                                                <th>마감일</th>
+                                                <th>마감자</th>
+                                                <th>관리</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>2025년 9월</td>
+                                                <td class="text-end">150,000,000원</td>
+                                                <td class="text-end">120,000,000원</td>
+                                                <td class="text-end">30,000,000원</td>
+                                                <td>2025-10-05</td>
+                                                <td>김경리</td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-outline-primary view-closing-btn" data-month="2025-09">
+                                                        <i class="fas fa-eye"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>2025년 8월</td>
+                                                <td class="text-end">145,000,000원</td>
+                                                <td class="text-end">118,000,000원</td>
+                                                <td class="text-end">27,000,000원</td>
+                                                <td>2025-09-05</td>
+                                                <td>김경리</td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-outline-primary view-closing-btn" data-month="2025-08">
+                                                        <i class="fas fa-eye"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>2025년 7월</td>
+                                                <td class="text-end">140,000,000원</td>
+                                                <td class="text-end">115,000,000원</td>
+                                                <td class="text-end">25,000,000원</td>
+                                                <td>2025-08-05</td>
+                                                <td>김경리</td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-outline-primary view-closing-btn" data-month="2025-07">
+                                                        <i class="fas fa-eye"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                        <!-- 자금 스케줄 관리 탭 -->
+                    <div class="tab-pane fade" id="schedule" role="tabpanel" aria-labelledby="schedule-tab">
+                        <!-- 자금 스케줄 등록 -->
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <h5 class="mb-0"><i class="fas fa-calendar-plus me-2"></i>자금 스케줄 등록</h5>
+                            </div>
+                            <div class="card-body">
+                                <form id="fundScheduleForm" class="row g-3">
+                                    <div class="col-md-3">
+                                        <label for="scheduleDate" class="form-label">일자</label>
+                                        <input type="date" class="form-control" id="scheduleDate" required>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="fundName" class="form-label">자금명</label>
+                                        <input type="text" class="form-control" id="fundName" placeholder="자금명 입력" required>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="clientSelect" class="form-label">거래처</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="clientName" placeholder="거래처명" readonly>
+                                            <button class="btn btn-outline-secondary" type="button" id="clientSearchBtn">
+                                                <i class="fas fa-search"></i>
+                                            </button>
+                                            <input type="hidden" id="clientId">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="scheduleAmount" class="form-label">금액</label>
+                                        <div class="input-group">
+                                            <input type="number" class="form-control" id="scheduleAmount" placeholder="0" required>
+                                            <span class="input-group-text">원</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="schedulePriority" class="form-label">중요도</label>
+                                        <select class="form-select" id="schedulePriority" required>
+                                            <option value="">선택하세요</option>
+                                            <option value="A">A (높음)</option>
+                                            <option value="B">B (중간)</option>
+                                            <option value="C">C (낮음)</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="scheduleType" class="form-label">유형</label>
+                                        <select class="form-select" id="scheduleType" required>
+                                            <option value="">선택하세요</option>
+                                            <option value="수입">수입</option>
+                                            <option value="지출">지출</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="scheduleNote" class="form-label">비고</label>
+                                        <input type="text" class="form-control" id="scheduleNote" placeholder="비고 입력">
+                                    </div>
+                                    <div class="col-12 text-end">
+                                        <button type="button" class="btn btn-secondary me-2" id="resetScheduleBtn">초기화</button>
+                                        <button type="button" class="btn btn-primary" id="saveScheduleBtn">저장</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <!-- 자금 스케줄 목록 -->
+                        <div class="card mb-4">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h5 class="mb-0"><i class="fas fa-list me-2"></i>자금 스케줄 목록</h5>
+                                <div>
+                                    <button type="button" class="btn btn-success me-2" id="exportScheduleExcelBtn">
+                                        <i class="fas fa-file-excel me-1"></i>엑셀 다운로드
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="row mb-3">
+                                    <div class="col-md-3">
+                                        <label for="scheduleMonthFilter" class="form-label">월 선택</label>
+                                        <input type="month" class="form-control" id="scheduleMonthFilter">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="scheduleTypeFilter" class="form-label">유형</label>
+                                        <select class="form-select" id="scheduleTypeFilter">
+                                            <option value="">전체</option>
+                                            <option value="수입">수입</option>
+                                            <option value="지출">지출</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="schedulePriorityFilter" class="form-label">중요도</label>
+                                        <select class="form-select" id="schedulePriorityFilter">
+                                            <option value="">전체</option>
+                                            <option value="A">A (높음)</option>
+                                            <option value="B">B (중간)</option>
+                                            <option value="C">C (낮음)</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3 d-flex align-items-end">
+                                        <button type="button" class="btn btn-primary w-100" id="searchScheduleBtn">
+                                            <i class="fas fa-search me-1"></i>검색
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-hover" id="fundScheduleTable">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th>일자</th>
+                                                <th>자금명</th>
+                                                <th>거래처</th>
+                                                <th>금액</th>
+                                                <th>유형</th>
+                                                <th>중요도</th>
+                                                <th>비고</th>
+                                                <th>관리</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>2025-10-05</td>
+                                                <td>A프로젝트 대금</td>
+                                                <td>(주)고객사A</td>
+                                                <td class="text-end">50,000,000원</td>
+                                                <td><span class="badge bg-success">수입</span></td>
+                                                <td><span class="badge bg-danger">A</span></td>
+                                                <td>1차 납품 대금</td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-outline-secondary edit-schedule-btn" data-id="1">
+                                                        <i class="fas fa-edit"></i>
+                                                    </button>
+                                                    <button class="btn btn-sm btn-outline-danger delete-schedule-btn" data-id="1">
+                                                        <i class="fas fa-trash-alt"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>2025-10-10</td>
+                                                <td>직원 급여</td>
+                                                <td>직원</td>
+                                                <td class="text-end">35,000,000원</td>
+                                                <td><span class="badge bg-danger">지출</span></td>
+                                                <td><span class="badge bg-danger">A</span></td>
+                                                <td>10월 급여</td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-outline-secondary edit-schedule-btn" data-id="2">
+                                                        <i class="fas fa-edit"></i>
+                                                    </button>
+                                                    <button class="btn btn-sm btn-outline-danger delete-schedule-btn" data-id="2">
+                                                        <i class="fas fa-trash-alt"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>2025-10-15</td>
+                                                <td>사무실 임대료</td>
+                                                <td>(주)건물관리</td>
+                                                <td class="text-end">5,000,000원</td>
+                                                <td><span class="badge bg-danger">지출</span></td>
+                                                <td><span class="badge bg-danger">A</span></td>
+                                                <td>10월 임대료</td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-outline-secondary edit-schedule-btn" data-id="3">
+                                                        <i class="fas fa-edit"></i>
+                                                    </button>
+                                                    <button class="btn btn-sm btn-outline-danger delete-schedule-btn" data-id="3">
+                                                        <i class="fas fa-trash-alt"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>2025-10-20</td>
+                                                <td>B프로젝트 대금</td>
+                                                <td>(주)고객사B</td>
+                                                <td class="text-end">30,000,000원</td>
+                                                <td><span class="badge bg-success">수입</span></td>
+                                                <td><span class="badge bg-warning text-dark">B</span></td>
+                                                <td>최종 납품 대금</td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-outline-secondary edit-schedule-btn" data-id="4">
+                                                        <i class="fas fa-edit"></i>
+                                                    </button>
+                                                    <button class="btn btn-sm btn-outline-danger delete-schedule-btn" data-id="4">
+                                                        <i class="fas fa-trash-alt"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>2025-10-25</td>
+                                                <td>장비 구매</td>
+                                                <td>(주)장비공급사</td>
+                                                <td class="text-end">8,000,000원</td>
+                                                <td><span class="badge bg-danger">지출</span></td>
+                                                <td><span class="badge bg-warning text-dark">B</span></td>
+                                                <td>서버 장비 구매</td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-outline-secondary edit-schedule-btn" data-id="5">
+                                                        <i class="fas fa-edit"></i>
+                                                    </button>
+                                                    <button class="btn btn-sm btn-outline-danger delete-schedule-btn" data-id="5">
+                                                        <i class="fas fa-trash-alt"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <nav aria-label="Page navigation">
+                                    <ul class="pagination justify-content-center" id="schedulePagenation">
+                                        <li class="page-item disabled">
+                                            <a class="page-link" href="#" tabindex="-1">이전</a>
+                                        </li>
+                                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                        <li class="page-item">
+                                            <a class="page-link" href="#">다음</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+
+                        <!-- 자금 스케줄 캘린더 -->
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <h5 class="mb-0"><i class="fas fa-calendar-alt me-2"></i>자금 스케줄 캘린더</h5>
+                            </div>
+                            <div class="card-body">
+                                <div id="fundCalendar" style="height: 600px;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 통장관리 탭 -->
+                    <div class="tab-pane fade" id="account" role="tabpanel" aria-labelledby="account-tab">
+                        <!-- 통장 등록 -->
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <h5 class="mb-0"><i class="fas fa-university me-2"></i>통장 등록/수정</h5>
+                            </div>
+                            <div class="card-body">
+                                <form id="bankAccountForm" class="row g-3">
+                                    <input type="hidden" id="accountId">
+                                    <div class="col-md-3">
+                                        <label for="bankName" class="form-label">은행명</label>
+                                        <select class="form-select" id="bankName" required>
+                                            <option value="">선택하세요</option>
+                                            <option value="국민은행">국민은행</option>
+                                            <option value="신한은행">신한은행</option>
+                                            <option value="우리은행">우리은행</option>
+                                            <option value="하나은행">하나은행</option>
+                                            <option value="농협은행">농협은행</option>
+                                            <option value="기업은행">기업은행</option>
+                                            <option value="SC제일은행">SC제일은행</option>
+                                            <option value="씨티은행">씨티은행</option>
+                                            <option value="카카오뱅크">카카오뱅크</option>
+                                            <option value="토스뱅크">토스뱅크</option>
+                                            <option value="케이뱅크">케이뱅크</option>
+                                            <option value="기타">기타</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="accountNumber" class="form-label">계좌번호</label>
+                                        <input type="text" class="form-control" id="accountNumber" placeholder="숫자와 - 만 입력" required>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="accountNickname" class="form-label">별칭</label>
+                                        <input type="text" class="form-control" id="accountNickname" placeholder="통장 별칭 입력" required>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="accountType" class="form-label">계좌유형</label>
+                                        <select class="form-select" id="accountType" required>
+                                            <option value="">선택하세요</option>
+                                            <option value="보통예금">보통예금</option>
+                                            <option value="정기예금">정기예금</option>
+                                            <option value="당좌예금">당좌예금</option>
+                                            <option value="기업자유예금">기업자유예금</option>
+                                            <option value="외화예금">외화예금</option>
+                                            <option value="기타">기타</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="accountPurpose" class="form-label">주사용내용</label>
+                                        <input type="text" class="form-control" id="accountPurpose" placeholder="주사용내용 입력">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="accountMemo" class="form-label">메모</label>
+                                        <input type="text" class="form-control" id="accountMemo" placeholder="메모 입력">
+                                    </div>
+                                    <div class="col-12 text-end">
+                                        <button type="button" class="btn btn-secondary me-2" id="resetAccountBtn">초기화</button>
+                                        <button type="button" class="btn btn-primary" id="saveAccountBtn">저장</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <!-- 통장 목록 -->
+                        <div class="card mb-4">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h5 class="mb-0"><i class="fas fa-list me-2"></i>통장 목록</h5>
+                                <div>
+                                    <button type="button" class="btn btn-success" id="exportAccountExcelBtn">
+                                        <i class="fas fa-file-excel me-1"></i>엑셀 다운로드
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-hover" id="bankAccountTable">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th>은행명</th>
+                                                <th>계좌번호</th>
+                                                <th>별칭</th>
+                                                <th>계좌유형</th>
+                                                <th>주사용내용</th>
+                                                <th>관리</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>국민은행</td>
+                                                <td>123-45-67890</td>
+                                                <td>운영자금</td>
+                                                <td>보통예금</td>
+                                                <td>일반 운영자금</td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-outline-secondary edit-account-btn" data-id="1">
+                                                        <i class="fas fa-edit"></i>
+                                                    </button>
+                                                    <button class="btn btn-sm btn-outline-danger delete-account-btn" data-id="1">
+                                                        <i class="fas fa-trash-alt"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>신한은행</td>
+                                                <td>987-65-43210</td>
+                                                <td>급여계좌</td>
+                                                <td>보통예금</td>
+                                                <td>급여 지급용</td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-outline-secondary edit-account-btn" data-id="2">
+                                                        <i class="fas fa-edit"></i>
+                                                    </button>
+                                                    <button class="btn btn-sm btn-outline-danger delete-account-btn" data-id="2">
+                                                        <i class="fas fa-trash-alt"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>우리은행</td>
+                                                <td>456-78-90123</td>
+                                                <td>프로젝트A</td>
+                                                <td>기업자유예금</td>
+                                                <td>A프로젝트 전용</td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-outline-secondary edit-account-btn" data-id="3">
+                                                        <i class="fas fa-edit"></i>
+                                                    </button>
+                                                    <button class="btn btn-sm btn-outline-danger delete-account-btn" data-id="3">
+                                                        <i class="fas fa-trash-alt"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>하나은행</td>
+                                                <td>789-01-23456</td>
+                                                <td>세금계좌</td>
+                                                <td>보통예금</td>
+                                                <td>세금 납부용</td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-outline-secondary edit-account-btn" data-id="4">
+                                                        <i class="fas fa-edit"></i>
+                                                    </button>
+                                                    <button class="btn btn-sm btn-outline-danger delete-account-btn" data-id="4">
+                                                        <i class="fas fa-trash-alt"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>기업은행</td>
+                                                <td>234-56-78901</td>
+                                                <td>비상자금</td>
+                                                <td>정기예금</td>
+                                                <td>비상자금</td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-outline-secondary edit-account-btn" data-id="5">
+                                                        <i class="fas fa-edit"></i>
+                                                    </button>
+                                                    <button class="btn btn-sm btn-outline-danger delete-account-btn" data-id="5">
+                                                        <i class="fas fa-trash-alt"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 월 마감 잔액 입력 -->
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <h5 class="mb-0"><i class="fas fa-calculator me-2"></i>월 마감 잔액 입력</h5>
+                            </div>
+                            <div class="card-body">
+                                <form id="accountClosingForm" class="row g-3">
+                                    <div class="col-md-3">
+                                        <label for="closingAccount" class="form-label">통장 선택</label>
+                                        <select class="form-select" id="closingAccount" required>
+                                            <option value="">선택하세요</option>
+                                            <option value="1">국민은행 - 운영자금</option>
+                                            <option value="2">신한은행 - 급여계좌</option>
+                                            <option value="3">우리은행 - 프로젝트A</option>
+                                            <option value="4">하나은행 - 세금계좌</option>
+                                            <option value="5">기업은행 - 비상자금</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="closingDate" class="form-label">마감일자</label>
+                                        <input type="date" class="form-control" id="closingDate" required>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="closingBalance" class="form-label">잔액</label>
+                                        <div class="input-group">
+                                            <input type="number" class="form-control" id="closingBalance" placeholder="0" required>
+                                            <span class="input-group-text">원</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 d-flex align-items-end">
+                                        <button type="button" class="btn btn-primary w-100" id="saveClosingBalanceBtn">저장</button>
+                                    </div>
+                                </form>
+
+                                <hr class="my-4">
+
+                                <div class="table-responsive mt-3">
+                                    <table class="table table-bordered table-hover" id="accountClosingTable">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th>통장 별칭</th>
+                                                <th>은행명</th>
+                                                <th>계좌번호</th>
+                                                <th>마감일자</th>
+                                                <th>잔액</th>
+                                                <th>입력자</th>
+                                                <th>입력일시</th>
+                                                <th>관리</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>운영자금</td>
+                                                <td>국민은행</td>
+                                                <td>123-45-67890</td>
+                                                <td>2025-09-30</td>
+                                                <td class="text-end">120,000,000원</td>
+                                                <td>김경리</td>
+                                                <td>2025-10-01 09:30:25</td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-outline-danger delete-closing-btn" data-id="1">
+                                                        <i class="fas fa-trash-alt"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>급여계좌</td>
+                                                <td>신한은행</td>
+                                                <td>987-65-43210</td>
+                                                <td>2025-09-30</td>
+                                                <td class="text-end">85,000,000원</td>
+                                                <td>김경리</td>
+                                                <td>2025-10-01 09:32:15</td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-outline-danger delete-closing-btn" data-id="2">
+                                                        <i class="fas fa-trash-alt"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>프로젝트A</td>
+                                                <td>우리은행</td>
+                                                <td>456-78-90123</td>
+                                                <td>2025-09-30</td>
+                                                <td class="text-end">50,000,000원</td>
+                                                <td>김경리</td>
+                                                <td>2025-10-01 09:34:05</td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-outline-danger delete-closing-btn" data-id="3">
+                                                        <i class="fas fa-trash-alt"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 카드관리 탭 -->
+                    <div class="tab-pane fade" id="card" role="tabpanel" aria-labelledby="card-tab">
+                        <!-- 카드 등록 -->
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <h5 class="mb-0"><i class="fas fa-credit-card me-2"></i>카드 등록/수정</h5>
+                            </div>
+                            <div class="card-body">
+                                <form id="cardForm" class="row g-3">
+                                    <input type="hidden" id="cardId">
+                                    <div class="col-md-3">
+                                        <label for="cardType" class="form-label">카드 분류</label>
+                                        <select class="form-select" id="cardType" required>
+                                            <option value="">선택하세요</option>
+                                            <option value="신용카드">신용카드</option>
+                                            <option value="체크카드">체크카드</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="cardAccount" class="form-label">연결 통장</label>
+                                        <select class="form-select" id="cardAccount" required>
+                                            <option value="">선택하세요</option>
+                                            <option value="1">국민은행 - 운영자금</option>
+                                            <option value="2">신한은행 - 급여계좌</option>
+                                            <option value="3">우리은행 - 프로젝트A</option>
+                                            <option value="4">하나은행 - 세금계좌</option>
+                                            <option value="5">기업은행 - 비상자금</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="cardCompany" class="form-label">카드사</label>
+                                        <select class="form-select" id="cardCompany" required>
+                                            <option value="">선택하세요</option>
+                                            <option value="삼성카드">삼성카드</option>
+                                            <option value="신한카드">신한카드</option>
+                                            <option value="KB국민카드">KB국민카드</option>
+                                            <option value="현대카드">현대카드</option>
+                                            <option value="롯데카드">롯데카드</option>
+                                            <option value="BC카드">BC카드</option>
+                                            <option value="하나카드">하나카드</option>
+                                            <option value="NH농협카드">NH농협카드</option>
+                                            <option value="우리카드">우리카드</option>
+                                            <option value="기타">기타</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="cardNumber" class="form-label">카드번호</label>
+                                        <input type="text" class="form-control" id="cardNumber" placeholder="0000-0000-0000-0000" required>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="cardDepartment" class="form-label">사용부서</label>
+                                        <select class="form-select" id="cardDepartment" required>
+                                            <option value="">선택하세요</option>
+                                            <option value="경영지원팀">경영지원팀</option>
+                                            <option value="개발팀">개발팀</option>
+                                            <option value="영업팀">영업팀</option>
+                                            <option value="마케팅팀">마케팅팀</option>
+                                            <option value="인사팀">인사팀</option>
+                                            <option value="기타">기타</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="cardUser" class="form-label">사용자</label>
+                                        <input type="text" class="form-control" id="cardUser" placeholder="사용자명 입력" required>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="cardLimit" class="form-label">한도</label>
+                                        <div class="input-group">
+                                            <input type="number" class="form-control" id="cardLimit" placeholder="0">
+                                            <span class="input-group-text">원</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="cardExpiry" class="form-label">유효기간</label>
+                                        <input type="text" class="form-control" id="cardExpiry" placeholder="MM/YY">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="cardMemo" class="form-label">메모</label>
+                                        <input type="text" class="form-control" id="cardMemo" placeholder="메모 입력">
+                                    </div>
+                                    <div class="col-12 text-end">
+                                        <button type="button" class="btn btn-secondary me-2" id="resetCardBtn">초기화</button>
+                                        <button type="button" class="btn btn-primary" id="saveCardBtn">저장</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <!-- 카드 목록 -->
+                        <div class="card mb-4">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h5 class="mb-0"><i class="fas fa-list me-2"></i>카드 목록</h5>
+                                <div>
+                                    <button type="button" class="btn btn-success" id="exportCardExcelBtn">
+                                        <i class="fas fa-file-excel me-1"></i>엑셀 다운로드
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-hover" id="cardTable">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th>카드 분류</th>
+                                                <th>카드사</th>
+                                                <th>카드번호</th>
+                                                <th>연결 통장</th>
+                                                <th>사용부서</th>
+                                                <th>사용자</th>
+                                                <th>한도</th>
+                                                <th>유효기간</th>
+                                                <th>관리</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>법인 신용카드</td>
+                                                <td>신한카드</td>
+                                                <td>1234-5678-9012-3456</td>
+                                                <td>국민은행 - 운영자금</td>
+                                                <td>경영지원팀</td>
+                                                <td>김지원</td>
+                                                <td class="text-end">10,000,000원</td>
+                                                <td>12/27</td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-outline-secondary edit-card-btn" data-id="1">
+                                                        <i class="fas fa-edit"></i>
+                                                    </button>
+                                                    <button class="btn btn-sm btn-outline-danger delete-card-btn" data-id="1">
+                                                        <i class="fas fa-trash-alt"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>법인 신용카드</td>
+                                                <td>KB국민카드</td>
+                                                <td>2345-6789-0123-4567</td>
+                                                <td>국민은행 - 운영자금</td>
+                                                <td>영업팀</td>
+                                                <td>이영업</td>
+                                                <td class="text-end">5,000,000원</td>
+                                                <td>06/26</td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-outline-secondary edit-card-btn" data-id="2">
+                                                        <i class="fas fa-edit"></i>
+                                                    </button>
+                                                    <button class="btn btn-sm btn-outline-danger delete-card-btn" data-id="2">
+                                                        <i class="fas fa-trash-alt"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>법인 체크카드</td>
+                                                <td>신한카드</td>
+                                                <td>3456-7890-1234-5678</td>
+                                                <td>신한은행 - 급여계좌</td>
+                                                <td>개발팀</td>
+                                                <td>박개발</td>
+                                                <td class="text-end">계좌잔액</td>
+                                                <td>09/28</td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-outline-secondary edit-card-btn" data-id="3">
+                                                        <i class="fas fa-edit"></i>
+                                                    </button>
+                                                    <button class="btn btn-sm btn-outline-danger delete-card-btn" data-id="3">
+                                                        <i class="fas fa-trash-alt"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>법인 신용카드</td>
+                                                <td>현대카드</td>
+                                                <td>4567-8901-2345-6789</td>
+                                                <td>우리은행 - 프로젝트A</td>
+                                                <td>마케팅팀</td>
+                                                <td>최마케팅</td>
+                                                <td class="text-end">3,000,000원</td>
+                                                <td>03/27</td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-outline-secondary edit-card-btn" data-id="4">
+                                                        <i class="fas fa-edit"></i>
+                                                    </button>
+                                                    <button class="btn btn-sm btn-outline-danger delete-card-btn" data-id="4">
+                                                        <i class="fas fa-trash-alt"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 거래처 검색 모달 -->
+    <div class="modal fade" id="clientSearchModal" tabindex="-1" aria-labelledby="clientSearchModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="clientSearchModalLabel">거래처 검색</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row mb-3">
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" id="clientSearchInput" placeholder="거래처명 입력">
+                        </div>
+                        <div class="col-md-4">
+                            <button type="button" class="btn btn-primary w-100" id="searchClientBtn">
+                                <i class="fas fa-search me-1"></i>검색
+                            </button>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover" id="clientSearchTable">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>거래처코드</th>
+                                    <th>거래처명</th>
+                                    <th>사업자번호</th>
+                                    <th>대표자</th>
+                                    <th>연락처</th>
+                                    <th>선택</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>C001</td>
+                                    <td>(주)고객사A</td>
+                                    <td>123-45-67890</td>
+                                    <td>김대표</td>
+                                    <td>02-1234-5678</td>
+                                    <td>
+                                        <button type="button" class="btn btn-sm btn-primary select-client-btn" data-id="C001" data-name="(주)고객사A">
+                                            선택
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>C002</td>
+                                    <td>(주)고객사B</td>
+                                    <td>234-56-78901</td>
+                                    <td>이대표</td>
+                                    <td>02-2345-6789</td>
+                                    <td>
+                                        <button type="button" class="btn btn-sm btn-primary select-client-btn" data-id="C002" data-name="(주)고객사B">
+                                            선택
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>C003</td>
+                                    <td>(주)건물관리</td>
+                                    <td>345-67-89012</td>
+                                    <td>박대표</td>
+                                    <td>02-3456-7890</td>
+                                    <td>
+                                        <button type="button" class="btn btn-sm btn-primary select-client-btn" data-id="C003" data-name="(주)건물관리">
+                                            선택
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>C004</td>
+                                    <td>(주)장비공급사</td>
+                                    <td>456-78-90123</td>
+                                    <td>최대표</td>
+                                    <td>02-4567-8901</td>
+                                    <td>
+                                        <button type="button" class="btn btn-sm btn-primary select-client-btn" data-id="C004" data-name="(주)장비공급사">
+                                            선택
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 월 마감 상세 모달 -->
+    <div class="modal fade" id="closingDetailModal" tabindex="-1" aria-labelledby="closingDetailModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="closingDetailModalLabel">월 마감 상세 정보</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6 class="fw-bold">지출 내역</h6>
+                            <table class="table table-bordered">
+                                <tbody>
+                                    <tr>
+                                        <th>급여</th>
+                                        <td id="detailSalaryExpense">35,000,000원</td>
+                                    </tr>
+                                    <tr>
+                                        <th>4대보험</th>
+                                        <td id="detailInsuranceExpense">7,000,000원</td>
+                                    </tr>
+                                    <tr>
+                                        <th>퇴직연금</th>
+                                        <td id="detailPensionExpense">3,000,000원</td>
+                                    </tr>
+                                    <tr>
+                                        <th>금융 비용</th>
+                                        <td id="detailFinancialExpense">2,000,000원</td>
+                                    </tr>
+                                    <tr>
+                                        <th>경비</th>
+                                        <td id="detailGeneralExpense">15,000,000원</td>
+                                    </tr>
+                                    <tr>
+                                        <th>자산구매</th>
+                                        <td id="detailAssetPurchase">50,000,000원</td>
+                                    </tr>
+                                    <tr>
+                                        <th>기타</th>
+                                        <td id="detailOtherExpense">8,000,000원</td>
+                                    </tr>
+                                    <tr class="table-secondary">
+                                        <th>총 지출</th>
+                                        <td id="detailTotalExpense">120,000,000원</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-md-6">
+                            <h6 class="fw-bold">수입 내역</h6>
+                            <table class="table table-bordered">
+                                <tbody>
+                                    <tr>
+                                        <th>매출</th>
+                                        <td id="detailSalesIncome">150,000,000원</td>
+                                    </tr>
+                                    <tr>
+                                        <th>매입</th>
+                                        <td id="detailPurchasePayment">-30,000,000원</td>
+                                    </tr>
+                                    <tr>
+                                        <th>지급</th>
+                                        <td id="detailPaidAmount">25,000,000원</td>
+                                    </tr>
+                                    <tr>
+                                        <th>미지급</th>
+                                        <td id="detailUnpaidAmount">5,000,000원</td>
+                                    </tr>
+                                    <tr class="table-secondary">
+                                        <th>총 수입</th>
+                                        <td id="detailTotalIncome">150,000,000원</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="mt-3">
+                                <h6 class="fw-bold">비고</h6>
+                                <p id="detailClosingNote">9월 마감 내역입니다. A프로젝트 매출이 반영되었습니다.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-12">
+                            <table class="table table-bordered">
+                                <tbody>
+                                    <tr class="table-primary">
+                                        <th>순이익</th>
+                                        <td class="text-end fw-bold" id="detailNetProfit">30,000,000원</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    <button type="button" class="btn btn-success" id="exportClosingDetailExcelBtn">
+                        <i class="fas fa-file-excel me-1"></i>엑셀 다운로드
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Flatpickr -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ko.js"></script>
+    <!-- FullCalendar -->
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/locales/ko.js"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- SheetJS (Excel Export) -->
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+    <!-- Custom JS -->
+    <script src="../js/fund-management.js"></script>
+</body>
+</html>

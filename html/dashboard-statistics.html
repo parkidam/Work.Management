@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>유지보수 관리 대시보드</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        .card {
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .status-card {
+            text-align: center;
+            padding: 15px;
+        }
+        .status-number {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        .status-label {
+            font-size: 1rem;
+            color: #6c757d;
+        }
+        .chart-container {
+            height: 300px;
+        }
+        .ticket-status-1 { background-color: #f8d7da; } /* 티켓접수 */
+        .ticket-status-2 { background-color: #fff3cd; } /* 진행 */
+        .ticket-status-3 { background-color: #d1e7dd; } /* 완료 */
+        .priority-high { color: #dc3545; }
+        .priority-medium { color: #fd7e14; }
+        .priority-low { color: #0d6efd; }
+        .table-responsive {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <!-- 사이드바 -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3>업무관리시스템</h3>
+            </div>
+
+            <ul class="list-unstyled components">
+                <!-- 대시보드 메뉴 -->
+                <li>
+                    <a href="#dashboardSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>대시보드</span>
+                    </a>
+                    <ul class="collapse list-unstyled" id="dashboardSubmenu">
+                        <li>
+                            <a href="dashboard-summary.html" class="submenu-item">
+                                <i class="fas fa-chart-pie fa-sm"></i>
+                                <span>사업계획 진행 관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="dashboard-analytics.html" class="submenu-item">
+                                <i class="fas fa-list-alt"></i>
+                                <span>영업 진행관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="dashboard-statistics.html" class="submenu-item">
+                                <i class="fas fa-chart-line fa-sm"></i>
+                                <span>유지보수 관리</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <!-- 인사관리 메뉴 -->
+                <li>
+                    <a href="#hrSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-users"></i>
+                        <span>인사관리</span>
+                    </a>
+                    <ul class="collapse list-unstyled" id="hrSubmenu">
+                        <li>
+                            <a href="employee-management.html" class="submenu-item">
+                                <i class="fas fa-user fa-sm"></i>
+                                <span>사원관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="salary-management.html" class="submenu-item">
+                                <i class="fas fa-money-bill-alt fa-sm"></i>
+                                <span>급여관리</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <!-- 회계관리 메뉴 -->
+                <li>
+                    <a href="#accountingSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-calculator"></i>
+                        <span>회계관리</span>
+                    </a>
+                    <ul class="collapse list-unstyled" id="accountingSubmenu">
+                        <li>
+                            <a href="slip-management.html" class="submenu-item">
+                                <i class="fas fa-file-invoice fa-sm"></i>
+                                <span>전표관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="sales-management.html" class="submenu-item">
+                                <i class="fas fa-chart-line fa-sm"></i>
+                                <span>매출관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="purchase-management.html" class="submenu-item">
+                                <i class="fas fa-shopping-cart fa-sm"></i>
+                                <span>매입관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="expense-management.html" class="submenu-item">
+                                <i class="fas fa-receipt fa-sm"></i>
+                                <span>경비관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="fund-management.html" class="submenu-item">
+                                <i class="fas fa-wallet fa-sm"></i>
+                                <span>자금관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="document-management.html" class="submenu-item">
+                                <i class="fas fa-file-alt fa-sm"></i>
+                                <span>회사 문서관리</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <!-- 영업관리 메뉴 -->
+                <li>
+                    <a href="#salesSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-chart-line"></i>
+                        <span>영업관리</span>
+                    </a>
+                    <ul class="collapse list-unstyled" id="salesSubmenu">
+                        <li>
+                            <a href="sales-opportunity.html" class="submenu-item">
+                                <i class="fas fa-handshake fa-sm"></i>
+                                <span>영업기회</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="quotation.html" class="submenu-item">
+                                <i class="fas fa-file-invoice-dollar fa-sm"></i>
+                                <span>견적서</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="client-management.html" class="submenu-item">
+                                <i class="fas fa-building fa-sm"></i>
+                                <span>거래처관리</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <!-- 계약관리 메뉴 -->
+                <li>
+                    <a href="#contractSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-file-contract"></i>
+                        <span>계약관리</span>
+                    </a>
+                    <ul class="collapse list-unstyled" id="contractSubmenu">
+                        <li>
+                            <a href="contract-management.html" class="submenu-item">
+                                <i class="fas fa-file-signature fa-sm"></i>
+                                <span>계약관리</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <!-- 유지보수관리 메뉴 -->
+                <li>
+                    <a href="#maintenanceSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-tools"></i>
+                        <span>유지보수관리</span>
+                    </a>
+                    <ul class="collapse list-unstyled" id="maintenanceSubmenu">
+                        <li>
+                            <a href="issue-management.html" class="submenu-item">
+                                <i class="fas fa-exclamation-triangle fa-sm"></i>
+                                <span>장애관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="maintenance-system.html" class="submenu-item">
+                                <i class="fas fa-server fa-sm"></i>
+                                <span>유지보수 대상 시스템 관리</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <!-- 사업계획관리 메뉴 -->
+                <li>
+                    <a href="#businessPlanSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-project-diagram"></i>
+                        <span>사업계획관리</span>
+                    </a>
+                    <ul class="collapse list-unstyled" id="businessPlanSubmenu">
+                        <li>
+                            <a href="business-plan.html" class="submenu-item">
+                                <i class="fas fa-tasks fa-sm"></i>
+                                <span>사업계획</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <!-- 시스템관리 메뉴 -->
+                <li>
+                    <a href="#systemSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-cogs"></i>
+                        <span>시스템관리</span>
+                    </a>
+                    <ul class="collapse list-unstyled" id="systemSubmenu">
+                        <li>
+                            <a href="user-management.html" class="submenu-item">
+                                <i class="fas fa-user-cog fa-sm"></i>
+                                <span>사용자관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="department-management.html" class="submenu-item">
+                                <i class="fas fa-sitemap fa-sm"></i>
+                                <span>부서관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="account-category.html" class="submenu-item">
+                                <i class="fas fa-list-ol fa-sm"></i>
+                                <span>계정과목관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="code-management.html" class="submenu-item">
+                                <i class="fas fa-code fa-sm"></i>
+                                <span>코드관리</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- 메인 컨텐츠 -->
+        <div id="content">
+            <!-- 상단바 -->
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+
+                    <div class="ms-auto d-flex align-items-center">
+                        <div class="notification-icon me-4">
+                            <i class="fas fa-bell"></i>
+                            <span class="badge bg-danger">3</span>
+                        </div>
+                        <div class="user-profile dropdown">
+                            <a href="#" class="dropdown-toggle d-flex align-items-center" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <div class="user-image-container me-2">
+                                    <img src="../images/default-user.svg" alt="" class="rounded-circle" style="width: 40px; height: 40px;">
+                                </div>
+                                <span class="user-name"></span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                                <li><a class="dropdown-item" href="#">프로필</a></li>
+                                <li><a class="dropdown-item" href="#">설정</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#" id="logout-btn">로그아웃</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- 대시보드 컨텐츠 -->
+            <div class="container-fluid py-4">
+                <h1 class="mb-4">유지보수 관리 대시보드</h1>
+                
+                <!-- 상태별 통계 카드 -->
+                <div class="row mb-4">
+                    <div class="col-md-4">
+                        <div class="card status-card">
+                            <div class="card-body">
+                                <div class="status-number" id="ticket-count">0</div>
+                                <div class="status-label">티켓접수</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card status-card">
+                            <div class="card-body">
+                                <div class="status-number" id="progress-count">0</div>
+                                <div class="status-label">진행</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card status-card">
+                            <div class="card-body">
+                                <div class="status-number" id="completed-count">0</div>
+                                <div class="status-label">완료</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 차트 및 통계 -->
+                <div class="row">
+                    <!-- 장애 유형별 통계 -->
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>장애 유형별 통계</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="chart-container">
+                                    <canvas id="issueTypeChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 월별 장애 발생 추이 -->
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>월별 장애 발생 추이</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="chart-container">
+                                    <canvas id="monthlyIssueChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row mt-4">
+                    <!-- 우선순위별 장애 현황 -->
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>우선순위별 장애 현황</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="chart-container">
+                                    <canvas id="priorityChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 평균 처리 시간 -->
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>평균 처리 시간 (시간)</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="chart-container">
+                                    <canvas id="resolutionTimeChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 최근 장애 티켓 -->
+                <div class="row mt-4">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h5>최근 장애 티켓</h5>
+                                <button class="btn btn-primary btn-sm" onclick="location.href='issue-management.html'">전체보기</button>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>관리번호</th>
+                                                <th>등록일</th>
+                                                <th>장애분류</th>
+                                                <th>장애명</th>
+                                                <th>거래처</th>
+                                                <th>우선순위</th>
+                                                <th>상태</th>
+                                                <th>조치담당자</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="recent-issues">
+                                            <!-- 최근 장애 티켓 데이터가 여기에 동적으로 로드됩니다 -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 유지보수 대상 시스템 현황 -->
+                <div class="row mt-4">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h5>유지보수 대상 시스템 현황</h5>
+                                <button class="btn btn-primary btn-sm" onclick="location.href='maintenance-system.html'">전체보기</button>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>관리번호</th>
+                                                <th>시스템명</th>
+                                                <th>거래처</th>
+                                                <th>계약명</th>
+                                                <th>계약일</th>
+                                                <th>하자보수 종료일</th>
+                                                <th>상태</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="maintenance-systems">
+                                            <!-- 유지보수 대상 시스템 데이터가 여기에 동적으로 로드됩니다 -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 하자보수 만료 예정 시스템 -->
+                <div class="row mt-4">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>하자보수 만료 예정 시스템 (30일 이내)</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>관리번호</th>
+                                                <th>시스템명</th>
+                                                <th>거래처</th>
+                                                <th>하자보수 종료일</th>
+                                                <th>남은 일수</th>
+                                                <th>담당자</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="expiring-systems">
+                                            <!-- 하자보수 만료 예정 시스템 데이터가 여기에 동적으로 로드됩니다 -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <!-- Custom JS -->
+    <script src="../js/script.js"></script>
+    
+    <script>
+        // 페이지 로드 시 데이터 초기화
+        document.addEventListener('DOMContentLoaded', function() {
+            // 상태별 카운트 데이터 (예시)
+            document.getElementById('ticket-count').textContent = '12';
+            document.getElementById('progress-count').textContent = '8';
+            document.getElementById('completed-count').textContent = '45';
+            
+            // 최근 장애 티켓 데이터 로드 (예시)
+            const recentIssues = [
+                { id: 'TK-2023-0015', date: '2023-10-25', type: 'S/W', title: '로그인 오류', client: '한국전자', priority: '높음', status: '티켓접수', assignee: '김철수' },
+                { id: 'TK-2023-0014', date: '2023-10-24', type: 'H/W', title: '서버 다운', client: '대한시스템', priority: '높음', status: '진행', assignee: '박영희' },
+                { id: 'TK-2023-0013', date: '2023-10-23', type: 'S/W', title: '데이터 조회 오류', client: '서울기업', priority: '중간', status: '진행', assignee: '이민수' },
+                { id: 'TK-2023-0012', date: '2023-10-22', type: '기타', title: '네트워크 불안정', client: '부산전자', priority: '낮음', status: '완료', assignee: '정지원' },
+                { id: 'TK-2023-0011', date: '2023-10-21', type: 'S/W', title: '보고서 출력 오류', client: '경기시스템', priority: '중간', status: '완료', assignee: '최영호' }
+            ];
+            
+            const issuesTable = document.getElementById('recent-issues');
+            recentIssues.forEach(issue => {
+                const row = document.createElement('tr');
+                
+                // 상태에 따른 클래스 설정
+                let statusClass = '';
+                if (issue.status === '티켓접수') statusClass = 'ticket-status-1';
+                else if (issue.status === '진행') statusClass = 'ticket-status-2';
+                else if (issue.status === '완료') statusClass = 'ticket-status-3';
+                
+                // 우선순위에 따른 클래스 설정
+                let priorityClass = '';
+                if (issue.priority === '높음') priorityClass = 'priority-high';
+                else if (issue.priority === '중간') priorityClass = 'priority-medium';
+                else if (issue.priority === '낮음') priorityClass = 'priority-low';
+                
+                row.innerHTML = `
+                    <td>${issue.id}</td>
+                    <td>${issue.date}</td>
+                    <td>${issue.type}</td>
+                    <td>${issue.title}</td>
+                    <td>${issue.client}</td>
+                    <td class="${priorityClass}">${issue.priority}</td>
+                    <td><span class="badge ${statusClass}">${issue.status}</span></td>
+                    <td>${issue.assignee}</td>
+                `;
+                issuesTable.appendChild(row);
+            });
+            
+            // 유지보수 대상 시스템 데이터 로드 (예시)
+            const maintenanceSystems = [
+                { id: 'MS-2023-001', name: '인사관리시스템', client: '한국전자', contract: '인사시스템 유지보수', date: '2023-01-15', expiry: '2024-01-14', status: '정상' },
+                { id: 'MS-2023-002', name: '회계관리시스템', client: '대한시스템', contract: '회계시스템 유지보수', date: '2023-03-10', expiry: '2024-03-09', status: '정상' },
+                { id: 'MS-2023-003', name: '고객관리시스템', client: '서울기업', contract: 'CRM 유지보수', date: '2023-05-20', expiry: '2023-11-15', status: '만료임박' },
+                { id: 'MS-2023-004', name: '물류관리시스템', client: '부산전자', contract: '물류시스템 유지보수', date: '2023-07-05', expiry: '2024-07-04', status: '정상' },
+                { id: 'MS-2023-005', name: '보안관리시스템', client: '경기시스템', contract: '보안시스템 유지보수', date: '2023-09-01', expiry: '2023-11-30', status: '만료임박' }
+            ];
+            
+            const systemsTable = document.getElementById('maintenance-systems');
+            maintenanceSystems.forEach(system => {
+                const row = document.createElement('tr');
+                
+                // 상태에 따른 클래스 설정
+                let statusClass = system.status === '만료임박' ? 'text-danger' : '';
+                
+                row.innerHTML = `
+                    <td>${system.id}</td>
+                    <td>${system.name}</td>
+                    <td>${system.client}</td>
+                    <td>${system.contract}</td>
+                    <td>${system.date}</td>
+                    <td>${system.expiry}</td>
+                    <td class="${statusClass}">${system.status}</td>
+                `;
+                systemsTable.appendChild(row);
+            });
+            
+            // 하자보수 만료 예정 시스템 데이터 로드 (예시)
+            const expiringSystems = [
+                { id: 'MS-2023-003', name: '고객관리시스템', client: '서울기업', expiry: '2023-11-15', daysLeft: 20, manager: '이민수' },
+                { id: 'MS-2023-005', name: '보안관리시스템', client: '경기시스템', expiry: '2023-11-30', daysLeft: 35, manager: '최영호' }
+            ];
+            
+            const expiringTable = document.getElementById('expiring-systems');
+            expiringSystems.forEach(system => {
+                const row = document.createElement('tr');
+                
+                // 남은 일수에 따른 클래스 설정
+                let daysLeftClass = system.daysLeft <= 7 ? 'text-danger' : 'text-warning';
+                
+                row.innerHTML = `
+                    <td>${system.id}</td>
+                    <td>${system.name}</td>
+                    <td>${system.client}</td>
+                    <td>${system.expiry}</td>
+                    <td class="${daysLeftClass}">${system.daysLeft}일</td>
+                    <td>${system.manager}</td>
+                `;
+                expiringTable.appendChild(row);
+            });
+            
+            // 차트 데이터 초기화
+            initCharts();
+        });
+        
+        // 차트 초기화 함수
+        function initCharts() {
+            // 장애 유형별 통계 차트
+            const issueTypeCtx = document.getElementById('issueTypeChart').getContext('2d');
+            const issueTypeChart = new Chart(issueTypeCtx, {
+                type: 'pie',
+                data: {
+                    labels: ['H/W', 'S/W', '기타'],
+                    datasets: [{
+                        data: [15, 35, 10],
+                        backgroundColor: ['#ff6384', '#36a2eb', '#ffce56'],
+                        hoverBackgroundColor: ['#ff4c75', '#2196f3', '#ffb74d']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false
+                }
+            });
+            
+            // 월별 장애 발생 추이 차트
+            const monthlyIssueCtx = document.getElementById('monthlyIssueChart').getContext('2d');
+            const monthlyIssueChart = new Chart(monthlyIssueCtx, {
+                type: 'line',
+                data: {
+                    labels: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월'],
+                    datasets: [{
+                        label: '장애 건수',
+                        data: [12, 15, 10, 8, 14, 18, 16, 12, 10, 15],
+                        borderColor: '#4caf50',
+                        backgroundColor: 'rgba(76, 175, 80, 0.1)',
+                        tension: 0.4,
+                        fill: true
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                precision: 0
+                            }
+                        }
+                    }
+                }
+            });
+            
+            // 우선순위별 장애 현황 차트
+            const priorityCtx = document.getElementById('priorityChart').getContext('2d');
+            const priorityChart = new Chart(priorityCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['높음', '중간', '낮음'],
+                    datasets: [{
+                        label: '장애 건수',
+                        data: [8, 15, 12],
+                        backgroundColor: ['#dc3545', '#fd7e14', '#0d6efd']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                precision: 0
+                            }
+                        }
+                    }
+                }
+            });
+            
+            // 평균 처리 시간 차트
+            const resolutionTimeCtx = document.getElementById('resolutionTimeChart').getContext('2d');
+            const resolutionTimeChart = new Chart(resolutionTimeCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['높음', '중간', '낮음'],
+                    datasets: [{
+                        label: '평균 처리 시간 (시간)',
+                        data: [4, 12, 24],
+                        backgroundColor: ['#dc3545', '#fd7e14', '#0d6efd']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>

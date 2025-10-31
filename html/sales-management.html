@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>매출관리 - 업무관리시스템</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Flatpickr -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <div class="wrapper">
+        <!-- 사이드바 -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <a href="../index.html" style="text-decoration: none; color: inherit;">
+                    <h3>업무관리시스템</h3>
+                </a>
+            </div>
+
+            <ul class="list-unstyled components">
+                <!-- 대시보드 메뉴 -->
+                <li>
+                    <a href="#dashboardSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>대시보드</span>
+                    </a>
+                    <ul class="collapse list-unstyled" id="dashboardSubmenu">
+                        <li>
+                            <a href="dashboard-summary.html" class="submenu-item">
+                                <i class="fas fa-chart-pie fa-sm"></i>
+                                <span>사업계획 진행 관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="dashboard-analytics.html" class="submenu-item">
+                                <i class="fas fa-list-alt"></i>
+                                <span>영업 진행관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="dashboard-statistics.html" class="submenu-item">
+                                <i class="fas fa-chart-line fa-sm"></i>
+                                <span>유지보수 관리</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <!-- 인사관리 메뉴 -->
+                <li>
+                    <a href="#hrSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-users"></i>
+                        <span>인사관리</span>
+                    </a>
+                    <ul class="collapse list-unstyled" id="hrSubmenu">
+                        <li>
+                            <a href="employee-management.html" class="submenu-item">
+                                <i class="fas fa-user fa-sm"></i>
+                                <span>사원관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="salary-management.html" class="submenu-item">
+                                <i class="fas fa-money-bill-alt fa-sm"></i>
+                                <span>급여관리</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <!-- 회계관리 메뉴 -->
+                <li class="active">
+                    <a href="#accountingSubmenu" data-bs-toggle="collapse" aria-expanded="true" class="dropdown-toggle">
+                        <i class="fas fa-calculator"></i>
+                        <span>회계관리</span>
+                    </a>
+                    <ul class="collapse show list-unstyled" id="accountingSubmenu">
+                        <li>
+                            <a href="slip-management.html" class="submenu-item">
+                                <i class="fas fa-file-invoice fa-sm"></i>
+                                <span>전표관리</span>
+                            </a>
+                        </li>
+                        <li class="active">
+                            <a href="sales-management.html" class="submenu-item">
+                                <i class="fas fa-chart-line fa-sm"></i>
+                                <span>매출관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="purchase-management.html" class="submenu-item">
+                                <i class="fas fa-shopping-cart fa-sm"></i>
+                                <span>매입관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="expense-management.html" class="submenu-item">
+                                <i class="fas fa-receipt fa-sm"></i>
+                                <span>경비관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="fund-management.html" class="submenu-item">
+                                <i class="fas fa-wallet fa-sm"></i>
+                                <span>자금관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="document-management.html" class="submenu-item">
+                                <i class="fas fa-file-alt fa-sm"></i>
+                                <span>회사 문서관리</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <!-- 영업관리 메뉴 -->
+                <li>
+                    <a href="#salesSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-chart-line"></i>
+                        <span>영업관리</span>
+                    </a>
+                    <ul class="collapse list-unstyled" id="salesSubmenu">
+                        <li>
+                            <a href="sales-opportunity.html" class="submenu-item">
+                                <i class="fas fa-handshake fa-sm"></i>
+                                <span>영업기회</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="quotation.html" class="submenu-item">
+                                <i class="fas fa-file-invoice-dollar fa-sm"></i>
+                                <span>견적서</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="client-management.html" class="submenu-item">
+                                <i class="fas fa-building fa-sm"></i>
+                                <span>거래처관리</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <!-- 계약관리 메뉴 -->
+                <li>
+                    <a href="#contractSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-file-contract"></i>
+                        <span>계약관리</span>
+                    </a>
+                    <ul class="collapse list-unstyled" id="contractSubmenu">
+                        <li>
+                            <a href="contract-management.html" class="submenu-item">
+                                <i class="fas fa-file-signature fa-sm"></i>
+                                <span>계약관리</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <!-- 유지보수관리 메뉴 -->
+                <li>
+                    <a href="#maintenanceSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-tools"></i>
+                        <span>유지보수관리</span>
+                    </a>
+                    <ul class="collapse list-unstyled" id="maintenanceSubmenu">
+                        <li>
+                            <a href="issue-management.html" class="submenu-item">
+                                <i class="fas fa-exclamation-triangle fa-sm"></i>
+                                <span>장애관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="maintenance-system.html" class="submenu-item">
+                                <i class="fas fa-server fa-sm"></i>
+                                <span>유지보수 대상 시스템 관리</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <!-- 사업계획관리 메뉴 -->
+                <li>
+                    <a href="#businessPlanSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-project-diagram"></i>
+                        <span>사업계획관리</span>
+                    </a>
+                    <ul class="collapse list-unstyled" id="businessPlanSubmenu">
+                        <li>
+                            <a href="business-plan.html" class="submenu-item">
+                                <i class="fas fa-tasks fa-sm"></i>
+                                <span>사업계획</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <!-- 시스템관리 메뉴 -->
+                <li>
+                    <a href="#systemSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-cogs"></i>
+                        <span>시스템관리</span>
+                    </a>
+                    <ul class="collapse list-unstyled" id="systemSubmenu">
+                        <li>
+                            <a href="user-management.html" class="submenu-item">
+                                <i class="fas fa-user-cog fa-sm"></i>
+                                <span>사용자관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="department-management.html" class="submenu-item">
+                                <i class="fas fa-sitemap fa-sm"></i>
+                                <span>부서관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="account-category.html" class="submenu-item">
+                                <i class="fas fa-list-ol fa-sm"></i>
+                                <span>계정과목관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="code-management.html" class="submenu-item">
+                                <i class="fas fa-code fa-sm"></i>
+                                <span>코드관리</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- 메인 컨텐츠 -->
+        <div id="content">
+            <!-- 상단바 -->
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <i class="fas fa-align-left"></i>
+                        <span>메뉴</span>
+                    </button>
+
+                    <div class="ms-auto d-flex align-items-center">
+                        <div class="notification-icon me-4">
+                            <i class="fas fa-bell"></i>
+                            <span class="badge bg-danger">3</span>
+                        </div>
+                        <div class="user-profile dropdown">
+                            <a href="#" class="dropdown-toggle d-flex align-items-center" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <div class="user-image-container me-2">
+                                    <img src="../images/default-user.svg" alt="" class="rounded-circle" style="width: 40px; height: 40px;">
+                                </div>
+                                <span class="user-name"></span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                                <li><a class="dropdown-item" href="#">프로필</a></li>
+                                <li><a class="dropdown-item" href="#">설정</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#" id="logout-btn">로그아웃</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- 매출관리 컨텐츠 -->
+            <div class="container-fluid">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div>
+                        <h1 class="mt-4">매출관리</h1>
+                        <p class="text-muted">계약 및 매출 정보를 관리합니다.</p>
+                    </div>
+                    <div class="current-date">
+                        <p id="currentDate">2025년 10월 27일 월요일</p>
+                    </div>
+                </div>
+
+                <!-- 검색 영역 -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5 class="mb-0"><i class="fas fa-search me-2"></i>검색 조건</h5>
+                    </div>
+                    <div class="card-body">
+                        <form id="searchForm" class="row g-3">
+                            <div class="col-md-3">
+                                <label for="contractNumber" class="form-label">계약번호</label>
+                                <input type="text" class="form-control" id="contractNumber" placeholder="계약번호 입력">
+                            </div>
+                            <div class="col-md-3">
+                                <label for="clientName" class="form-label">거래처명</label>
+                                <input type="text" class="form-control" id="clientName" placeholder="거래처명 입력">
+                            </div>
+                            <div class="col-md-3">
+                                <label for="contractName" class="form-label">계약명</label>
+                                <input type="text" class="form-control" id="contractName" placeholder="계약명 입력">
+                            </div>
+                            <div class="col-md-3">
+                                <label for="department" class="form-label">담당부서</label>
+                                <select class="form-select" id="department">
+                                    <option value="">전체</option>
+                                    <option value="영업1팀">영업1팀</option>
+                                    <option value="영업2팀">영업2팀</option>
+                                    <option value="영업3팀">영업3팀</option>
+                                    <option value="마케팅팀">마케팅팀</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="contractDateStart" class="form-label">계약일자 (시작)</label>
+                                <input type="text" class="form-control datepicker" id="contractDateStart" placeholder="YYYY-MM-DD">
+                            </div>
+                            <div class="col-md-3">
+                                <label for="contractDateEnd" class="form-label">계약일자 (종료)</label>
+                                <input type="text" class="form-control datepicker" id="contractDateEnd" placeholder="YYYY-MM-DD">
+                            </div>
+                            <div class="col-md-3">
+                                <label for="collectionStatus" class="form-label">수금상태</label>
+                                <select class="form-select" id="collectionStatus">
+                                    <option value="">전체</option>
+                                    <option value="완료">수금완료</option>
+                                    <option value="미수금">미수금</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="manager" class="form-label">담당자</label>
+                                <input type="text" class="form-control" id="manager" placeholder="담당자 입력">
+                            </div>
+                            <div class="col-12 text-end">
+                                <button type="button" class="btn btn-secondary me-2" id="resetBtn">
+                                    <i class="fas fa-redo me-1"></i>초기화
+                                </button>
+                                <button type="button" class="btn btn-primary" id="searchBtn">
+                                    <i class="fas fa-search me-1"></i>검색
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- 매출 목록 -->
+                <div class="card mb-4">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0"><i class="fas fa-table me-2"></i>매출 목록</h5>
+                        <div>
+                            <button type="button" class="btn btn-success me-2" id="exportExcelBtn">
+                                <i class="fas fa-file-excel me-1"></i>엑셀 다운로드
+                            </button>
+                            <button type="button" class="btn btn-primary" id="addSalesBtn" data-bs-toggle="modal" data-bs-target="#salesModal">
+                                <i class="fas fa-plus-circle me-1"></i>매출 등록
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover" id="salesTable">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>계약번호</th>
+                                        <th>거래처명</th>
+                                        <th>계약명</th>
+                                        <th>계약금액</th>
+                                        <th>계약 시작일</th>
+                                        <th>계약 완료일</th>
+                                        <th>세금계산서 발행일</th>
+                                        <th>수금일</th>
+                                        <th>담당부서</th>
+                                        <th>담당자</th>
+                                        <th>관리</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- 데이터가 여기에 동적으로 로드됨 -->
+                                </tbody>
+                            </table>
+                        </div>
+                        <nav aria-label="Page navigation">
+                            <ul class="pagination justify-content-center" id="pagination">
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">이전</a>
+                                </li>
+                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">다음</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+
+                <!-- 매출 통계 -->
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100">
+                            <div class="card-header">
+                                <h5 class="mb-0"><i class="fas fa-chart-bar me-2"></i>월별 매출 추이</h5>
+                            </div>
+                            <div class="card-body">
+                                <canvas id="monthlySalesChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100">
+                            <div class="card-header">
+                                <h5 class="mb-0"><i class="fas fa-chart-pie me-2"></i>부서별 매출 비율</h5>
+                            </div>
+                            <div class="card-body">
+                                <canvas id="departmentSalesChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 매출 등록/수정 모달 -->
+    <div class="modal fade" id="salesModal" tabindex="-1" aria-labelledby="salesModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="salesModalLabel">매출 등록</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="salesForm" class="row g-3">
+                        <input type="hidden" id="salesId">
+                        <div class="col-md-6">
+                            <label for="modalContractNumber" class="form-label">계약번호</label>
+                            <input type="text" class="form-control" id="modalContractNumber" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="modalClientName" class="form-label">거래처명</label>
+                            <input type="text" class="form-control" id="modalClientName" required>
+                        </div>
+                        <div class="col-md-12">
+                            <label for="modalContractName" class="form-label">계약명</label>
+                            <input type="text" class="form-control" id="modalContractName" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="modalContractAmount" class="form-label">계약금액</label>
+                            <div class="input-group">
+                                <input type="number" class="form-control" id="modalContractAmount" required>
+                                <span class="input-group-text">원</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="modalDepartment" class="form-label">담당부서</label>
+                            <select class="form-select" id="modalDepartment" required>
+                                <option value="">선택하세요</option>
+                                <option value="영업1팀">영업1팀</option>
+                                <option value="영업2팀">영업2팀</option>
+                                <option value="영업3팀">영업3팀</option>
+                                <option value="마케팅팀">마케팅팀</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="modalContractStartDate" class="form-label">계약 시작일</label>
+                            <input type="text" class="form-control datepicker" id="modalContractStartDate" placeholder="YYYY-MM-DD" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="modalContractEndDate" class="form-label">계약 완료일</label>
+                            <input type="text" class="form-control datepicker" id="modalContractEndDate" placeholder="YYYY-MM-DD" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="modalTaxInvoiceDate" class="form-label">세금계산서 발행일</label>
+                            <input type="text" class="form-control datepicker" id="modalTaxInvoiceDate" placeholder="YYYY-MM-DD">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="modalCollectionDate" class="form-label">수금일</label>
+                            <input type="text" class="form-control datepicker" id="modalCollectionDate" placeholder="YYYY-MM-DD">
+                            <small class="text-muted">미입력 시 미수금으로 처리됩니다.</small>
+                        </div>
+                        <div class="col-md-12">
+                            <label for="modalManager" class="form-label">담당자</label>
+                            <input type="text" class="form-control" id="modalManager" required>
+                        </div>
+                        <div class="col-md-12">
+                            <label for="modalNote" class="form-label">비고</label>
+                            <textarea class="form-control" id="modalNote" rows="3"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+                    <button type="button" class="btn btn-primary" id="saveSalesBtn">저장</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 매출 상세 모달 -->
+    <div class="modal fade" id="salesDetailModal" tabindex="-1" aria-labelledby="salesDetailModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="salesDetailModalLabel">매출 상세 정보</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <p><strong>계약번호:</strong> <span id="detailContractNumber"></span></p>
+                        </div>
+                        <div class="col-md-6">
+                            <p><strong>거래처명:</strong> <span id="detailClientName"></span></p>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-12">
+                            <p><strong>계약명:</strong> <span id="detailContractName"></span></p>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <p><strong>계약금액:</strong> <span id="detailContractAmount"></span> 원</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p><strong>담당부서:</strong> <span id="detailDepartment"></span></p>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <p><strong>계약 시작일:</strong> <span id="detailContractStartDate"></span></p>
+                        </div>
+                        <div class="col-md-6">
+                            <p><strong>계약 완료일:</strong> <span id="detailContractEndDate"></span></p>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <p><strong>세금계산서 발행일:</strong> <span id="detailTaxInvoiceDate"></span></p>
+                        </div>
+                        <div class="col-md-6">
+                            <p><strong>수금일:</strong> <span id="detailCollectionDate"></span></p>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <p><strong>담당자:</strong> <span id="detailManager"></span></p>
+                        </div>
+                        <div class="col-md-6">
+                            <p><strong>수금상태:</strong> <span id="detailCollectionStatus"></span></p>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-12">
+                            <p><strong>비고:</strong> <span id="detailNote"></span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    <button type="button" class="btn btn-primary" id="editSalesBtn">수정</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Flatpickr -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ko.js"></script>
+    <!-- XLSX -->
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+    <!-- Custom JS -->
+    <script src="../js/script.js"></script>
+    <script src="../js/sales-management.js"></script>
+</body>
+</html>

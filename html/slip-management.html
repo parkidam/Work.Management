@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>전표관리 - 업무관리시스템</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        .search-area {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+        }
+        .table th {
+            background-color: #f2f2f2;
+        }
+        .badge-income {
+            background-color: #28a745;
+        }
+        .badge-expense {
+            background-color: #dc3545;
+        }
+        .badge-transfer {
+            background-color: #17a2b8;
+        }
+        .slip-card {
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <!-- 사이드바 -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3>업무관리시스템</h3>
+            </div>
+
+            <ul class="list-unstyled components">
+                <!-- 대시보드 메뉴 -->
+                <li>
+                    <a href="#dashboardSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>대시보드</span>
+                    </a>
+                    <ul class="collapse list-unstyled" id="dashboardSubmenu">
+                        <li>
+                            <a href="dashboard-summary.html" class="submenu-item">
+                                <i class="fas fa-chart-pie fa-sm"></i>
+                                <span>사업계획 진행 관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="dashboard-analytics.html" class="submenu-item">
+                                <i class="fas fa-list-alt"></i>
+                                <span>영업 진행관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="dashboard-statistics.html" class="submenu-item">
+                                <i class="fas fa-chart-line fa-sm"></i>
+                                <span>유지보수 관리</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <!-- 인사관리 메뉴 -->
+                <li>
+                    <a href="#hrSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-users"></i>
+                        <span>인사관리</span>
+                    </a>
+                    <ul class="collapse list-unstyled" id="hrSubmenu">
+                        <li>
+                            <a href="employee-management.html" class="submenu-item">
+                                <i class="fas fa-user fa-sm"></i>
+                                <span>사원관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="salary-management.html" class="submenu-item">
+                                <i class="fas fa-money-bill-alt fa-sm"></i>
+                                <span>급여관리</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <!-- 회계관리 메뉴 -->
+                <li>
+                    <a href="#accountingSubmenu" data-bs-toggle="collapse" aria-expanded="true" class="dropdown-toggle">
+                        <i class="fas fa-calculator"></i>
+                        <span>회계관리</span>
+                    </a>
+                    <ul class="collapse show list-unstyled" id="accountingSubmenu">
+                        <li class="active">
+                            <a href="slip-management.html" class="submenu-item">
+                                <i class="fas fa-file-invoice fa-sm"></i>
+                                <span>전표관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="sales-management.html" class="submenu-item">
+                                <i class="fas fa-chart-line fa-sm"></i>
+                                <span>매출관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="purchase-management.html" class="submenu-item">
+                                <i class="fas fa-shopping-cart fa-sm"></i>
+                                <span>매입관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="expense-management.html" class="submenu-item">
+                                <i class="fas fa-receipt fa-sm"></i>
+                                <span>경비관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="fund-management.html" class="submenu-item">
+                                <i class="fas fa-wallet fa-sm"></i>
+                                <span>자금관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="document-management.html" class="submenu-item">
+                                <i class="fas fa-file-alt fa-sm"></i>
+                                <span>회사 문서관리</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <!-- 영업관리 메뉴 -->
+                <li>
+                    <a href="#salesSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-chart-line"></i>
+                        <span>영업관리</span>
+                    </a>
+                    <ul class="collapse list-unstyled" id="salesSubmenu">
+                        <li>
+                            <a href="sales-opportunity.html" class="submenu-item">
+                                <i class="fas fa-handshake fa-sm"></i>
+                                <span>영업기회</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="quotation.html" class="submenu-item">
+                                <i class="fas fa-file-invoice-dollar fa-sm"></i>
+                                <span>견적서</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="client-management.html" class="submenu-item">
+                                <i class="fas fa-building fa-sm"></i>
+                                <span>거래처관리</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <!-- 계약관리 메뉴 -->
+                <li>
+                    <a href="#contractSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-file-contract"></i>
+                        <span>계약관리</span>
+                    </a>
+                    <ul class="collapse list-unstyled" id="contractSubmenu">
+                        <li>
+                            <a href="contract-management.html" class="submenu-item">
+                                <i class="fas fa-file-signature fa-sm"></i>
+                                <span>계약관리</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <!-- 유지보수관리 메뉴 -->
+                <li>
+                    <a href="#maintenanceSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-tools"></i>
+                        <span>유지보수관리</span>
+                    </a>
+                    <ul class="collapse list-unstyled" id="maintenanceSubmenu">
+                        <li>
+                            <a href="issue-management.html" class="submenu-item">
+                                <i class="fas fa-exclamation-triangle fa-sm"></i>
+                                <span>장애관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="maintenance-system.html" class="submenu-item">
+                                <i class="fas fa-server fa-sm"></i>
+                                <span>유지보수 대상 시스템 관리</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <!-- 사업계획관리 메뉴 -->
+                <li>
+                    <a href="#businessPlanSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-project-diagram"></i>
+                        <span>사업계획관리</span>
+                    </a>
+                    <ul class="collapse list-unstyled" id="businessPlanSubmenu">
+                        <li>
+                            <a href="business-plan.html" class="submenu-item">
+                                <i class="fas fa-tasks fa-sm"></i>
+                                <span>사업계획</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <!-- 시스템관리 메뉴 -->
+                <li>
+                    <a href="#systemSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-cogs"></i>
+                        <span>시스템관리</span>
+                    </a>
+                    <ul class="collapse list-unstyled" id="systemSubmenu">
+                        <li>
+                            <a href="user-management.html" class="submenu-item">
+                                <i class="fas fa-user-cog fa-sm"></i>
+                                <span>사용자관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="department-management.html" class="submenu-item">
+                                <i class="fas fa-sitemap fa-sm"></i>
+                                <span>부서관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="account-category.html" class="submenu-item">
+                                <i class="fas fa-list-ol fa-sm"></i>
+                                <span>계정과목관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="code-management.html" class="submenu-item">
+                                <i class="fas fa-code fa-sm"></i>
+                                <span>코드관리</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- 메인 컨텐츠 -->
+        <div id="content">
+            <!-- 상단바 -->
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+                    <div class="ms-auto d-flex align-items-center">
+                        <div class="notification-icon me-4">
+                            <i class="fas fa-bell"></i>
+                            <span class="badge bg-danger">3</span>
+                        </div>
+                        <div class="user-profile dropdown">
+                            <a href="#" class="dropdown-toggle d-flex align-items-center" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <div class="user-image-container me-2">
+                                    <img src="../images/default-user.svg" alt="" class="rounded-circle" style="width: 40px; height: 40px;">
+                                </div>
+                                <span class="user-name"></span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                                <li><a class="dropdown-item" href="#">프로필</a></li>
+                                <li><a class="dropdown-item" href="#">설정</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#" id="logout-btn">로그아웃</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- 전표관리 컨텐츠 -->
+            <div class="container-fluid py-4">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h1>전표관리</h1>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#slipModal">
+                        <i class="fas fa-plus"></i> 전표 등록
+                    </button>
+                </div>
+
+                <!-- 검색 영역 -->
+                <div class="card slip-card">
+                    <div class="card-body search-area">
+                        <div class="row g-3">
+                            <div class="col-md-3">
+                                <label for="search-date-start" class="form-label">기간</label>
+                                <div class="input-group">
+                                    <input type="date" class="form-control" id="search-date-start">
+                                    <span class="input-group-text">~</span>
+                                    <input type="date" class="form-control" id="search-date-end">
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <label for="search-slip-type" class="form-label">전표 유형</label>
+                                <select class="form-select" id="search-slip-type">
+                                    <option value="">전체</option>
+                                    <option value="income">수입</option>
+                                    <option value="expense">지출</option>
+                                    <option value="transfer">대체</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <label for="search-account" class="form-label">계정과목</label>
+                                <select class="form-select" id="search-account">
+                                    <option value="">전체</option>
+                                    <option value="sales">매출</option>
+                                    <option value="purchase">매입</option>
+                                    <option value="salary">급여</option>
+                                    <option value="rent">임대료</option>
+                                    <option value="utility">공과금</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="search-keyword" class="form-label">검색어</label>
+                                <input type="text" class="form-control" id="search-keyword" placeholder="적요, 거래처 등">
+                            </div>
+                            <div class="col-md-2 d-flex align-items-end">
+                                <button class="btn btn-primary w-100" id="search-btn">
+                                    <i class="fas fa-search"></i> 검색
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 전표 목록 -->
+                <div class="card slip-card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5>전표 목록</h5>
+                        <div>
+                            <button class="btn btn-sm btn-outline-secondary me-2">
+                                <i class="fas fa-print"></i> 인쇄
+                            </button>
+                            <button class="btn btn-sm btn-outline-success">
+                                <i class="fas fa-file-excel"></i> 엑셀 다운로드
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>전표번호</th>
+                                        <th>작성일자</th>
+                                        <th>전표유형</th>
+                                        <th>계정과목</th>
+                                        <th>거래처</th>
+                                        <th>적요</th>
+                                        <th>차변</th>
+                                        <th>대변</th>
+                                        <th>작성자</th>
+                                        <th>관리</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>SL-2023-0001</td>
+                                        <td>2023-10-25</td>
+                                        <td><span class="badge bg-success">수입</span></td>
+                                        <td>매출</td>
+                                        <td>한국전자</td>
+                                        <td>시스템 개발 대금</td>
+                                        <td class="text-end">5,000,000</td>
+                                        <td class="text-end">0</td>
+                                        <td>홍길동</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-primary me-1 view-slip-btn" data-id="SL-2023-0001">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-outline-danger delete-slip-btn" data-id="SL-2023-0001">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>SL-2023-0002</td>
+                                        <td>2023-10-24</td>
+                                        <td><span class="badge bg-danger">지출</span></td>
+                                        <td>임대료</td>
+                                        <td>서울부동산</td>
+                                        <td>10월 사무실 임대료</td>
+                                        <td class="text-end">0</td>
+                                        <td class="text-end">2,000,000</td>
+                                        <td>김철수</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-primary me-1 view-slip-btn" data-id="SL-2023-0002">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-outline-danger delete-slip-btn" data-id="SL-2023-0002">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>SL-2023-0003</td>
+                                        <td>2023-10-23</td>
+                                        <td><span class="badge bg-info">대체</span></td>
+                                        <td>급여</td>
+                                        <td>내부</td>
+                                        <td>10월 급여 지급</td>
+                                        <td class="text-end">0</td>
+                                        <td class="text-end">15,000,000</td>
+                                        <td>박영희</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-primary me-1 view-slip-btn" data-id="SL-2023-0003">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-outline-danger delete-slip-btn" data-id="SL-2023-0003">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>SL-2023-0004</td>
+                                        <td>2023-10-22</td>
+                                        <td><span class="badge bg-success">수입</span></td>
+                                        <td>매출</td>
+                                        <td>대한시스템</td>
+                                        <td>유지보수 대금</td>
+                                        <td class="text-end">3,000,000</td>
+                                        <td class="text-end">0</td>
+                                        <td>이민수</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-primary me-1 view-slip-btn" data-id="SL-2023-0004">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-outline-danger delete-slip-btn" data-id="SL-2023-0004">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>SL-2023-0005</td>
+                                        <td>2023-10-21</td>
+                                        <td><span class="badge bg-danger">지출</span></td>
+                                        <td>공과금</td>
+                                        <td>한국전력</td>
+                                        <td>10월 전기요금</td>
+                                        <td class="text-end">0</td>
+                                        <td class="text-end">350,000</td>
+                                        <td>정지원</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-primary me-1 view-slip-btn" data-id="SL-2023-0005">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-outline-danger delete-slip-btn" data-id="SL-2023-0005">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr class="table-secondary">
+                                        <td colspan="6" class="text-end fw-bold">합계</td>
+                                        <td class="text-end">8,000,000</td>
+                                        <td class="text-end">17,350,000</td>
+                                        <td colspan="2"></td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+
+                        <!-- 페이지네이션 -->
+                        <nav aria-label="Page navigation" class="mt-4">
+                            <ul class="pagination justify-content-center">
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">이전</a>
+                                </li>
+                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">다음</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 전표 등록/수정 모달 -->
+    <div class="modal fade" id="slipModal" tabindex="-1" aria-labelledby="slipModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="slipModalLabel">전표 등록</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="slip-form">
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="slip-date" class="form-label">작성일자</label>
+                                <input type="date" class="form-control" id="slip-date" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="slip-type" class="form-label">전표유형</label>
+                                <select class="form-select" id="slip-type" required>
+                                    <option value="">선택</option>
+                                    <option value="income">수입</option>
+                                    <option value="expense">지출</option>
+                                    <option value="transfer">대체</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="slip-account" class="form-label">계정과목</label>
+                                <select class="form-select" id="slip-account" required>
+                                    <option value="">선택</option>
+                                    <option value="sales">매출</option>
+                                    <option value="purchase">매입</option>
+                                    <option value="salary">급여</option>
+                                    <option value="rent">임대료</option>
+                                    <option value="utility">공과금</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="slip-client" class="form-label">거래처</label>
+                                <input type="text" class="form-control" id="slip-client" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="slip-summary" class="form-label">적요</label>
+                            <input type="text" class="form-control" id="slip-summary" required>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="slip-debit" class="form-label">차변</label>
+                                <div class="input-group">
+                                    <input type="number" class="form-control" id="slip-debit">
+                                    <span class="input-group-text">원</span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="slip-credit" class="form-label">대변</label>
+                                <div class="input-group">
+                                    <input type="number" class="form-control" id="slip-credit">
+                                    <span class="input-group-text">원</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="slip-note" class="form-label">비고</label>
+                            <textarea class="form-control" id="slip-note" rows="3"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="slip-attachment" class="form-label">첨부파일</label>
+                            <input type="file" class="form-control" id="slip-attachment">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+                    <button type="button" class="btn btn-primary" id="save-slip-btn">저장</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 전표 상세 모달 -->
+    <div class="modal fade" id="slipDetailModal" tabindex="-1" aria-labelledby="slipDetailModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="slipDetailModalLabel">전표 상세정보</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <p><strong>전표번호:</strong> <span id="detail-slip-id">SL-2023-0001</span></p>
+                        </div>
+                        <div class="col-md-6">
+                            <p><strong>작성일자:</strong> <span id="detail-slip-date">2023-10-25</span></p>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <p><strong>전표유형:</strong> <span id="detail-slip-type">수입</span></p>
+                        </div>
+                        <div class="col-md-6">
+                            <p><strong>계정과목:</strong> <span id="detail-slip-account">매출</span></p>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <p><strong>거래처:</strong> <span id="detail-slip-client">한국전자</span></p>
+                        </div>
+                        <div class="col-md-6">
+                            <p><strong>작성자:</strong> <span id="detail-slip-writer">홍길동</span></p>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <p><strong>적요:</strong> <span id="detail-slip-summary">시스템 개발 대금</span></p>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <p><strong>차변:</strong> <span id="detail-slip-debit">5,000,000원</span></p>
+                        </div>
+                        <div class="col-md-6">
+                            <p><strong>대변:</strong> <span id="detail-slip-credit">0원</span></p>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <p><strong>비고:</strong> <span id="detail-slip-note">-</span></p>
+                    </div>
+                    <div class="mb-3">
+                        <p><strong>첨부파일:</strong> <a href="#" id="detail-slip-attachment">영수증.pdf</a></p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    <button type="button" class="btn btn-primary" id="edit-slip-btn">수정</button>
+                    <button type="button" class="btn btn-danger" id="delete-detail-slip-btn">삭제</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="../js/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 현재 날짜 설정
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('slip-date').value = today;
+            document.getElementById('search-date-end').value = today;
+            
+            // 한 달 전 날짜 설정
+            const lastMonth = new Date();
+            lastMonth.setMonth(lastMonth.getMonth() - 1);
+            document.getElementById('search-date-start').value = lastMonth.toISOString().split('T')[0];
+
+            // 전표 저장 버튼 이벤트
+            document.getElementById('save-slip-btn').addEventListener('click', function() {
+                const form = document.getElementById('slip-form');
+                if (form.checkValidity()) {
+                    alert('전표가 저장되었습니다.');
+                    const modal = bootstrap.Modal.getInstance(document.getElementById('slipModal'));
+                    modal.hide();
+                } else {
+                    form.reportValidity();
+                }
+            });
+
+            // 전표 상세 보기 버튼 이벤트
+            const viewButtons = document.querySelectorAll('.view-slip-btn');
+            viewButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const slipId = this.getAttribute('data-id');
+                    document.getElementById('detail-slip-id').textContent = slipId;
+                    
+                    // 실제로는 서버에서 데이터를 가져와야 하지만, 예시로 하드코딩
+                    if (slipId === 'SL-2023-0001') {
+                        document.getElementById('detail-slip-date').textContent = '2023-10-25';
+                        document.getElementById('detail-slip-type').textContent = '수입';
+                        document.getElementById('detail-slip-account').textContent = '매출';
+                        document.getElementById('detail-slip-client').textContent = '한국전자';
+                        document.getElementById('detail-slip-writer').textContent = '홍길동';
+                        document.getElementById('detail-slip-summary').textContent = '시스템 개발 대금';
+                        document.getElementById('detail-slip-debit').textContent = '5,000,000원';
+                        document.getElementById('detail-slip-credit').textContent = '0원';
+                        document.getElementById('detail-slip-note').textContent = '-';
+                    }
+                    
+                    const modal = new bootstrap.Modal(document.getElementById('slipDetailModal'));
+                    modal.show();
+                });
+            });
+
+            // 전표 삭제 버튼 이벤트
+            const deleteButtons = document.querySelectorAll('.delete-slip-btn');
+            deleteButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const slipId = this.getAttribute('data-id');
+                    if (confirm(`전표 ${slipId}를 삭제하시겠습니까?`)) {
+                        alert('전표가 삭제되었습니다.');
+                        // 실제로는 서버에 삭제 요청을 보내야 합니다
+                    }
+                });
+            });
+
+            // 상세 모달에서 삭제 버튼 이벤트
+            document.getElementById('delete-detail-slip-btn').addEventListener('click', function() {
+                const slipId = document.getElementById('detail-slip-id').textContent;
+                if (confirm(`전표 ${slipId}를 삭제하시겠습니까?`)) {
+                    alert('전표가 삭제되었습니다.');
+                    const modal = bootstrap.Modal.getInstance(document.getElementById('slipDetailModal'));
+                    modal.hide();
+                    // 실제로는 서버에 삭제 요청을 보내야 합니다
+                }
+            });
+
+            // 상세 모달에서 수정 버튼 이벤트
+            document.getElementById('edit-slip-btn').addEventListener('click', function() {
+                const slipId = document.getElementById('detail-slip-id').textContent;
+                alert(`전표 ${slipId} 수정 모드로 전환합니다.`);
+                
+                // 상세 모달 닫기
+                const detailModal = bootstrap.Modal.getInstance(document.getElementById('slipDetailModal'));
+                detailModal.hide();
+                
+                // 등록/수정 모달 열기
+                document.getElementById('slipModalLabel').textContent = '전표 수정';
+                
+                // 실제로는 서버에서 데이터를 가져와 폼에 채워야 합니다
+                if (slipId === 'SL-2023-0001') {
+                    document.getElementById('slip-date').value = '2023-10-25';
+                    document.getElementById('slip-type').value = 'income';
+                    document.getElementById('slip-account').value = 'sales';
+                    document.getElementById('slip-client').value = '한국전자';
+                    document.getElementById('slip-summary').value = '시스템 개발 대금';
+                    document.getElementById('slip-debit').value = '5000000';
+                    document.getElementById('slip-credit').value = '0';
+                }
+                
+                const editModal = new bootstrap.Modal(document.getElementById('slipModal'));
+                editModal.show();
+            });
+
+            // 검색 버튼 이벤트
+            document.getElementById('search-btn').addEventListener('click', function() {
+                alert('검색 결과가 로드되었습니다.');
+                // 실제로는 서버에 검색 요청을 보내야 합니다
+            });
+        });
+    </script>
+</body>
+</html>
