@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회사 문서관리 - 비전아이티 업무관리시스템</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <div class="wrapper">
+        <!-- 사이드바 -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <a href="../index.html" style="text-decoration: none; color: inherit;">
+                    <h3>업무관리시스템</h3>
+                </a>
+            </div>
+
+            <ul class="list-unstyled components">
+                <!-- 대시보드 메뉴 -->
+                <li>
+                    <a href="#dashboardSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>대시보드</span>
+                    </a>
+                    <ul class="collapse list-unstyled" id="dashboardSubmenu">
+                        <li>
+                            <a href="dashboard-summary.html" class="submenu-item">
+                                <i class="fas fa-chart-pie fa-sm"></i>
+                                <span>사업계획 진행 관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="dashboard-analytics.html" class="submenu-item">
+                                <i class="fas fa-list-alt"></i>
+                                <span>영업 진행관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="dashboard-statistics.html" class="submenu-item">
+                                <i class="fas fa-chart-line fa-sm"></i>
+                                <span>유지보수 관리</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <!-- 인사관리 메뉴 -->
+                <li>
+                    <a href="#hrSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-users"></i>
+                        <span>인사관리</span>
+                    </a>
+                    <ul class="collapse list-unstyled" id="hrSubmenu">
+                        <li>
+                            <a href="employee-management.html" class="submenu-item">
+                                <i class="fas fa-user fa-sm"></i>
+                                <span>사원관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="salary-management.html" class="submenu-item">
+                                <i class="fas fa-money-bill-alt fa-sm"></i>
+                                <span>급여관리</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <!-- 회계관리 메뉴 -->
+                <li class="active">
+                    <a href="#accountingSubmenu" data-bs-toggle="collapse" aria-expanded="true" class="dropdown-toggle">
+                        <i class="fas fa-calculator"></i>
+                        <span>회계관리</span>
+                    </a>
+                    <ul class="collapse show list-unstyled" id="accountingSubmenu">
+                        <li>
+                            <a href="slip-management.html" class="submenu-item">
+                                <i class="fas fa-file-invoice fa-sm"></i>
+                                <span>전표관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="sales-management.html" class="submenu-item">
+                                <i class="fas fa-chart-line fa-sm"></i>
+                                <span>매출관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="purchase-management.html" class="submenu-item">
+                                <i class="fas fa-shopping-cart fa-sm"></i>
+                                <span>매입관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="expense-management.html" class="submenu-item">
+                                <i class="fas fa-receipt fa-sm"></i>
+                                <span>경비관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="fund-management.html" class="submenu-item">
+                                <i class="fas fa-wallet fa-sm"></i>
+                                <span>자금관리</span>
+                            </a>
+                        </li>
+                        <li class="active">
+                            <a href="document-management.html" class="submenu-item">
+                                <i class="fas fa-file-alt fa-sm"></i>
+                                <span>회사 문서관리</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <!-- 영업관리 메뉴 -->
+                <li>
+                    <a href="#salesSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-chart-line"></i>
+                        <span>영업관리</span>
+                    </a>
+                    <ul class="collapse list-unstyled" id="salesSubmenu">
+                        <li>
+                            <a href="sales-opportunity.html" class="submenu-item">
+                                <i class="fas fa-handshake fa-sm"></i>
+                                <span>영업기회</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="quotation.html" class="submenu-item">
+                                <i class="fas fa-file-invoice-dollar fa-sm"></i>
+                                <span>견적서</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="client-management.html" class="submenu-item">
+                                <i class="fas fa-building fa-sm"></i>
+                                <span>거래처관리</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <!-- 계약관리 메뉴 -->
+                <li>
+                    <a href="#contractSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-file-contract"></i>
+                        <span>계약관리</span>
+                    </a>
+                    <ul class="collapse list-unstyled" id="contractSubmenu">
+                        <li>
+                            <a href="contract-management.html" class="submenu-item">
+                                <i class="fas fa-file-signature fa-sm"></i>
+                                <span>계약관리</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <!-- 유지보수관리 메뉴 -->
+                <li>
+                    <a href="#maintenanceSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-tools"></i>
+                        <span>유지보수관리</span>
+                    </a>
+                    <ul class="collapse list-unstyled" id="maintenanceSubmenu">
+                        <li>
+                            <a href="issue-management.html" class="submenu-item">
+                                <i class="fas fa-exclamation-triangle fa-sm"></i>
+                                <span>장애관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="maintenance-system.html" class="submenu-item">
+                                <i class="fas fa-server fa-sm"></i>
+                                <span>유지보수 대상 시스템 관리</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <!-- 사업계획관리 메뉴 -->
+                <li>
+                    <a href="#businessPlanSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-project-diagram"></i>
+                        <span>사업계획관리</span>
+                    </a>
+                    <ul class="collapse list-unstyled" id="businessPlanSubmenu">
+                        <li>
+                            <a href="business-plan.html" class="submenu-item">
+                                <i class="fas fa-tasks fa-sm"></i>
+                                <span>사업계획</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <!-- 시스템관리 메뉴 -->
+                <li>
+                    <a href="#systemSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-cogs"></i>
+                        <span>시스템관리</span>
+                    </a>
+                    <ul class="collapse list-unstyled" id="systemSubmenu">
+                        <li>
+                            <a href="user-management.html" class="submenu-item">
+                                <i class="fas fa-user-cog fa-sm"></i>
+                                <span>사용자관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="department-management.html" class="submenu-item">
+                                <i class="fas fa-sitemap fa-sm"></i>
+                                <span>부서관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="account-category.html" class="submenu-item">
+                                <i class="fas fa-list-ol fa-sm"></i>
+                                <span>계정과목관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="code-management.html" class="submenu-item">
+                                <i class="fas fa-code fa-sm"></i>
+                                <span>코드관리</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- 페이지 콘텐츠 -->
+        <div id="content">
+            <!-- 상단 네비게이션 -->
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+                    <div class="ms-auto d-flex align-items-center">
+                        <div class="notification-icon me-4">
+                            <i class="fas fa-bell"></i>
+                            <span class="badge bg-danger">3</span>
+                        </div>
+                        <div class="user-profile dropdown">
+                            <a href="#" class="dropdown-toggle d-flex align-items-center" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <div class="user-image-container me-2">
+                                    <img src="../images/default-user.svg" alt="" class="rounded-circle" style="width: 40px; height: 40px;">
+                                </div>
+                                <span class="user-name"></span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                                <li><a class="dropdown-item" href="#">프로필</a></li>
+                                <li><a class="dropdown-item" href="#">설정</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#" id="logout-btn">로그아웃</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- 메인 콘텐츠 -->
+            <div class="container-fluid">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h1 class="mt-4">회사 문서 관리</h1>
+                    <div class="current-date">
+                        <p>2025년 10월 31일 금요일</p>
+                    </div>
+                </div>
+
+                <!-- 문서 관리 상단 필터 및 버튼 -->
+                <div class="row mb-4">
+                    <div class="col-md-8">
+                        <div class="input-group">
+                            <select class="form-select" id="documentTypeFilter" style="max-width: 180px;">
+                                <option value="all">모든 문서 유형</option>
+                                <option value="contract">계약서</option>
+                                <option value="certificate">증명서</option>
+                                <option value="report">보고서</option>
+                                <option value="financial">재무 문서</option>
+                                <option value="regulation">규정/지침</option>
+                                <option value="minutes">회의록</option>
+                                <option value="other">기타</option>
+                            </select>
+                            <input type="text" class="form-control" placeholder="문서 검색..." id="documentSearchInput">
+                            <button class="btn btn-primary" type="button" id="documentSearchButton">
+                                <i class="fas fa-search"></i> 검색
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-md-4 text-end">
+                        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addDocumentModal">
+                            <i class="fas fa-plus"></i> 문서 등록
+                        </button>
+                        <button class="btn btn-secondary" id="exportDocumentBtn">
+                            <i class="fas fa-file-export"></i> 내보내기
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 문서 목록 테이블 -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="fas fa-table me-1"></i>
+                        회사 문서 목록
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover" id="documentTable">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 5%">번호</th>
+                                        <th style="width: 15%">문서 분류</th>
+                                        <th style="width: 25%">문서명</th>
+                                        <th style="width: 10%">문서번호</th>
+                                        <th style="width: 10%">작성일</th>
+                                        <th style="width: 10%">작성자</th>
+                                        <th style="width: 10%">보존기한</th>
+                                        <th style="width: 15%">관리</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>계약서</td>
+                                        <td>2025년 소프트웨어 개발 용역 계약서</td>
+                                        <td>CT-2025-001</td>
+                                        <td>2025-10-15</td>
+                                        <td>김영수</td>
+                                        <td>5년</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-info view-document" data-id="1">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-primary edit-document" data-id="1">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-danger delete-document" data-id="1">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>증명서</td>
+                                        <td>사업자등록증</td>
+                                        <td>CT-2025-002</td>
+                                        <td>2025-01-05</td>
+                                        <td>이미영</td>
+                                        <td>영구</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-info view-document" data-id="2">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-primary edit-document" data-id="2">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-danger delete-document" data-id="2">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>재무 문서</td>
+                                        <td>2025년 1분기 재무제표</td>
+                                        <td>FN-2025-001</td>
+                                        <td>2025-04-10</td>
+                                        <td>박재현</td>
+                                        <td>10년</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-info view-document" data-id="3">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-primary edit-document" data-id="3">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-danger delete-document" data-id="3">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>규정/지침</td>
+                                        <td>인사규정</td>
+                                        <td>RG-2025-001</td>
+                                        <td>2025-02-20</td>
+                                        <td>최지원</td>
+                                        <td>영구</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-info view-document" data-id="4">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-primary edit-document" data-id="4">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-danger delete-document" data-id="4">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td>회의록</td>
+                                        <td>2025년 10월 정기 이사회 회의록</td>
+                                        <td>MT-2025-010</td>
+                                        <td>2025-10-25</td>
+                                        <td>정다혜</td>
+                                        <td>5년</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-info view-document" data-id="5">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-primary edit-document" data-id="5">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-danger delete-document" data-id="5">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 페이지네이션 -->
+                <nav aria-label="문서 목록 페이지네이션">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">이전</a>
+                        </li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">다음</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <!-- 문서 등록 모달 -->
+    <div class="modal fade" id="addDocumentModal" tabindex="-1" aria-labelledby="addDocumentModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addDocumentModalLabel">문서 등록</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="documentForm">
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="documentType" class="form-label">문서 분류</label>
+                                <select class="form-select" id="documentType" required>
+                                    <option value="">선택하세요</option>
+                                    <option value="contract">계약서</option>
+                                    <option value="certificate">증명서</option>
+                                    <option value="report">보고서</option>
+                                    <option value="financial">재무 문서</option>
+                                    <option value="regulation">규정/지침</option>
+                                    <option value="minutes">회의록</option>
+                                    <option value="other">기타</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="documentNumber" class="form-label">문서번호</label>
+                                <input type="text" class="form-control" id="documentNumber" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="documentTitle" class="form-label">문서명</label>
+                            <input type="text" class="form-control" id="documentTitle" required>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="documentDate" class="form-label">작성일</label>
+                                <input type="date" class="form-control" id="documentDate" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="documentAuthor" class="form-label">작성자</label>
+                                <input type="text" class="form-control" id="documentAuthor" required>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="retentionPeriod" class="form-label">보존기한</label>
+                                <select class="form-select" id="retentionPeriod" required>
+                                    <option value="">선택하세요</option>
+                                    <option value="1년">1년</option>
+                                    <option value="3년">3년</option>
+                                    <option value="5년">5년</option>
+                                    <option value="10년">10년</option>
+                                    <option value="영구">영구</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="securityLevel" class="form-label">보안등급</label>
+                                <select class="form-select" id="securityLevel" required>
+                                    <option value="">선택하세요</option>
+                                    <option value="일반">일반</option>
+                                    <option value="중요">중요</option>
+                                    <option value="기밀">기밀</option>
+                                    <option value="대외비">대외비</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="documentDescription" class="form-label">문서 설명</label>
+                            <textarea class="form-control" id="documentDescription" rows="3"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="documentFile" class="form-label">문서 파일</label>
+                            <input type="file" class="form-control" id="documentFile" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="relatedDepartment" class="form-label">관련 부서</label>
+                            <select class="form-select" id="relatedDepartment" multiple>
+                                <option value="경영지원팀">경영지원팀</option>
+                                <option value="영업팀">영업팀</option>
+                                <option value="개발팀">개발팀</option>
+                                <option value="디자인팀">디자인팀</option>
+                                <option value="재무팀">재무팀</option>
+                            </select>
+                            <small class="form-text text-muted">Ctrl 키를 누른 상태에서 여러 부서를 선택할 수 있습니다.</small>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+                    <button type="button" class="btn btn-primary" id="saveDocumentBtn">저장</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 문서 상세 조회 모달 -->
+    <div class="modal fade" id="viewDocumentModal" tabindex="-1" aria-labelledby="viewDocumentModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="viewDocumentModalLabel">문서 상세 정보</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <h6>문서 분류</h6>
+                            <p id="viewDocumentType">계약서</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>문서번호</h6>
+                            <p id="viewDocumentNumber">CT-2025-001</p>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <h6>문서명</h6>
+                        <p id="viewDocumentTitle">2025년 소프트웨어 개발 용역 계약서</p>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <h6>작성일</h6>
+                            <p id="viewDocumentDate">2025-10-15</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>작성자</h6>
+                            <p id="viewDocumentAuthor">김영수</p>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <h6>보존기한</h6>
+                            <p id="viewRetentionPeriod">5년</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>보안등급</h6>
+                            <p id="viewSecurityLevel">중요</p>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <h6>문서 설명</h6>
+                        <p id="viewDocumentDescription">2025년도 소프트웨어 개발 용역에 대한 계약서입니다. 계약 기간은 2025년 1월부터 12월까지이며, 개발 범위와 일정, 비용 등이 포함되어 있습니다.</p>
+                    </div>
+                    <div class="mb-3">
+                        <h6>관련 부서</h6>
+                        <p id="viewRelatedDepartment">영업팀, 개발팀</p>
+                    </div>
+                    <div class="mb-3">
+                        <h6>첨부 파일</h6>
+                        <p><a href="#" id="viewDocumentFileLink">2025년_소프트웨어_개발_용역_계약서.pdf</a></p>
+                    </div>
+                    <div class="mb-3">
+                        <h6>문서 이력</h6>
+                        <ul class="list-group" id="viewDocumentHistory">
+                            <li class="list-group-item">
+                                <small>2025-10-15 14:30 - 김영수: 문서 등록</small>
+                            </li>
+                            <li class="list-group-item">
+                                <small>2025-10-16 09:15 - 이미영: 문서 검토</small>
+                            </li>
+                            <li class="list-group-item">
+                                <small>2025-10-17 11:20 - 박재현: 문서 승인</small>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    <button type="button" class="btn btn-primary" id="downloadDocumentBtn">다운로드</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript 라이브러리 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../js/script.js"></script>
+    <script src="../js/document-management.js"></script>
+    
+    <script>
+        // 현재 날짜 표시
+        document.addEventListener('DOMContentLoaded', function() {
+            // 현재 날짜 표시
+            const now = new Date();
+            const options = { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' };
+            const dateString = now.toLocaleDateString('ko-KR', options);
+            
+            const currentDateEl = document.querySelector('.current-date p');
+            if (currentDateEl) {
+                currentDateEl.textContent = dateString;
+            }
+        });
+    </script>
+</body>
+</html>

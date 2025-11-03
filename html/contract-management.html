@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>계약 관리 - 비전아이티 업무관리시스템</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <div class="wrapper">
+        <!-- 사이드바 -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <a href="../index.html" style="text-decoration: none; color: inherit;">
+                    <h3>업무관리시스템</h3>
+                </a>
+            </div>
+
+            <ul class="list-unstyled components">
+                <!-- 대시보드 메뉴 -->
+                <li>
+                    <a href="#dashboardSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>대시보드</span>
+                    </a>
+                    <ul class="collapse list-unstyled" id="dashboardSubmenu">
+                        <li>
+                            <a href="dashboard-summary.html" class="submenu-item">
+                                <i class="fas fa-chart-pie fa-sm"></i>
+                                <span>사업계획 진행 관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="dashboard-analytics.html" class="submenu-item">
+                                <i class="fas fa-list-alt"></i>
+                                <span>영업 진행관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="dashboard-statistics.html" class="submenu-item">
+                                <i class="fas fa-chart-line fa-sm"></i>
+                                <span>유지보수 관리</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <!-- 인사관리 메뉴 -->
+                <li>
+                    <a href="#hrSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-users"></i>
+                        <span>인사관리</span>
+                    </a>
+                    <ul class="collapse list-unstyled" id="hrSubmenu">
+                        <li>
+                            <a href="employee-management.html" class="submenu-item">
+                                <i class="fas fa-user fa-sm"></i>
+                                <span>사원관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="salary-management.html" class="submenu-item">
+                                <i class="fas fa-money-bill-alt fa-sm"></i>
+                                <span>급여관리</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <!-- 회계관리 메뉴 -->
+                <li>
+                    <a href="#accountingSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-calculator"></i>
+                        <span>회계관리</span>
+                    </a>
+                    <ul class="collapse list-unstyled" id="accountingSubmenu">
+                        <li>
+                            <a href="slip-management.html" class="submenu-item">
+                                <i class="fas fa-file-invoice fa-sm"></i>
+                                <span>전표관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="sales-management.html" class="submenu-item">
+                                <i class="fas fa-chart-line fa-sm"></i>
+                                <span>매출관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="purchase-management.html" class="submenu-item">
+                                <i class="fas fa-shopping-cart fa-sm"></i>
+                                <span>매입관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="expense-management.html" class="submenu-item">
+                                <i class="fas fa-receipt fa-sm"></i>
+                                <span>경비관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="fund-management.html" class="submenu-item">
+                                <i class="fas fa-wallet fa-sm"></i>
+                                <span>자금관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="document-management.html" class="submenu-item">
+                                <i class="fas fa-file-alt fa-sm"></i>
+                                <span>회사 문서관리</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <!-- 영업관리 메뉴 -->
+                <li>
+                    <a href="#salesSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-chart-line"></i>
+                        <span>영업관리</span>
+                    </a>
+                    <ul class="collapse list-unstyled" id="salesSubmenu">
+                        <li>
+                            <a href="sales-opportunity.html" class="submenu-item">
+                                <i class="fas fa-handshake fa-sm"></i>
+                                <span>영업기회</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="quotation.html" class="submenu-item">
+                                <i class="fas fa-file-invoice-dollar fa-sm"></i>
+                                <span>견적서</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="client-management.html" class="submenu-item">
+                                <i class="fas fa-building fa-sm"></i>
+                                <span>거래처관리</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <!-- 계약관리 메뉴 -->
+                <li class="active">
+                    <a href="#contractSubmenu" data-bs-toggle="collapse" aria-expanded="true" class="dropdown-toggle">
+                        <i class="fas fa-file-contract"></i>
+                        <span>계약관리</span>
+                    </a>
+                    <ul class="collapse show list-unstyled" id="contractSubmenu">
+                        <li class="active">
+                            <a href="contract-management.html" class="submenu-item">
+                                <i class="fas fa-file-signature fa-sm"></i>
+                                <span>계약관리</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <!-- 유지보수관리 메뉴 -->
+                <li>
+                    <a href="#maintenanceSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-tools"></i>
+                        <span>유지보수관리</span>
+                    </a>
+                    <ul class="collapse list-unstyled" id="maintenanceSubmenu">
+                        <li>
+                            <a href="issue-management.html" class="submenu-item">
+                                <i class="fas fa-exclamation-triangle fa-sm"></i>
+                                <span>장애관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="maintenance-system.html" class="submenu-item">
+                                <i class="fas fa-server fa-sm"></i>
+                                <span>유지보수 대상 시스템 관리</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <!-- 사업계획관리 메뉴 -->
+                <li>
+                    <a href="#businessPlanSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-project-diagram"></i>
+                        <span>사업계획관리</span>
+                    </a>
+                    <ul class="collapse list-unstyled" id="businessPlanSubmenu">
+                        <li>
+                            <a href="business-plan.html" class="submenu-item">
+                                <i class="fas fa-tasks fa-sm"></i>
+                                <span>사업계획</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <!-- 시스템관리 메뉴 -->
+                <li>
+                    <a href="#systemSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-cogs"></i>
+                        <span>시스템관리</span>
+                    </a>
+                    <ul class="collapse list-unstyled" id="systemSubmenu">
+                        <li>
+                            <a href="user-management.html" class="submenu-item">
+                                <i class="fas fa-user-cog fa-sm"></i>
+                                <span>사용자관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="department-management.html" class="submenu-item">
+                                <i class="fas fa-sitemap fa-sm"></i>
+                                <span>부서관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="account-category.html" class="submenu-item">
+                                <i class="fas fa-list-ol fa-sm"></i>
+                                <span>계정과목관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="code-management.html" class="submenu-item">
+                                <i class="fas fa-code fa-sm"></i>
+                                <span>코드관리</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- 페이지 콘텐츠 -->
+        <div id="content">
+            <!-- 상단 네비게이션 -->
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+                    <div class="ms-auto d-flex align-items-center">
+                        <div class="notification-icon me-4">
+                            <i class="fas fa-bell"></i>
+                            <span class="badge bg-danger">3</span>
+                        </div>
+                        <div class="user-profile dropdown">
+                            <a href="#" class="dropdown-toggle d-flex align-items-center" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <div class="user-image-container me-2">
+                                    <img src="../images/default-user.svg" alt="" class="rounded-circle" style="width: 40px; height: 40px;">
+                                </div>
+                                <span class="user-name"></span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                                <li><a class="dropdown-item" href="#">프로필</a></li>
+                                <li><a class="dropdown-item" href="#">설정</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#" id="logout-btn">로그아웃</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- 메인 콘텐츠 -->
+            <div class="container-fluid">
+                <h1 class="mt-4 mb-4">계약 관리</h1>
+
+                <!-- 계약 상단 필터 및 버튼 -->
+                <div class="row mb-4">
+                    <div class="col-md-8">
+                        <div class="input-group">
+                            <select class="form-select" id="contractStatusFilter" style="max-width: 180px;">
+                                <option value="all">모든 상태</option>
+                                <option value="draft">작성중</option>
+                                <option value="review">검토중</option>
+                                <option value="signed">서명완료</option>
+                                <option value="active">진행중</option>
+                                <option value="completed">완료</option>
+                                <option value="terminated">해지</option>
+                                <option value="expired">만료</option>
+                            </select>
+                            <input type="text" class="form-control" placeholder="계약 검색..." id="contractSearchInput">
+                            <button class="btn btn-primary" type="button" id="contractSearchButton">
+                                <i class="fas fa-search"></i> 검색
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-md-4 text-end">
+                        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addContractModal">
+                            <i class="fas fa-plus"></i> 계약 등록
+                        </button>
+                        <button class="btn btn-secondary" id="exportContractBtn">
+                            <i class="fas fa-file-export"></i> 내보내기
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 계약 요약 통계 카드 -->
+                <div class="row mb-4">
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card bg-primary text-white mb-4">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h5 class="mb-0">총 계약</h5>
+                                        <h2 class="mb-0">32</h2>
+                                    </div>
+                                    <i class="fas fa-file-contract fa-3x"></i>
+                                </div>
+                            </div>
+                            <div class="card-footer d-flex align-items-center justify-content-between">
+                                <a class="small text-white stretched-link" href="#">상세 보기</a>
+                                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card bg-success text-white mb-4">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h5 class="mb-0">진행중</h5>
+                                        <h2 class="mb-0">18</h2>
+                                    </div>
+                                    <i class="fas fa-play-circle fa-3x"></i>
+                                </div>
+                            </div>
+                            <div class="card-footer d-flex align-items-center justify-content-between">
+                                <a class="small text-white stretched-link" href="#">상세 보기</a>
+                                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card bg-warning text-white mb-4">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h5 class="mb-0">만료 예정</h5>
+                                        <h2 class="mb-0">5</h2>
+                                    </div>
+                                    <i class="fas fa-exclamation-circle fa-3x"></i>
+                                </div>
+                            </div>
+                            <div class="card-footer d-flex align-items-center justify-content-between">
+                                <a class="small text-white stretched-link" href="#">상세 보기</a>
+                                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card bg-info text-white mb-4">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h5 class="mb-0">총 계약 금액</h5>
+                                        <h2 class="mb-0">₩5.8억</h2>
+                                    </div>
+                                    <i class="fas fa-money-bill-wave fa-3x"></i>
+                                </div>
+                            </div>
+                            <div class="card-footer d-flex align-items-center justify-content-between">
+                                <a class="small text-white stretched-link" href="#">상세 보기</a>
+                                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 계약 목록 테이블 -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="fas fa-table me-1"></i>
+                        계약 목록
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover" id="contractTable">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 5%">번호</th>
+                                        <th style="width: 15%">계약번호</th>
+                                        <th style="width: 15%">계약명</th>
+                                        <th style="width: 15%">거래처</th>
+                                        <th style="width: 10%">계약일자</th>
+                                        <th style="width: 10%">계약기간</th>
+                                        <th style="width: 10%">계약금액</th>
+                                        <th style="width: 10%">상태</th>
+                                        <th style="width: 10%">관리</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>CT-2025-001</td>
+                                        <td>ERP 시스템 구축 계약</td>
+                                        <td>ABC 주식회사</td>
+                                        <td>2025-10-20</td>
+                                        <td>2025-10-20 ~ 2026-04-19</td>
+                                        <td>₩8,000만</td>
+                                        <td><span class="badge bg-success">진행중</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-info view-contract" data-id="1">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-primary edit-contract" data-id="1">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-danger delete-contract" data-id="1">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>CT-2025-002</td>
+                                        <td>웹사이트 리뉴얼 계약</td>
+                                        <td>XYZ 그룹</td>
+                                        <td>2025-09-15</td>
+                                        <td>2025-09-15 ~ 2025-12-14</td>
+                                        <td>₩5,000만</td>
+                                        <td><span class="badge bg-success">진행중</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-info view-contract" data-id="2">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-primary edit-contract" data-id="2">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-danger delete-contract" data-id="2">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>CT-2025-003</td>
+                                        <td>모바일 앱 개발 계약</td>
+                                        <td>DEF 주식회사</td>
+                                        <td>2025-08-10</td>
+                                        <td>2025-08-10 ~ 2025-11-09</td>
+                                        <td>₩6,500만</td>
+                                        <td><span class="badge bg-warning">만료 예정</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-info view-contract" data-id="3">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-primary edit-contract" data-id="3">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-danger delete-contract" data-id="3">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>CT-2025-004</td>
+                                        <td>클라우드 전환 계약</td>
+                                        <td>GHI 그룹</td>
+                                        <td>2025-07-20</td>
+                                        <td>2025-07-20 ~ 2025-10-19</td>
+                                        <td>₩1억 2천만</td>
+                                        <td><span class="badge bg-info">검토중</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-info view-contract" data-id="4">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-primary edit-contract" data-id="4">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-danger delete-contract" data-id="4">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td>CT-2025-005</td>
+                                        <td>보안 시스템 구축 계약</td>
+                                        <td>JKL 주식회사</td>
+                                        <td>2025-06-15</td>
+                                        <td>2025-06-15 ~ 2025-09-14</td>
+                                        <td>₩9,000만</td>
+                                        <td><span class="badge bg-secondary">완료</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-info view-contract" data-id="5">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-primary edit-contract" data-id="5">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-danger delete-contract" data-id="5">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 페이지네이션 -->
+                <nav aria-label="계약 목록 페이지네이션">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">이전</a>
+                        </li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">다음</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <!-- 계약 등록/수정 모달 -->
+    <div class="modal fade" id="addContractModal" tabindex="-1" aria-labelledby="addContractModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addContractModalLabel">계약 등록</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="contractForm">
+                        <!-- 탭 메뉴 -->
+                        <ul class="nav nav-tabs mb-3" id="contractTabs" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="basic-tab" data-bs-toggle="tab" data-bs-target="#basic" type="button" role="tab" aria-controls="basic" aria-selected="true">기본 정보</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="payment-tab" data-bs-toggle="tab" data-bs-target="#payment" type="button" role="tab" aria-controls="payment" aria-selected="false">대금 정보</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="files-tab" data-bs-toggle="tab" data-bs-target="#files" type="button" role="tab" aria-controls="files" aria-selected="false">첨부 파일</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="history-tab" data-bs-toggle="tab" data-bs-target="#history" type="button" role="tab" aria-controls="history" aria-selected="false">이력 관리</button>
+                            </li>
+                        </ul>
+                        
+                        <!-- 탭 내용 -->
+                        <div class="tab-content" id="contractTabsContent">
+                            <!-- 기본 정보 탭 -->
+                            <div class="tab-pane fade show active" id="basic" role="tabpanel" aria-labelledby="basic-tab">
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <label for="contractNumber" class="form-label">계약번호</label>
+                                        <input type="text" class="form-control" id="contractNumber" value="CT-2025-006" readonly>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="contractType" class="form-label">계약 유형</label>
+                                        <select class="form-select" id="contractType" required>
+                                            <option value="">선택하세요</option>
+                                            <option value="sales">판매 계약</option>
+                                            <option value="purchase">구매 계약</option>
+                                            <option value="service">서비스 계약</option>
+                                            <option value="maintenance">유지보수 계약</option>
+                                            <option value="partnership">협력 계약</option>
+                                            <option value="other">기타</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="contractName" class="form-label">계약명</label>
+                                    <input type="text" class="form-control" id="contractName" required>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <label for="clientCompany" class="form-label">거래처</label>
+                                        <select class="form-select" id="clientCompany" required>
+                                            <option value="">선택하세요</option>
+                                            <option value="1">ABC 주식회사</option>
+                                            <option value="2">XYZ 그룹</option>
+                                            <option value="3">DEF 주식회사</option>
+                                            <option value="4">GHI 그룹</option>
+                                            <option value="5">JKL 주식회사</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="relatedQuotation" class="form-label">관련 견적서</label>
+                                        <select class="form-select" id="relatedQuotation">
+                                            <option value="">선택하세요</option>
+                                            <option value="QT-2025-001">QT-2025-001 (ABC 주식회사)</option>
+                                            <option value="QT-2025-002">QT-2025-002 (XYZ 그룹)</option>
+                                            <option value="QT-2025-003">QT-2025-003 (DEF 주식회사)</option>
+                                            <option value="QT-2025-004">QT-2025-004 (GHI 그룹)</option>
+                                            <option value="QT-2025-005">QT-2025-005 (JKL 주식회사)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <label for="contractDate" class="form-label">계약일자</label>
+                                        <input type="date" class="form-control" id="contractDate" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="contractStatus" class="form-label">계약상태</label>
+                                        <select class="form-select" id="contractStatus" required>
+                                            <option value="">선택하세요</option>
+                                            <option value="draft">작성중</option>
+                                            <option value="review">검토중</option>
+                                            <option value="signed">서명완료</option>
+                                            <option value="active">진행중</option>
+                                            <option value="completed">완료</option>
+                                            <option value="terminated">해지</option>
+                                            <option value="expired">만료</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <label for="startDate" class="form-label">계약 시작일</label>
+                                        <input type="date" class="form-control" id="startDate" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="endDate" class="form-label">계약 종료일</label>
+                                        <input type="date" class="form-control" id="endDate" required>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <label for="totalAmount" class="form-label">계약 금액</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text">₩</span>
+                                            <input type="text" class="form-control" id="totalAmount" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="assignedTo" class="form-label">담당자</label>
+                                        <select class="form-select" id="assignedTo" required>
+                                            <option value="">선택하세요</option>
+                                            <option value="1">김영수</option>
+                                            <option value="2">이미영</option>
+                                            <option value="3">박재현</option>
+                                            <option value="4">최지원</option>
+                                            <option value="5">정다혜</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="contractDescription" class="form-label">계약 설명</label>
+                                    <textarea class="form-control" id="contractDescription" rows="3"></textarea>
+                                </div>
+                            </div>
+                            
+                            <!-- 대금 정보 탭 -->
+                            <div class="tab-pane fade" id="payment" role="tabpanel" aria-labelledby="payment-tab">
+                                <div class="mb-3">
+                                    <label class="form-label">대금 지급 방식</label>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="paymentType" id="paymentTypeOnce" value="once" checked>
+                                        <label class="form-check-label" for="paymentTypeOnce">
+                                            일시불
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="paymentType" id="paymentTypeInstallment" value="installment">
+                                        <label class="form-check-label" for="paymentTypeInstallment">
+                                            분할
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="paymentType" id="paymentTypeMilestone" value="milestone">
+                                        <label class="form-check-label" for="paymentTypeMilestone">
+                                            마일스톤
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <!-- 분할 지급 일정 테이블 -->
+                                <div id="installmentSchedule" class="mb-3" style="display: none;">
+                                    <h5 class="mb-3">분할 지급 일정</h5>
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered" id="paymentScheduleTable">
+                                            <thead>
+                                                <tr>
+                                                    <th style="width: 5%">번호</th>
+                                                    <th style="width: 20%">지급 항목</th>
+                                                    <th style="width: 15%">지급 예정일</th>
+                                                    <th style="width: 15%">금액</th>
+                                                    <th style="width: 15%">비율</th>
+                                                    <th style="width: 20%">비고</th>
+                                                    <th style="width: 10%">관리</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>
+                                                        <input type="text" class="form-control payment-title" value="계약금">
+                                                    </td>
+                                                    <td>
+                                                        <input type="date" class="form-control payment-date">
+                                                    </td>
+                                                    <td>
+                                                        <div class="input-group">
+                                                            <span class="input-group-text">₩</span>
+                                                            <input type="text" class="form-control payment-amount">
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="input-group">
+                                                            <input type="number" class="form-control payment-percentage" min="0" max="100">
+                                                            <span class="input-group-text">%</span>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" class="form-control payment-note">
+                                                    </td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-danger btn-sm remove-payment">
+                                                            <i class="fas fa-times"></i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                            <tfoot>
+                                                <tr>
+                                                    <td colspan="7">
+                                                        <button type="button" class="btn btn-success btn-sm" id="addPaymentBtn">
+                                                            <i class="fas fa-plus"></i> 지급 일정 추가
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="paymentTerms" class="form-label">지급 조건</label>
+                                    <textarea class="form-control" id="paymentTerms" rows="3"></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="bankInfo" class="form-label">입금 계좌 정보</label>
+                                    <div class="row">
+                                        <div class="col-md-4 mb-2">
+                                            <input type="text" class="form-control" id="bankName" placeholder="은행명">
+                                        </div>
+                                        <div class="col-md-4 mb-2">
+                                            <input type="text" class="form-control" id="accountNumber" placeholder="계좌번호">
+                                        </div>
+                                        <div class="col-md-4 mb-2">
+                                            <input type="text" class="form-control" id="accountHolder" placeholder="예금주">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- 첨부 파일 탭 -->
+                            <div class="tab-pane fade" id="files" role="tabpanel" aria-labelledby="files-tab">
+                                <div class="mb-3">
+                                    <label for="contractFile" class="form-label">계약서 파일</label>
+                                    <input type="file" class="form-control" id="contractFile">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="additionalFiles" class="form-label">추가 첨부 파일</label>
+                                    <input type="file" class="form-control" id="additionalFiles" multiple>
+                                    <small class="form-text text-muted">여러 파일을 선택할 수 있습니다.</small>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">첨부 파일 목록</label>
+                                    <ul class="list-group" id="fileList">
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <span>계약서_초안.pdf</span>
+                                            <button type="button" class="btn btn-danger btn-sm">
+                                                <i class="fas fa-times"></i>
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <!-- 이력 관리 탭 -->
+                            <div class="tab-pane fade" id="history" role="tabpanel" aria-labelledby="history-tab">
+                                <div class="mb-3">
+                                    <label class="form-label">계약 이력</label>
+                                    <ul class="list-group" id="contractHistory">
+                                        <li class="list-group-item">
+                                            <div class="d-flex w-100 justify-content-between">
+                                                <h6 class="mb-1">계약서 초안 작성</h6>
+                                                <small>2025-10-28 14:30</small>
+                                            </div>
+                                            <p class="mb-1">계약서 초안 작성 완료</p>
+                                            <small>담당: 김영수</small>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="historyNote" class="form-label">이력 추가</label>
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control" id="historyTitle" placeholder="이력 제목">
+                                    </div>
+                                    <textarea class="form-control mb-3" id="historyNote" rows="2" placeholder="이력 내용"></textarea>
+                                    <button type="button" class="btn btn-primary" id="addHistoryBtn">
+                                        <i class="fas fa-plus"></i> 이력 추가
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+                    <button type="button" class="btn btn-info" id="saveAsDraftBtn">임시저장</button>
+                    <button type="button" class="btn btn-primary" id="saveContractBtn">저장</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 계약 상세 조회 모달 -->
+    <div class="modal fade" id="viewContractModal" tabindex="-1" aria-labelledby="viewContractModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="viewContractModalLabel">계약 상세 정보</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- 탭 메뉴 -->
+                    <ul class="nav nav-tabs mb-3" id="viewContractTabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="view-basic-tab" data-bs-toggle="tab" data-bs-target="#view-basic" type="button" role="tab" aria-controls="view-basic" aria-selected="true">기본 정보</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="view-payment-tab" data-bs-toggle="tab" data-bs-target="#view-payment" type="button" role="tab" aria-controls="view-payment" aria-selected="false">대금 정보</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="view-files-tab" data-bs-toggle="tab" data-bs-target="#view-files" type="button" role="tab" aria-controls="view-files" aria-selected="false">첨부 파일</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="view-history-tab" data-bs-toggle="tab" data-bs-target="#view-history" type="button" role="tab" aria-controls="view-history" aria-selected="false">이력 관리</button>
+                        </li>
+                    </ul>
+                    
+                    <!-- 탭 내용 -->
+                    <div class="tab-content" id="viewContractTabsContent">
+                        <!-- 기본 정보 탭 -->
+                        <div class="tab-pane fade show active" id="view-basic" role="tabpanel" aria-labelledby="view-basic-tab">
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <h6>계약번호</h6>
+                                    <p id="viewContractNumber">CT-2025-001</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <h6>계약 유형</h6>
+                                    <p id="viewContractType">판매 계약</p>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <h6>계약명</h6>
+                                <p id="viewContractName">ERP 시스템 구축 계약</p>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <h6>거래처</h6>
+                                    <p id="viewClientCompany">ABC 주식회사</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <h6>관련 견적서</h6>
+                                    <p id="viewRelatedQuotation">QT-2025-001</p>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <h6>계약일자</h6>
+                                    <p id="viewContractDate">2025-10-20</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <h6>계약상태</h6>
+                                    <p><span class="badge bg-success" id="viewContractStatus">진행중</span></p>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <h6>계약 시작일</h6>
+                                    <p id="viewStartDate">2025-10-20</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <h6>계약 종료일</h6>
+                                    <p id="viewEndDate">2026-04-19</p>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <h6>계약 금액</h6>
+                                    <p id="viewTotalAmount">₩80,000,000</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <h6>담당자</h6>
+                                    <p id="viewAssignedTo">김영수</p>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <h6>계약 설명</h6>
+                                <p id="viewContractDescription">ABC 주식회사의 ERP 시스템 구축 프로젝트 계약입니다. 총 6개월 동안 진행되며, 재무, 인사, 영업, 구매 모듈을 포함합니다.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- 대금 정보 탭 -->
+                        <div class="tab-pane fade" id="view-payment" role="tabpanel" aria-labelledby="view-payment-tab">
+                            <div class="mb-3">
+                                <h6>대금 지급 방식</h6>
+                                <p id="viewPaymentType">분할</p>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <h6>분할 지급 일정</h6>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th style="width: 5%">번호</th>
+                                                <th style="width: 20%">지급 항목</th>
+                                                <th style="width: 15%">지급 예정일</th>
+                                                <th style="width: 15%">금액</th>
+                                                <th style="width: 15%">비율</th>
+                                                <th style="width: 15%">상태</th>
+                                                <th style="width: 15%">비고</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="viewPaymentSchedule">
+                                            <tr>
+                                                <td>1</td>
+                                                <td>계약금</td>
+                                                <td>2025-10-25</td>
+                                                <td>₩24,000,000</td>
+                                                <td>30%</td>
+                                                <td><span class="badge bg-success">완료</span></td>
+                                                <td>입금 확인</td>
+                                            </tr>
+                                            <tr>
+                                                <td>2</td>
+                                                <td>중도금</td>
+                                                <td>2026-01-20</td>
+                                                <td>₩40,000,000</td>
+                                                <td>50%</td>
+                                                <td><span class="badge bg-warning">예정</span></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td>3</td>
+                                                <td>잔금</td>
+                                                <td>2026-04-19</td>
+                                                <td>₩16,000,000</td>
+                                                <td>20%</td>
+                                                <td><span class="badge bg-warning">예정</span></td>
+                                                <td></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <h6>지급 조건</h6>
+                                <p id="viewPaymentTerms">계약금은 계약 체결 후 5일 이내, 중도금은 중간 산출물 검수 완료 후, 잔금은 최종 검수 완료 후 지급합니다.</p>
+                            </div>
+                            <div class="mb-3">
+                                <h6>입금 계좌 정보</h6>
+                                <p id="viewBankInfo">신한은행 123-456-789012 (예금주: 비전아이티)</p>
+                            </div>
+                        </div>
+                        
+                        <!-- 첨부 파일 탭 -->
+                        <div class="tab-pane fade" id="view-files" role="tabpanel" aria-labelledby="view-files-tab">
+                            <div class="mb-3">
+                                <h6>계약서 파일</h6>
+                                <p><a href="#" id="viewContractFile">ERP_시스템_구축_계약서.pdf</a></p>
+                            </div>
+                            <div class="mb-3">
+                                <h6>추가 첨부 파일</h6>
+                                <ul class="list-group" id="viewFileList">
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <a href="#">ERP_시스템_구축_제안서.pdf</a>
+                                        <button class="btn btn-sm btn-primary download-file">
+                                            <i class="fas fa-download"></i>
+                                        </button>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <a href="#">ERP_시스템_구축_일정표.xlsx</a>
+                                        <button class="btn btn-sm btn-primary download-file">
+                                            <i class="fas fa-download"></i>
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <!-- 이력 관리 탭 -->
+                        <div class="tab-pane fade" id="view-history" role="tabpanel" aria-labelledby="view-history-tab">
+                            <div class="mb-3">
+                                <h6>계약 이력</h6>
+                                <ul class="list-group" id="viewContractHistory">
+                                    <li class="list-group-item">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h6 class="mb-1">계약서 초안 작성</h6>
+                                            <small>2025-10-15 14:30</small>
+                                        </div>
+                                        <p class="mb-1">계약서 초안 작성 완료</p>
+                                        <small>담당: 김영수</small>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h6 class="mb-1">계약서 검토</h6>
+                                            <small>2025-10-17 10:15</small>
+                                        </div>
+                                        <p class="mb-1">법무팀 검토 완료</p>
+                                        <small>담당: 이미영</small>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h6 class="mb-1">계약 체결</h6>
+                                            <small>2025-10-20 15:45</small>
+                                        </div>
+                                        <p class="mb-1">계약서 서명 완료</p>
+                                        <small>담당: 김영수</small>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h6 class="mb-1">계약금 입금 확인</h6>
+                                            <small>2025-10-25 11:20</small>
+                                        </div>
+                                        <p class="mb-1">계약금 2,400만원 입금 확인</p>
+                                        <small>담당: 박재현</small>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    <button type="button" class="btn btn-info" id="renewContractBtn">계약 갱신</button>
+                    <button type="button" class="btn btn-warning" id="terminateContractBtn">계약 해지</button>
+                    <button type="button" class="btn btn-primary" id="downloadContractBtn">계약서 다운로드</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript 라이브러리 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../js/script.js"></script>
+    <script src="../js/contract-management.js"></script>
+</body>
+</html>

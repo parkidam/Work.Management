@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>견적서 관리 - 비전아이티 업무관리시스템</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <div class="wrapper">
+        <!-- 사이드바 -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <a href="../index.html" style="text-decoration: none; color: inherit;">
+                    <h3>업무관리시스템</h3>
+                </a>
+            </div>
+
+            <ul class="list-unstyled components">
+                <!-- 대시보드 메뉴 -->
+                <li>
+                    <a href="#dashboardSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>대시보드</span>
+                    </a>
+                    <ul class="collapse list-unstyled" id="dashboardSubmenu">
+                        <li>
+                            <a href="dashboard-summary.html" class="submenu-item">
+                                <i class="fas fa-chart-pie fa-sm"></i>
+                                <span>사업계획 진행 관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="dashboard-analytics.html" class="submenu-item">
+                                <i class="fas fa-list-alt"></i>
+                                <span>영업 진행관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="dashboard-statistics.html" class="submenu-item">
+                                <i class="fas fa-chart-line fa-sm"></i>
+                                <span>유지보수 관리</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <!-- 인사관리 메뉴 -->
+                <li>
+                    <a href="#hrSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-users"></i>
+                        <span>인사관리</span>
+                    </a>
+                    <ul class="collapse list-unstyled" id="hrSubmenu">
+                        <li>
+                            <a href="employee-management.html" class="submenu-item">
+                                <i class="fas fa-user fa-sm"></i>
+                                <span>사원관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="salary-management.html" class="submenu-item">
+                                <i class="fas fa-money-bill-alt fa-sm"></i>
+                                <span>급여관리</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <!-- 회계관리 메뉴 -->
+                <li>
+                    <a href="#accountingSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-calculator"></i>
+                        <span>회계관리</span>
+                    </a>
+                    <ul class="collapse list-unstyled" id="accountingSubmenu">
+                        <li>
+                            <a href="slip-management.html" class="submenu-item">
+                                <i class="fas fa-file-invoice fa-sm"></i>
+                                <span>전표관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="sales-management.html" class="submenu-item">
+                                <i class="fas fa-chart-line fa-sm"></i>
+                                <span>매출관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="purchase-management.html" class="submenu-item">
+                                <i class="fas fa-shopping-cart fa-sm"></i>
+                                <span>매입관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="expense-management.html" class="submenu-item">
+                                <i class="fas fa-receipt fa-sm"></i>
+                                <span>경비관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="fund-management.html" class="submenu-item">
+                                <i class="fas fa-wallet fa-sm"></i>
+                                <span>자금관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="document-management.html" class="submenu-item">
+                                <i class="fas fa-file-alt fa-sm"></i>
+                                <span>회사 문서관리</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <!-- 영업관리 메뉴 -->
+                <li class="active">
+                    <a href="#salesSubmenu" data-bs-toggle="collapse" aria-expanded="true" class="dropdown-toggle">
+                        <i class="fas fa-chart-line"></i>
+                        <span>영업관리</span>
+                    </a>
+                    <ul class="collapse show list-unstyled" id="salesSubmenu">
+                        <li>
+                            <a href="sales-opportunity.html" class="submenu-item">
+                                <i class="fas fa-handshake fa-sm"></i>
+                                <span>영업기회</span>
+                            </a>
+                        </li>
+                        <li class="active">
+                            <a href="quotation.html" class="submenu-item">
+                                <i class="fas fa-file-invoice-dollar fa-sm"></i>
+                                <span>견적서</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="client-management.html" class="submenu-item">
+                                <i class="fas fa-building fa-sm"></i>
+                                <span>거래처관리</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <!-- 계약관리 메뉴 -->
+                <li>
+                    <a href="#contractSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-file-contract"></i>
+                        <span>계약관리</span>
+                    </a>
+                    <ul class="collapse list-unstyled" id="contractSubmenu">
+                        <li>
+                            <a href="contract-management.html" class="submenu-item">
+                                <i class="fas fa-file-signature fa-sm"></i>
+                                <span>계약관리</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <!-- 유지보수관리 메뉴 -->
+                <li>
+                    <a href="#maintenanceSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-tools"></i>
+                        <span>유지보수관리</span>
+                    </a>
+                    <ul class="collapse list-unstyled" id="maintenanceSubmenu">
+                        <li>
+                            <a href="issue-management.html" class="submenu-item">
+                                <i class="fas fa-exclamation-triangle fa-sm"></i>
+                                <span>장애관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="maintenance-system.html" class="submenu-item">
+                                <i class="fas fa-server fa-sm"></i>
+                                <span>유지보수 대상 시스템 관리</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <!-- 사업계획관리 메뉴 -->
+                <li>
+                    <a href="#businessPlanSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-project-diagram"></i>
+                        <span>사업계획관리</span>
+                    </a>
+                    <ul class="collapse list-unstyled" id="businessPlanSubmenu">
+                        <li>
+                            <a href="business-plan.html" class="submenu-item">
+                                <i class="fas fa-tasks fa-sm"></i>
+                                <span>사업계획</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <!-- 시스템관리 메뉴 -->
+                <li>
+                    <a href="#systemSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-cogs"></i>
+                        <span>시스템관리</span>
+                    </a>
+                    <ul class="collapse list-unstyled" id="systemSubmenu">
+                        <li>
+                            <a href="user-management.html" class="submenu-item">
+                                <i class="fas fa-user-cog fa-sm"></i>
+                                <span>사용자관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="department-management.html" class="submenu-item">
+                                <i class="fas fa-sitemap fa-sm"></i>
+                                <span>부서관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="account-category.html" class="submenu-item">
+                                <i class="fas fa-list-ol fa-sm"></i>
+                                <span>계정과목관리</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="code-management.html" class="submenu-item">
+                                <i class="fas fa-code fa-sm"></i>
+                                <span>코드관리</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- 페이지 콘텐츠 -->
+        <div id="content">
+            <!-- 상단 네비게이션 -->
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+                    <div class="ms-auto d-flex align-items-center">
+                        <div class="notification-icon me-4">
+                            <i class="fas fa-bell"></i>
+                            <span class="badge bg-danger">3</span>
+                        </div>
+                        <div class="user-profile dropdown">
+                            <a href="#" class="dropdown-toggle d-flex align-items-center" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <div class="user-image-container me-2">
+                                    <img src="../images/default-user.svg" alt="" class="rounded-circle" style="width: 40px; height: 40px;">
+                                </div>
+                                <span class="user-name"></span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                                <li><a class="dropdown-item" href="#">프로필</a></li>
+                                <li><a class="dropdown-item" href="#">설정</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#" id="logout-btn">로그아웃</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- 메인 콘텐츠 -->
+            <div class="container-fluid">
+                <h1 class="mt-4 mb-4">견적서 관리</h1>
+
+                <!-- 견적서 상단 필터 및 버튼 -->
+                <div class="row mb-4">
+                    <div class="col-md-8">
+                        <div class="input-group">
+                            <select class="form-select" id="quotationStatusFilter" style="max-width: 180px;">
+                                <option value="all">모든 상태</option>
+                                <option value="draft">작성중</option>
+                                <option value="sent">발송</option>
+                                <option value="approved">승인</option>
+                                <option value="rejected">거절</option>
+                                <option value="expired">만료</option>
+                            </select>
+                            <input type="text" class="form-control" placeholder="견적서 검색..." id="quotationSearchInput">
+                            <button class="btn btn-primary" type="button" id="quotationSearchButton">
+                                <i class="fas fa-search"></i> 검색
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-md-4 text-end">
+                        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addQuotationModal">
+                            <i class="fas fa-plus"></i> 견적서 작성
+                        </button>
+                        <button class="btn btn-secondary" id="exportQuotationBtn">
+                            <i class="fas fa-file-export"></i> 내보내기
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 견적서 요약 통계 카드 -->
+                <div class="row mb-4">
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card bg-primary text-white mb-4">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h5 class="mb-0">총 견적서</h5>
+                                        <h2 class="mb-0">38</h2>
+                                    </div>
+                                    <i class="fas fa-file-invoice-dollar fa-3x"></i>
+                                </div>
+                            </div>
+                            <div class="card-footer d-flex align-items-center justify-content-between">
+                                <a class="small text-white stretched-link" href="#">상세 보기</a>
+                                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card bg-success text-white mb-4">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h5 class="mb-0">승인됨</h5>
+                                        <h2 class="mb-0">15</h2>
+                                    </div>
+                                    <i class="fas fa-check-circle fa-3x"></i>
+                                </div>
+                            </div>
+                            <div class="card-footer d-flex align-items-center justify-content-between">
+                                <a class="small text-white stretched-link" href="#">상세 보기</a>
+                                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card bg-warning text-white mb-4">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h5 class="mb-0">대기중</h5>
+                                        <h2 class="mb-0">12</h2>
+                                    </div>
+                                    <i class="fas fa-clock fa-3x"></i>
+                                </div>
+                            </div>
+                            <div class="card-footer d-flex align-items-center justify-content-between">
+                                <a class="small text-white stretched-link" href="#">상세 보기</a>
+                                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card bg-danger text-white mb-4">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h5 class="mb-0">총 견적 금액</h5>
+                                        <h2 class="mb-0">₩4.5억</h2>
+                                    </div>
+                                    <i class="fas fa-money-bill-wave fa-3x"></i>
+                                </div>
+                            </div>
+                            <div class="card-footer d-flex align-items-center justify-content-between">
+                                <a class="small text-white stretched-link" href="#">상세 보기</a>
+                                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 견적서 목록 테이블 -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="fas fa-table me-1"></i>
+                        견적서 목록
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover" id="quotationTable">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 5%">번호</th>
+                                        <th style="width: 15%">견적번호</th>
+                                        <th style="width: 20%">거래처</th>
+                                        <th style="width: 10%">담당자</th>
+                                        <th style="width: 10%">견적일자</th>
+                                        <th style="width: 10%">유효기간</th>
+                                        <th style="width: 10%">견적금액</th>
+                                        <th style="width: 10%">상태</th>
+                                        <th style="width: 10%">관리</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>QT-2025-001</td>
+                                        <td>ABC 주식회사</td>
+                                        <td>김영수</td>
+                                        <td>2025-10-15</td>
+                                        <td>2025-11-15</td>
+                                        <td>₩8,000만</td>
+                                        <td><span class="badge bg-warning">발송</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-info view-quotation" data-id="1">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-primary edit-quotation" data-id="1">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-danger delete-quotation" data-id="1">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>QT-2025-002</td>
+                                        <td>XYZ 그룹</td>
+                                        <td>이미영</td>
+                                        <td>2025-09-20</td>
+                                        <td>2025-10-20</td>
+                                        <td>₩5,000만</td>
+                                        <td><span class="badge bg-success">승인</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-info view-quotation" data-id="2">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-primary edit-quotation" data-id="2">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-danger delete-quotation" data-id="2">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>QT-2025-003</td>
+                                        <td>DEF 주식회사</td>
+                                        <td>박재현</td>
+                                        <td>2025-10-05</td>
+                                        <td>2025-11-05</td>
+                                        <td>₩6,500만</td>
+                                        <td><span class="badge bg-info">작성중</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-info view-quotation" data-id="3">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-primary edit-quotation" data-id="3">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-danger delete-quotation" data-id="3">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>QT-2025-004</td>
+                                        <td>GHI 그룹</td>
+                                        <td>최지원</td>
+                                        <td>2025-09-10</td>
+                                        <td>2025-10-10</td>
+                                        <td>₩1억 2천만</td>
+                                        <td><span class="badge bg-danger">거절</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-info view-quotation" data-id="4">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-primary edit-quotation" data-id="4">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-danger delete-quotation" data-id="4">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td>QT-2025-005</td>
+                                        <td>JKL 주식회사</td>
+                                        <td>정다혜</td>
+                                        <td>2025-08-15</td>
+                                        <td>2025-09-15</td>
+                                        <td>₩9,000만</td>
+                                        <td><span class="badge bg-secondary">만료</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-info view-quotation" data-id="5">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-primary edit-quotation" data-id="5">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-danger delete-quotation" data-id="5">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 페이지네이션 -->
+                <nav aria-label="견적서 목록 페이지네이션">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">이전</a>
+                        </li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">다음</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <!-- 견적서 작성/수정 모달 -->
+    <div class="modal fade" id="addQuotationModal" tabindex="-1" aria-labelledby="addQuotationModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addQuotationModalLabel">견적서 작성</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="quotationForm">
+                        <!-- 견적서 기본 정보 -->
+                        <div class="row mb-3">
+                            <div class="col-md-4">
+                                <label for="quotationNumber" class="form-label">견적번호</label>
+                                <input type="text" class="form-control" id="quotationNumber" value="QT-2025-006" readonly>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="quotationDate" class="form-label">견적일자</label>
+                                <input type="date" class="form-control" id="quotationDate" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="expiryDate" class="form-label">유효기간</label>
+                                <input type="date" class="form-control" id="expiryDate" required>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="clientCompany" class="form-label">거래처</label>
+                                <select class="form-select" id="clientCompany" required>
+                                    <option value="">선택하세요</option>
+                                    <option value="1">ABC 주식회사</option>
+                                    <option value="2">XYZ 그룹</option>
+                                    <option value="3">DEF 주식회사</option>
+                                    <option value="4">GHI 그룹</option>
+                                    <option value="5">JKL 주식회사</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="clientContact" class="form-label">고객 담당자</label>
+                                <input type="text" class="form-control" id="clientContact">
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="assignedTo" class="form-label">담당자</label>
+                                <select class="form-select" id="assignedTo" required>
+                                    <option value="">선택하세요</option>
+                                    <option value="1">김영수</option>
+                                    <option value="2">이미영</option>
+                                    <option value="3">박재현</option>
+                                    <option value="4">최지원</option>
+                                    <option value="5">정다혜</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="relatedOpportunity" class="form-label">관련 영업 기회</label>
+                                <select class="form-select" id="relatedOpportunity">
+                                    <option value="">선택하세요</option>
+                                    <option value="1">ABC 기업 ERP 시스템 구축</option>
+                                    <option value="2">XYZ 기업 웹사이트 리뉴얼</option>
+                                    <option value="3">DEF 기업 모바일 앱 개발</option>
+                                    <option value="4">GHI 기업 클라우드 전환 프로젝트</option>
+                                    <option value="5">JKL 기업 보안 시스템 구축</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- 견적 항목 테이블 -->
+                        <h5 class="mt-4 mb-3">견적 항목</h5>
+                        <div class="table-responsive mb-3">
+                            <table class="table table-bordered" id="quotationItemTable">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 5%">번호</th>
+                                        <th style="width: 30%">항목명</th>
+                                        <th style="width: 10%">수량</th>
+                                        <th style="width: 15%">단가</th>
+                                        <th style="width: 15%">금액</th>
+                                        <th style="width: 20%">비고</th>
+                                        <th style="width: 5%">삭제</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>
+                                            <input type="text" class="form-control item-name" required>
+                                        </td>
+                                        <td>
+                                            <input type="number" class="form-control item-quantity" min="1" value="1" required>
+                                        </td>
+                                        <td>
+                                            <div class="input-group">
+                                                <span class="input-group-text">₩</span>
+                                                <input type="text" class="form-control item-price" required>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="input-group">
+                                                <span class="input-group-text">₩</span>
+                                                <input type="text" class="form-control item-amount" readonly>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control item-note">
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger btn-sm remove-item">
+                                                <i class="fas fa-times"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="7">
+                                            <button type="button" class="btn btn-success btn-sm" id="addItemBtn">
+                                                <i class="fas fa-plus"></i> 항목 추가
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+
+                        <!-- 합계 정보 -->
+                        <div class="row justify-content-end mb-3">
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="row mb-2">
+                                            <div class="col-6 text-end">소계:</div>
+                                            <div class="col-6 text-end" id="subtotal">₩0</div>
+                                        </div>
+                                        <div class="row mb-2">
+                                            <div class="col-6 text-end">부가세 (10%):</div>
+                                            <div class="col-6 text-end" id="tax">₩0</div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-6 text-end fw-bold">총 금액:</div>
+                                            <div class="col-6 text-end fw-bold" id="totalAmount">₩0</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 견적 조건 및 비고 -->
+                        <div class="mb-3">
+                            <label for="termsAndConditions" class="form-label">견적 조건</label>
+                            <textarea class="form-control" id="termsAndConditions" rows="3">
+1. 본 견적서의 유효기간은 발행일로부터 30일입니다.
+2. 견적 금액은 부가세가 포함된 금액입니다.
+3. 결제 조건: 계약금 50%, 중도금 30%, 잔금 20%
+4. 납품 기간은 계약 체결일로부터 60일 이내입니다.
+                            </textarea>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="notes" class="form-label">비고</label>
+                            <textarea class="form-control" id="notes" rows="2"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+                    <button type="button" class="btn btn-info" id="saveAsDraftBtn">임시저장</button>
+                    <button type="button" class="btn btn-primary" id="saveQuotationBtn">저장</button>
+                    <button type="button" class="btn btn-success" id="previewQuotationBtn">미리보기</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 견적서 상세 조회 모달 -->
+    <div class="modal fade" id="viewQuotationModal" tabindex="-1" aria-labelledby="viewQuotationModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="viewQuotationModalLabel">견적서 상세 정보</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <!-- 견적서 미리보기 -->
+                        <div class="quotation-preview p-4 border mb-4">
+                            <div class="row mb-4">
+                                <div class="col-6">
+                                    <h2>견적서</h2>
+                                    <p class="mb-1">견적번호: <span id="viewQuotationNumber">QT-2025-001</span></p>
+                                    <p class="mb-1">견적일자: <span id="viewQuotationDate">2025-10-15</span></p>
+                                    <p>유효기간: <span id="viewExpiryDate">2025-11-15</span></p>
+                                </div>
+                                <div class="col-6 text-end">
+                                    <h4>비전아이티</h4>
+                                    <p class="mb-1">서울시 강남구 테헤란로 123</p>
+                                    <p class="mb-1">전화: 02-1234-5678</p>
+                                    <p>이메일: info@visionit.co.kr</p>
+                                </div>
+                            </div>
+
+                            <div class="row mb-4">
+                                <div class="col-6">
+                                    <h5>수신</h5>
+                                    <p class="mb-1">회사: <span id="viewClientCompany">ABC 주식회사</span></p>
+                                    <p>담당자: <span id="viewClientContact">박상무</span></p>
+                                </div>
+                                <div class="col-6 text-end">
+                                    <p>담당자: <span id="viewAssignedTo">김영수</span></p>
+                                </div>
+                            </div>
+
+                            <div class="table-responsive mb-4">
+                                <table class="table table-bordered">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th style="width: 5%">번호</th>
+                                            <th style="width: 45%">항목명</th>
+                                            <th style="width: 10%">수량</th>
+                                            <th style="width: 15%">단가</th>
+                                            <th style="width: 15%">금액</th>
+                                            <th style="width: 10%">비고</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="viewQuotationItems">
+                                        <tr>
+                                            <td>1</td>
+                                            <td>ERP 시스템 구축 - 기본 모듈</td>
+                                            <td>1</td>
+                                            <td class="text-end">₩50,000,000</td>
+                                            <td class="text-end">₩50,000,000</td>
+                                            <td>기본 패키지</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>ERP 시스템 구축 - 재무 모듈</td>
+                                            <td>1</td>
+                                            <td class="text-end">₩15,000,000</td>
+                                            <td class="text-end">₩15,000,000</td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>ERP 시스템 구축 - 인사 모듈</td>
+                                            <td>1</td>
+                                            <td class="text-end">₩15,000,000</td>
+                                            <td class="text-end">₩15,000,000</td>
+                                            <td></td>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td colspan="4" class="text-end">소계</td>
+                                            <td class="text-end" id="viewSubtotal">₩80,000,000</td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="4" class="text-end">부가세 (10%)</td>
+                                            <td class="text-end" id="viewTax">₩8,000,000</td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="4" class="text-end fw-bold">총 금액</td>
+                                            <td class="text-end fw-bold" id="viewTotalAmount">₩88,000,000</td>
+                                            <td></td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+
+                            <div class="mb-4">
+                                <h5>견적 조건</h5>
+                                <div id="viewTermsAndConditions" class="border p-3">
+                                    <p>1. 본 견적서의 유효기간은 발행일로부터 30일입니다.</p>
+                                    <p>2. 견적 금액은 부가세가 포함된 금액입니다.</p>
+                                    <p>3. 결제 조건: 계약금 50%, 중도금 30%, 잔금 20%</p>
+                                    <p>4. 납품 기간은 계약 체결일로부터 60일 이내입니다.</p>
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <h5>비고</h5>
+                                <div id="viewNotes" class="border p-3">
+                                    <p>본 견적서는 ABC 주식회사의 요청에 따라 작성되었으며, 추가 요구사항이 있을 경우 견적 금액이 변동될 수 있습니다.</p>
+                                </div>
+                            </div>
+
+                            <div class="text-center">
+                                <p>문의사항은 담당자에게 연락 바랍니다.</p>
+                                <p>감사합니다.</p>
+                            </div>
+                        </div>
+
+                        <!-- 견적서 상태 정보 -->
+                        <div class="card mb-4">
+                            <div class="card-header">견적서 상태</div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <p><strong>현재 상태:</strong> <span class="badge bg-warning" id="viewQuotationStatus">발송</span></p>
+                                        <p><strong>작성자:</strong> <span id="viewCreatedBy">김영수</span></p>
+                                        <p><strong>작성일:</strong> <span id="viewCreatedDate">2025-10-15 14:30</span></p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p><strong>최종 수정자:</strong> <span id="viewModifiedBy">김영수</span></p>
+                                        <p><strong>최종 수정일:</strong> <span id="viewModifiedDate">2025-10-15 16:45</span></p>
+                                        <p><strong>관련 영업 기회:</strong> <span id="viewRelatedOpportunity">ABC 기업 ERP 시스템 구축</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    <button type="button" class="btn btn-info" id="sendEmailBtn">이메일 발송</button>
+                    <button type="button" class="btn btn-primary" id="downloadPdfBtn">PDF 다운로드</button>
+                    <button type="button" class="btn btn-success" id="createContractBtn">계약서 작성</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript 라이브러리 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../js/script.js"></script>
+    <script src="../js/quotation.js"></script>
+</body>
+</html>
